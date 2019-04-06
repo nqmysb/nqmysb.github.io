@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="iGDu0e88zUCIa6OhhkXgxyKDioORMrt1KC_43F_VRcg" />
+    <meta name="baidu-site-verification" content="A2ImdbykAi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/meditation.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+        [编码算法] Base64 编码 - LiaoCan | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://liaocan.top/article/javacore/advanced/encode/java-encryption/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/article_header/guangzhou3.jpg')
+                /*post*/
+                
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#java核心技术" title="java核心技术">
+                                java核心技术</a>
+                            
+                            <a class="tag" href="/tags/#编码算法" title="编码算法">
+                                编码算法</a>
+                            
+                        </div>
+                        <h1>
+                            [编码算法] Base64 编码
+                        </h1>
+                        <!-- <h2 class="subheading"></h2> -->
+                        <!--文章访问量统计-->
+                        
+                        <span id="busuanzi_container_page_pv">本文已被阅读过<span id="busuanzi_value_page_pv"></span>次</span>
+                        
+                        <!--文章访问量统计--> <span class="meta">
+                            Posted by
+                            Liao Can on
+                            2015-05-06
+                        </span>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Liao Can</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                        <li>
+                            <a href="/about/" >About</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/archive/" >Archives</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/tags/" >Tags</a>
+                        </li>
+                    
+
+
+                    <!-- 
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                     -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="base64-编码">Base64 编码</h2>
+<h3 id="算法简述">算法简述</h3>
+<h4 id="定义">定义</h4>
+<p>Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。</p>
+<p>Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。<strong>Base64 并不是加密解密算法</strong>，尽管我们有时也听到使用 Base64 来加密解密的说法，但这里所说的加密与解密实际是指**编码（encode）<strong>和</strong>解码（decode）**的过程，其变换是非常简单的，仅仅能够避免信息被直接识别。</p>
+<h4 id="原理">原理</h4>
+<p>Base64 算法主要是将给定的字符以字符编码(如 ASCII 码，UTF-8 码)对应的十进制数为基准，做编码操作：</p>
+<ol>
+<li>将给定的字符串以字符为单位，转换为对应的字符编码。</li>
+<li>将获得字符编码转换为二进制</li>
+<li>对二进制码做分组转换，每 3 个字节为一组，转换为每 4 个 6 位二进制位一组（不足 6 位时低位补 0）。这是一个分组变化的过程，3 个 8 位二进制码和 4 个 6 位二进制码的长度都是 24 位（3<em>8 = 4</em>6 = 24）。</li>
+<li>对获得的 4-6 二进制码补位，向 6 位二进制码添加 2 位高位 0，组成 4 个 8 位二进制码。</li>
+<li>对获得的 4-8 二进制码转换为十进制码。</li>
+<li>将获得的十进制码转换为 Base64 字符表中对应的字符。</li>
+</ol>
+<p><strong><em>Base64 编码表</em></strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>索引</strong></th>
+<th><strong>对应字符</strong></th>
+<th><strong>索引</strong></th>
+<th><strong>对应字符</strong></th>
+<th><strong>索引</strong></th>
+<th><strong>对应字符</strong></th>
+<th><strong>索引</strong></th>
+<th><strong>对应字符</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>A</td>
+<td>17</td>
+<td>R</td>
+<td>34</td>
+<td>i</td>
+<td>51</td>
+<td>z</td>
+</tr>
+<tr>
+<td>1</td>
+<td>B</td>
+<td>18</td>
+<td>S</td>
+<td>35</td>
+<td>j</td>
+<td>52</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+<td>19</td>
+<td>T</td>
+<td>36</td>
+<td>k</td>
+<td>53</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>D</td>
+<td>20</td>
+<td>U</td>
+<td>37</td>
+<td>l</td>
+<td>54</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>E</td>
+<td>21</td>
+<td>V</td>
+<td>38</td>
+<td>m</td>
+<td>55</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>F</td>
+<td>22</td>
+<td>W</td>
+<td>39</td>
+<td>n</td>
+<td>56</td>
+<td>4</td>
+</tr>
+<tr>
+<td>6</td>
+<td>G</td>
+<td>23</td>
+<td>X</td>
+<td>40</td>
+<td>o</td>
+<td>57</td>
+<td>5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>H</td>
+<td>24</td>
+<td>Y</td>
+<td>41</td>
+<td>p</td>
+<td>58</td>
+<td>6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>I</td>
+<td>25</td>
+<td>Z</td>
+<td>42</td>
+<td>q</td>
+<td>59</td>
+<td>7</td>
+</tr>
+<tr>
+<td>9</td>
+<td>J</td>
+<td>26</td>
+<td>a</td>
+<td>43</td>
+<td>r</td>
+<td>60</td>
+<td>8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>K</td>
+<td>27</td>
+<td>b</td>
+<td>44</td>
+<td>s</td>
+<td>61</td>
+<td>9</td>
+</tr>
+<tr>
+<td>11</td>
+<td>L</td>
+<td>28</td>
+<td>c</td>
+<td>45</td>
+<td>t</td>
+<td>62</td>
+<td>+</td>
+</tr>
+<tr>
+<td>12</td>
+<td>M</td>
+<td>29</td>
+<td>d</td>
+<td>46</td>
+<td>u</td>
+<td>63</td>
+<td>/</td>
+</tr>
+<tr>
+<td>13</td>
+<td>N</td>
+<td>30</td>
+<td>e</td>
+<td>47</td>
+<td>v</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>O</td>
+<td>31</td>
+<td>f</td>
+<td>48</td>
+<td>w</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>P</td>
+<td>32</td>
+<td>g</td>
+<td>49</td>
+<td>x</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>Q</td>
+<td>33</td>
+<td>h</td>
+<td>50</td>
+<td>y</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="应用">应用</h4>
+<p>Base64 编码可用于在 HTTP 环境下传递较长的标识信息。在其他应用程序中，也常常需要把二进制数据编码为适合放在 URL(包括隐藏表单域)中的形式。此时，采用 Base64 编码具有不可读性，即所编码的数据不会被人用肉眼所直接看到，算是起到一个加密的作用。</p>
+<p>然而，<strong>标准的 Base64 并不适合直接放在 URL 里传输</strong>，因为 URL 编码器会把标准 Base64 中的“/”和“+”字符变为形如“%XX”的形式，而这些“%”号在存入数据库时还需要再进行转换，因为 ANSI SQL 中已将“%”号用作通配符。</p>
+<p>为解决此问题，可采用一种用于 URL 的改进 Base64 编码，它不仅在末尾填充’='号，并将标准 Base64 中的“+”和“/”分别改成了“-”和“_”，这样就免去了在 URL 编解码和数据库存储时所要作的转换，避免了编码信息长度在此过程中的增加，并统一了数据库、表单等处对象标识符的格式。</p>
+<p>另有一种用于正则表达式的改进 Base64 变种，它将“+”和“/”改成了“!”和“-”，因为“+”,“*”以及前面在 IRCu 中用到的“[”和“]”在正则表达式中都可能具有特殊含义。</p>
+<p>此外还有一些变种，它们将“+/”改为“<em>-”或“.</em>”（用作编程语言中的标识符名称）或“.-”（用于 XML 中的 Nmtoken）甚至“_:”（用于 XML 中的 Name）。</p>
+<h3 id="算法实现">算法实现</h3>
+<p><code>commons-codec</code>开源包提供了对于 Base64 的实现，推荐使用。</p>
+<p>请在 maven 工程中添加依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>范例</em></strong></p>
+<p>注：在 commons-codec 包中的 Base64 这个类中提供了 Base64 的编码、解码方式。</p>
+<p>其中，<code>encodeBase64</code>提供的是标准的 Base64 编码方式；<code>encodeBase64URLSafe</code>提供了 URL 安全的 Base64 编码方式（将+  和  /替换为  -  和  _）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.zp.javase.security.encrypt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.codec.binary.Base64;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Base64Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> UnsupportedEncodingException </span>&#123;</span><br><span class="line">        String url = <span class="string">"https://www.baidu.com/s?wd=Base64&amp;rsv_spt=1&amp;rsv_iqid=0xa9188d560005131f&amp;issp=1&amp;f=3&amp;rsv_bp=0&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_sug3=1&amp;rsv_sug1=1&amp;rsv_sug7=001&amp;rsv_sug2=1&amp;rsp=0&amp;rsv_sug9=es_2_1&amp;rsv_sug4=2153&amp;rsv_sug=9"</span>;</span><br><span class="line">        <span class="comment">// byte[] encoded = Base64.encodeBase64(url.getBytes("UTF8")); // 标准的Base64编码</span></span><br><span class="line">        <span class="keyword">byte</span>[] encoded = Base64.encodeBase64URLSafe(url.getBytes(<span class="string">"UTF8"</span>)); <span class="comment">// URL安全的Base64编码</span></span><br><span class="line">        <span class="keyword">byte</span>[] decoded = Base64.decodeBase64(encoded);</span><br><span class="line">        System.out.println(<span class="string">"url:"</span> + url);</span><br><span class="line">        System.out.println(<span class="string">"encoded:"</span> + <span class="keyword">new</span> String(encoded));</span><br><span class="line">        System.out.println(<span class="string">"decoded:"</span> + <span class="keyword">new</span> String(decoded));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="对称加密">对称加密</h2>
+<h3 id="算法简述">算法简述</h3>
+<p>对称加密算法是应用较早的加密算法，技术成熟。在对称加密算法中，数据发信方将明文（原始数据）和加密密钥（mi yao）一起经过特殊加密算法处理后，使其变成复杂的加密密文发送出去。收信方收到密文后，若想解读原文，则需要使用加密用过的密钥及相同算法的逆算法对密文进行解密，才能使其恢复成可读明文。在对称加密算法中，使用的密钥只有一个，发收信双方都使用这个密钥对数据进行加密和解密，这就要求解密方事先必须知道加密密钥。</p>
+<h4 id="特点">特点</h4>
+<h5 id="优点">优点：</h5>
+<p>计算量小、加密速度快、加密效率高。</p>
+<h5 id="缺点">缺点：</h5>
+<p>算法是公开的，安全性得不到保证。</p>
+<p>通信双方每次使用对称加密算法时，都需要使用其他人不知道的惟一密钥，这会使得通信双方所拥有的密钥数量呈几何级数增长，密钥管理成为用户的负担。对称加密算法在分布式网络系统上使用较为困难，主要是因为密钥管理困难，使用成本较高。</p>
+<p>而与公钥、密钥加密算法比起来，对称加密算法能够提供加密和认证却缺乏了签名功能，使得使用范围有所缩小。</p>
+<h4 id="原理">原理</h4>
+<p>对称加密要求加密与解密使用同一个密钥，解密是加密的逆运算。由于加密、解密使用同一个密钥，这要求通信双方必须在通信前商定该密钥，并妥善保存该密钥。</p>
+<p>对称加密体制分为两种：</p>
+<p>一种是对明文的单个位（或字节）进行运算，称为流密码，也称为序列密码；</p>
+<p>一种是把明文信息划分为不同的组（或块）结构，分别对每个组（或块）进行加密、解密，称为分组密码。</p>
+<p><img src="http://oyz7npk35.bkt.clouddn.com//image/javase/encode/symmetric-encryption.png" alt="Java与加密算法图1"></p>
+<p>假设甲乙方作为通信双方。假定甲乙双方在消息传递前已商定加密算法，欲完成一次消息传递需要经过如下步骤。</p>
+<p><img src="http://oyz7npk35.bkt.clouddn.com//image/javase/encode/symmetric-encryption-progress.png" alt="Java与加密算法图2"></p>
+<h4 id="工作模式">工作模式</h4>
+<p>以 DES 算法的工作模式为例，DES 算法根据其加密算法所定义的明文分组的大小（56 位），将数据分割成若干 56 位的加密区块，再以加密区块为单位，分别进行加密处理。如果最后剩下不足一个区块的大小，称之为<strong>短块</strong>。短块的处理方法有填充法、流密码加密法、密文挪用技术。</p>
+<p>根据数据加密时每个加密区块见得关联方式来区分，可以分为以下种工作模式：</p>
+<p><strong>(1)   电子密码本模式(Electronic Code Book, ECB)</strong></p>
+<p>用途：适合加密密钥，随机数等短数据。例如，安全地传递 DES 密钥，ECB 是最合适的模式。</p>
+<p><strong>(2)   密文链接模式(Cipher Booki Chaining, CBC)</strong></p>
+<p>用途：可加密任意长度的数据，适用于计算产生检测数据完整性的消息认证 MAC。</p>
+<p><strong>(3)   密文反馈模式(Cipher Feed Back, CFB)</strong></p>
+<p>用途：因错误传播无界，可以用于检查发现明文密文的篡改。</p>
+<p><strong>(4)   输出反馈模式(Output Feed Back, OFB)</strong></p>
+<p>用途：使用于加密冗余性较大的数据，比如语音和图像数据。</p>
+<p>AES 算法除了以上 4 中模式外，还有一种新的工作模式：</p>
+<p><strong>(5)   计数器模式(Counter, CTR)</strong></p>
+<p>用途：适用于各种加密应用。</p>
+<p>本文对于各种工作模式的原理展开描述。个人认为，作为工程应用，了解其用途即可。</p>
+<h4 id="填充方法">填充方法</h4>
+<p>Java 中对称加密对于短块的处理，一般是采用填充方式。</p>
+<p>常采用的是：NoPadding（不填充）、Zeros 填充（0 填充）、PKCS5Padding 填充。</p>
+<p><strong>ZerosPadding</strong></p>
+<p>方式：全部填充为 0 的字节</p>
+<p>结果如下：</p>
+<p>F1 F2 F3 F4 F5 F6 F7 F8 //第一块</p>
+<p>F9 00 00 00 00 00 00 00 //第二块</p>
+<p><strong>PKCS5Padding</strong></p>
+<p>方式：每个填充的字节都记录了填充的总字节数</p>
+<p>结果如下：</p>
+<p>F1 F2 F3 F4 F5 F6 F7 F8 //第一块</p>
+<p>F9 07 07 07 07 07 07 07 //第二块</p>
+<h4 id="常用算法">常用算法</h4>
+<p>对称加密算法主要有 DES、3DES（TripleDES）、AES、IDEA、RC2、RC4、RC5 和 Blowfish 等。</p>
+<h3 id="算法实现">算法实现</h3>
+<h4 id="基于密钥加密的流程des-desede-aes-和-idea">基于密钥加密的流程（DES、DESede、AES 和 IDEA）</h4>
+<p>DES、DESede、AES 和 IDEA 等算法都是基于密钥加密的对称加密算法，它们的实现流程也基本一致。步骤如下：</p>
+<p>（1）生成密钥</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">KeyGenerator kg = KeyGenerator.getInstance(<span class="string">"DES"</span>);</span><br><span class="line">SecureRandom random = <span class="keyword">new</span> SecureRandom();</span><br><span class="line">kg.init(random);</span><br><span class="line">SecretKey secretKey = kg.generateKey();</span><br></pre></td></tr></table></figure>
+<p>建议使用随机数来初始化密钥的生成。</p>
+<p>（2）初始化密码对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cipher cipher = Cipher.getInstance(<span class="string">"DES/ECB/PKCS5Padding"</span>);</span><br><span class="line">cipher.init(Cipher.ENCRYPT_MODE, secretKey);</span><br></pre></td></tr></table></figure>
+<p><code>ENCRYPT_MODE</code>：加密模式</p>
+<p><code>DECRYPT_MODE</code>：解密模式</p>
+<p>（3）执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String plaintext = &quot;Hello World&quot;;</span><br><span class="line">byte[] ciphertext = cipher.doFinal(plaintext.getBytes());</span><br></pre></td></tr></table></figure>
+<h5 id="完整实例">完整实例</h5>
+<p>一个完整的 DES 加密解密范例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.bouncycastle.util.encoders.Base64;</span><br><span class="line"><span class="keyword">import</span> org.zp.javase.security.encode.Encode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.crypto.BadPaddingException;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.IllegalBlockSizeException;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.KeyGenerator;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.NoSuchPaddingException;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.IvParameterSpec;</span><br><span class="line"><span class="keyword">import</span> java.security.InvalidAlgorithmParameterException;</span><br><span class="line"><span class="keyword">import</span> java.security.InvalidKeyException;</span><br><span class="line"><span class="keyword">import</span> java.security.Key;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchProviderException;</span><br><span class="line"><span class="keyword">import</span> java.security.SecureRandom;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span> DESCoder</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> DES安全编码：是经典的对称加密算法。密钥仅56位，且迭代次数偏少。已被视为并不安全的加密算法。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Victor Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2016年7月14日</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DESCoder</span> <span class="keyword">implements</span> <span class="title">Encode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY_ALGORITHM_DES = <span class="string">"DES"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CIPHER_DES_DEFAULT = <span class="string">"DES"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CIPHER_DES_ECB_PKCS5PADDING = <span class="string">"DES/ECB/PKCS5Padding"</span>; <span class="comment">// 算法/模式/补码方式</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CIPHER_DES_CBC_PKCS5PADDING = <span class="string">"DES/CBC/PKCS5Padding"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CIPHER_DES_CBC_NOPADDING = <span class="string">"DES/CBC/NoPadding"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SEED = <span class="string">"%%%today is nice***"</span>; <span class="comment">// 用于生成随机数的种子</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Key key;</span><br><span class="line">    <span class="keyword">private</span> Cipher cipher;</span><br><span class="line">    <span class="keyword">private</span> String transformation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DESCoder</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = initKey();</span><br><span class="line">        <span class="keyword">this</span>.cipher = Cipher.getInstance(CIPHER_DES_DEFAULT);</span><br><span class="line">        <span class="keyword">this</span>.transformation = CIPHER_DES_DEFAULT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DESCoder</span><span class="params">(String transformation)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = initKey();</span><br><span class="line">        <span class="keyword">this</span>.cipher = Cipher.getInstance(transformation);</span><br><span class="line">        <span class="keyword">this</span>.transformation = transformation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span> decrypt</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span> 解密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Author</span> Victor Zhang</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Date</span> 2016年7月20日</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> input 密文</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> byte[] 明文</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InvalidKeyException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IllegalBlockSizeException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> BadPaddingException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InvalidAlgorithmParameterException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] decrypt(<span class="keyword">byte</span>[] input) <span class="keyword">throws</span> InvalidKeyException, IllegalBlockSizeException, BadPaddingException,</span><br><span class="line">            InvalidAlgorithmParameterException &#123;</span><br><span class="line">        <span class="keyword">if</span> (transformation.equals(CIPHER_DES_CBC_PKCS5PADDING) || transformation.equals(CIPHER_DES_CBC_NOPADDING)) &#123;</span><br><span class="line">            cipher.init(Cipher.DECRYPT_MODE, key, <span class="keyword">new</span> IvParameterSpec(getIV()));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cipher.init(Cipher.DECRYPT_MODE, key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(input);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span> encrypt</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span> 加密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Author</span> Victor Zhang</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Date</span> 2016年7月20日</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> input 明文</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> byte[] 密文</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InvalidKeyException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IllegalBlockSizeException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> BadPaddingException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InvalidAlgorithmParameterException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] encrypt(<span class="keyword">byte</span>[] input) <span class="keyword">throws</span> InvalidKeyException, IllegalBlockSizeException, BadPaddingException,</span><br><span class="line">            InvalidAlgorithmParameterException &#123;</span><br><span class="line">        <span class="keyword">if</span> (transformation.equals(CIPHER_DES_CBC_PKCS5PADDING) || transformation.equals(CIPHER_DES_CBC_NOPADDING)) &#123;</span><br><span class="line">            cipher.init(Cipher.ENCRYPT_MODE, key, <span class="keyword">new</span> IvParameterSpec(getIV()));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cipher.init(Cipher.ENCRYPT_MODE, key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(input);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Title</span> initKey</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span> 根据随机数种子生成一个密钥</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Author</span> Victor Zhang</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Date</span> 2016年7月14日</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Return</span> Key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> NoSuchAlgorithmException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> NoSuchProviderException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Key <span class="title">initKey</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchAlgorithmException, NoSuchProviderException </span>&#123;</span><br><span class="line">        <span class="comment">// 根据种子生成一个安全的随机数</span></span><br><span class="line">        SecureRandom secureRandom = <span class="keyword">null</span>;</span><br><span class="line">        secureRandom = <span class="keyword">new</span> SecureRandom(SEED.getBytes());</span><br><span class="line"></span><br><span class="line">        KeyGenerator keyGen = KeyGenerator.getInstance(KEY_ALGORITHM_DES);</span><br><span class="line">        keyGen.init(secureRandom);</span><br><span class="line">        <span class="keyword">return</span> keyGen.generateKey();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] getIV() &#123;</span><br><span class="line">        String iv = <span class="string">"01234567"</span>; <span class="comment">// IV length: must be 8 bytes long</span></span><br><span class="line">        <span class="keyword">return</span> iv.getBytes();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        DESCoder aes = <span class="keyword">new</span> DESCoder(CIPHER_DES_CBC_PKCS5PADDING);</span><br><span class="line"></span><br><span class="line">        String msg = <span class="string">"Hello World!"</span>;</span><br><span class="line">        System.out.println(<span class="string">"原文: "</span> + msg);</span><br><span class="line">        <span class="keyword">byte</span>[] encoded = aes.encrypt(msg.getBytes(<span class="string">"UTF8"</span>));</span><br><span class="line">        String encodedBase64 = Base64.toBase64String(encoded);</span><br><span class="line">        System.out.println(<span class="string">"密文: "</span> + encodedBase64);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">byte</span>[] decodedBase64 = Base64.decode(encodedBase64);</span><br><span class="line">        <span class="keyword">byte</span>[] decoded = aes.decrypt(decodedBase64);</span><br><span class="line">        System.out.println(<span class="string">"明文: "</span> + <span class="keyword">new</span> String(decoded));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">原文: Hello World!</span><br><span class="line">密文: TtnEu9ezNQtxFKpmq/37Qw==</span><br><span class="line">明文: Hello World!</span><br></pre></td></tr></table></figure>
+<h4 id="基于口令加密的流程pbe">基于口令加密的流程（PBE）</h4>
+<p>DES、DESede、AES、IDEA 这几种算法的应用模型几乎如出一辙。</p>
+<p>但是，并非所有对称加密算法都是如此。</p>
+<p>基于口令加密(Password Based Encryption, PBE)是一种基于口令加密的算法。其特点是：口令由用户自己掌管，采用随机数（这里叫做盐）杂凑多重加密等方法保证数据的安全性。</p>
+<p>PBE 没有密钥概念，密钥在其他对称加密算法中是经过计算得出的，PBE 则使用口令替代了密钥。</p>
+<p>流程：</p>
+<p><img src="http://oyz7npk35.bkt.clouddn.com//image/javase/encode/password-based-encryption-progress.png" alt="Java与加密算法图3"></p>
+<p>步骤如下：</p>
+<p><strong>（1）产生盐</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SecureRandom secureRandom = <span class="keyword">new</span> SecureRandom();</span><br><span class="line"><span class="keyword">byte</span>[] salt = secureRandom.generateSeed(<span class="number">8</span>); <span class="comment">// 盐长度必须为8字节</span></span><br></pre></td></tr></table></figure>
+<p><strong>（2）根据密码产生 Key</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String password = <span class="string">"123456"</span>;</span><br><span class="line">PBEKeySpec keySpec = <span class="keyword">new</span> PBEKeySpec(password.toCharArray());</span><br><span class="line">SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(KEY_ALGORITHM);</span><br><span class="line">SecretKey secretKey = keyFactory.generateSecret(keySpec);</span><br></pre></td></tr></table></figure>
+<p><strong>（3）初始化加密或解密对象</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PBEParameterSpec paramSpec = <span class="keyword">new</span> PBEParameterSpec(salt, ITERATION_COUNT);</span><br><span class="line">Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);</span><br><span class="line">cipher.init(Cipher.ENCRYPT_MODE, secretKey, paramSpec);</span><br></pre></td></tr></table></figure>
+<p><strong>（4）执行</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] plaintext = <span class="string">"Hello World"</span>.getBytes();</span><br><span class="line"><span class="keyword">byte</span>[] ciphertext = cipher.doFinal(plaintext);</span><br></pre></td></tr></table></figure>
+<h2 id="非对称加密">非对称加密</h2>
+<h3 id="算法简述">算法简述</h3>
+<p>非对称加密算法和对称加密算法的主要差别在于非对称加密算法用于加密和解密的密钥是不同的。一个公开，称为公钥（public key）；一个保密，称为私钥（private key）。因此，非对称加密算法也称为双钥加密算法或公钥加密算法。</p>
+<h4 id="特点">特点</h4>
+<h5 id="优点">优点</h5>
+<p>非对称加密算法解决了对称加密算法的密钥分配问题，并极大地提高了算法安全性。</p>
+<h5 id="缺点">缺点</h5>
+<p>算法比对称算法更复杂，因此加密、解密速度都比对称算法慢很多。</p>
+<h4 id="原理">原理</h4>
+<p><img src="http://oyz7npk35.bkt.clouddn.com//image/javase/encode/asymmetric-encryption.png" alt="非对称加密算法实现.png"></p>
+<p>非对称加密算法实现机密信息交换的基本过程是：甲方生成一对密钥并将其中的一把作为公用密钥向其它方公开；得到该公用密钥的乙方使用该密钥对机密信息进行加密后再发送给甲方；甲方再用自己保存的另一把专用密钥对加密后的信息进行解密。</p>
+<p>另一方面，甲方可以使用乙方的公钥对机密信息进行签名后再发送给乙方；乙方再用自己的私匙对数据进行验证。</p>
+<p>甲方只能用其私钥解密，由其公钥加密后的任何信息。  非对称加密算法的保密性比较好，它消除了最终用户交换密钥的需要。</p>
+<h4 id="常用算法">常用算法</h4>
+<p>DH(Diffie-Hellman，密钥交换算法)、RSA</p>
+<h3 id="算法实现">算法实现</h3>
+<h4 id="完整范例">完整范例</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.codec.binary.Base64;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"><span class="keyword">import</span> java.security.KeyFactory;</span><br><span class="line"><span class="keyword">import</span> java.security.KeyPair;</span><br><span class="line"><span class="keyword">import</span> java.security.KeyPairGenerator;</span><br><span class="line"><span class="keyword">import</span> java.security.PrivateKey;</span><br><span class="line"><span class="keyword">import</span> java.security.PublicKey;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.PKCS8EncodedKeySpec;</span><br><span class="line"><span class="keyword">import</span> java.security.spec.X509EncodedKeySpec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RSACoder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String KEY_ALGORITHM = <span class="string">"RSA"</span>;</span><br><span class="line">    <span class="keyword">private</span> KeyPair keyPair;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RSACoder</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.keyPair = initKeyPair();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] encryptByPublicKey(<span class="keyword">byte</span>[] plaintext, <span class="keyword">byte</span>[] key) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        X509EncodedKeySpec keySpec = <span class="keyword">new</span> X509EncodedKeySpec(key);</span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);</span><br><span class="line">        PublicKey publicKey = keyFactory.generatePublic(keySpec);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE, publicKey);</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(plaintext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] encryptByPrivateKey(<span class="keyword">byte</span>[] plaintext, <span class="keyword">byte</span>[] key) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        PKCS8EncodedKeySpec keySpec = <span class="keyword">new</span> PKCS8EncodedKeySpec(key);</span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);</span><br><span class="line">        PrivateKey privateKey = keyFactory.generatePrivate(keySpec);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE, privateKey);</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(plaintext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] decryptByPublicKey(<span class="keyword">byte</span>[] ciphertext, <span class="keyword">byte</span>[] key) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        X509EncodedKeySpec keySpec = <span class="keyword">new</span> X509EncodedKeySpec(key);</span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);</span><br><span class="line">        PublicKey publicKey = keyFactory.generatePublic(keySpec);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());</span><br><span class="line">        cipher.init(Cipher.DECRYPT_MODE, publicKey);</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(ciphertext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] decryptByPrivateKey(<span class="keyword">byte</span>[] ciphertext, <span class="keyword">byte</span>[] key) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        PKCS8EncodedKeySpec keySpec = <span class="keyword">new</span> PKCS8EncodedKeySpec(key);</span><br><span class="line">        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);</span><br><span class="line">        PrivateKey privateKey = keyFactory.generatePrivate(keySpec);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());</span><br><span class="line">        cipher.init(Cipher.DECRYPT_MODE, privateKey);</span><br><span class="line">        <span class="keyword">return</span> cipher.doFinal(ciphertext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> KeyPair <span class="title">initKeyPair</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象</span></span><br><span class="line">        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(KEY_ALGORITHM);</span><br><span class="line">        <span class="comment">// 初始化密钥对生成器，密钥大小为1024位</span></span><br><span class="line">        keyPairGen.initialize(<span class="number">1024</span>);</span><br><span class="line">        <span class="comment">// 生成一个密钥对</span></span><br><span class="line">        <span class="keyword">return</span> keyPairGen.genKeyPair();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String msg = <span class="string">"Hello World!"</span>;</span><br><span class="line">        RSACoder coder = <span class="keyword">new</span> RSACoder();</span><br><span class="line">        <span class="comment">// 私钥加密，公钥解密</span></span><br><span class="line">        <span class="keyword">byte</span>[] ciphertext = coder.encryptByPrivateKey(msg.getBytes(<span class="string">"UTF8"</span>), coder.keyPair.getPrivate().getEncoded());</span><br><span class="line">        <span class="keyword">byte</span>[] plaintext = coder.decryptByPublicKey(ciphertext, coder.keyPair.getPublic().getEncoded());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 公钥加密，私钥解密</span></span><br><span class="line">        <span class="keyword">byte</span>[] ciphertext2 = coder.encryptByPublicKey(msg.getBytes(), coder.keyPair.getPublic().getEncoded());</span><br><span class="line">        <span class="keyword">byte</span>[] plaintext2 = coder.decryptByPrivateKey(ciphertext2, coder.keyPair.getPrivate().getEncoded());</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"原文："</span> + msg);</span><br><span class="line">        System.out.println(<span class="string">"公钥："</span> + Base64.encodeBase64URLSafeString(coder.keyPair.getPublic().getEncoded()));</span><br><span class="line">        System.out.println(<span class="string">"私钥："</span> + Base64.encodeBase64URLSafeString(coder.keyPair.getPrivate().getEncoded()));</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"============== 私钥加密，公钥解密 =============="</span>);</span><br><span class="line">        System.out.println(<span class="string">"密文："</span> + Base64.encodeBase64URLSafeString(ciphertext));</span><br><span class="line">        System.out.println(<span class="string">"明文："</span> + <span class="keyword">new</span> String(plaintext));</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"============== 公钥加密，私钥解密 =============="</span>);</span><br><span class="line">        System.out.println(<span class="string">"密文："</span> + Base64.encodeBase64URLSafeString(ciphertext2));</span><br><span class="line">        System.out.println(<span class="string">"明文："</span> + <span class="keyword">new</span> String(plaintext2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">原文：Hello World!</span><br><span class="line">公钥：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVN2mWAMdatpo2l8dwavaX2VC8mRleVTdjwjyahsyCE6UxkdqHsKD6Ecq3OBbuJhEfHxnr7MAD_zoE6zalFs7_si09XTgpVFsFCztPXJpPw-rpQdvaaxYEXJHkY07M_DBrxh1URg2gQl9dEDaruIFrZ12ugTwwEkLA1K_LN7yZrwIDAQAB</span><br><span class="line">私钥：MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAJU3aZYAx1q2mjaXx3Bq9pfZULyZGV5VN2PCPJqGzIITpTGR2oewoPoRyrc4Fu4mER8fGevswAP_OgTrNqUWzv-yLT1dOClUWwULO09cmk_D6ulB29prFgRckeRjTsz8MGvGHVRGDaBCX10QNqu4gWtnXa6BPDASQsDUr8s3vJmvAgMBAAECgYBvU1M8LcKOJFQzzNNoRPVLX0AEJXkuzwcvL1hFtbJYjc2eiQHwYFAJokKKpZc-ADqf7HVLdmvfz4h66P3w925hYHjSF3cs6jiibI7fc9lrdrJLMpv44phPlRCiIanD-U6pyN3bZxRl4Giuz5uGL0SVU6Dxh2Sw7mtnvUBbHCyyaQJBAOixpR-t81Qnpdy4jlbZL8ufTTF1TzlSh0NEDB4tlpHlVolVmZB2M-rdJ3nP8fJXazdsGZMP0q38vgiN2HHMtxsCQQCkKWAaA6KxKNbj0mJDSP1p4qUJ4EAcgXBz4B_PKMZa3ZU2CdmFlhlLRRTOIjZX2VC6IjHKWssa-3V2EqBzCSz9AkBsiK9kH1anofaTBOIfUB4i86KltvnE2uGMVmjwioL4eefrFqoR35BHs-99uag4SN4Rc7JaDb9Ot9xLUR3rtniRAkB8dFXEQx9Teie4HmaapjpgzQ_b9eQE-GjdoHvdHQeMGdMmXb9IVGwmsV-9ixhx73IROx1OURkMArmhYyu7KqitAkBkeQ-7AYOIROJnTUSQTMUELUmZFF1Io_SJGXyRYLgDqz7JCmmhfH7sNm8Gcn6f2VWg-U2D9-G5IHO-vHfz2DS6</span><br><span class="line">============== 私钥加密，公钥解密 ==============</span><br><span class="line">密文：U2otXypy1Fg4wcXK187xAuOxWM88oORVDJfaNxvG74Q_rqZ-sT4fEZYLZO80KmsWiufkJbD9Gskgkg7dRPRCwG90pRaU3PD9_sTmksN0v8MUwCX2p80zUeG3gWU6BJwMMUZrltJaHFbKn-BhzoNrn3Q-4BJA8lt6-cKtH0TPeN4</span><br><span class="line">明文：Hello World!</span><br><span class="line">============== 公钥加密，私钥解密 ==============</span><br><span class="line">密文：O_rknvo12qaFfWieyTI_Ay8_ph49y3V4jJVs1BykpI81GM3ozCPSnOjHbtdWdjPtgJHFfCjbspAnIT2eM4PtJldIJg6k_2HZCmCCaheUj2pxcvkrhb6GdhSlH-K2FhFGAnlxUAp-3tZpYpxzAteEw1-suldelHdikrCV_uXxAEM</span><br><span class="line">明文：Hello World!</span><br></pre></td></tr></table></figure>
+<h2 id="术语">术语</h2>
+<ul>
+<li>
+<p><strong>明文(Plaintext)</strong>：指待加密信息。明文可以是文本文件、图片文件、二进制数据等。</p>
+</li>
+<li>
+<p><strong>密文(Ciphertext)</strong>：指经过加密后的明文。密文通常以文本、二进制等形式存在。</p>
+</li>
+<li>
+<p><strong>加密(Encryption)</strong>：指将明文转换为密文的过程。</p>
+</li>
+<li>
+<p><strong>解密(Decryption)</strong>：指将密文转换为明文的过程。</p>
+</li>
+<li>
+<p><strong>加密密钥(Encryption Key)</strong>：指通过加密算法进行加密操作用的密钥。</p>
+</li>
+<li>
+<p><strong>解密密钥(Decryption Key)</strong>：指通过解密算法进行解密操作用的密钥。</p>
+</li>
+<li>
+<p><strong>信道(Channel)</strong>：通信的通道，是信号传输的媒介。</p>
+</li>
+</ul>
+<h2 id="参考">参考</h2>
+<p>《Core Java Volume2》</p>
+<p>《Java 加密与解密技术》</p>
+
+                
+
+                <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/javacore/advanced/Java正则/" data-toggle="tooltip" data-placement="top" title="[java核心技术] Java正则">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/javacore/container/Queue/" data-toggle="tooltip" data-placement="top" title="java容器-Queue">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay_url.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/wechatpay_url.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+                <br>
+
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>   
+                
+                <!-- require APlayer -->
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                <div class="aplayer"
+                    data-id="2576984498"
+                    data-server="tecent"
+                    data-type="playlist"
+                    data-fixed="true" 
+                    >
+                </div>
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC80MTg2NC8xODQxMA=="></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#base64-编码"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Base64 &#x7F16;&#x7801;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#算法简述"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x7B97;&#x6CD5;&#x7B80;&#x8FF0;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#定义"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">&#x5B9A;&#x4E49;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#原理"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">&#x539F;&#x7406;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#应用"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">&#x5E94;&#x7528;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#算法实现"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#对称加密"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#算法简述"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">&#x7B97;&#x6CD5;&#x7B80;&#x8FF0;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#特点"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">&#x7279;&#x70B9;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#优点"><span class="toc-nav-number">2.1.1.1.</span> <span class="toc-nav-text">&#x4F18;&#x70B9;&#xFF1A;</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#缺点"><span class="toc-nav-number">2.1.1.2.</span> <span class="toc-nav-text">&#x7F3A;&#x70B9;&#xFF1A;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#原理"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">&#x539F;&#x7406;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#工作模式"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#填充方法"><span class="toc-nav-number">2.1.4.</span> <span class="toc-nav-text">&#x586B;&#x5145;&#x65B9;&#x6CD5;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#常用算法"><span class="toc-nav-number">2.1.5.</span> <span class="toc-nav-text">&#x5E38;&#x7528;&#x7B97;&#x6CD5;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#算法实现"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#基于密钥加密的流程des-desede-aes-和-idea"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">&#x57FA;&#x4E8E;&#x5BC6;&#x94A5;&#x52A0;&#x5BC6;&#x7684;&#x6D41;&#x7A0B;&#xFF08;DES&#x3001;DESede&#x3001;AES &#x548C; IDEA&#xFF09;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#完整实例"><span class="toc-nav-number">2.2.1.1.</span> <span class="toc-nav-text">&#x5B8C;&#x6574;&#x5B9E;&#x4F8B;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#基于口令加密的流程pbe"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">&#x57FA;&#x4E8E;&#x53E3;&#x4EE4;&#x52A0;&#x5BC6;&#x7684;&#x6D41;&#x7A0B;&#xFF08;PBE&#xFF09;</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#非对称加密"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#算法简述"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">&#x7B97;&#x6CD5;&#x7B80;&#x8FF0;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#特点"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">&#x7279;&#x70B9;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#优点"><span class="toc-nav-number">3.1.1.1.</span> <span class="toc-nav-text">&#x4F18;&#x70B9;</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#缺点"><span class="toc-nav-number">3.1.1.2.</span> <span class="toc-nav-text">&#x7F3A;&#x70B9;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#原理"><span class="toc-nav-number">3.1.2.</span> <span class="toc-nav-text">&#x539F;&#x7406;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#常用算法"><span class="toc-nav-number">3.1.3.</span> <span class="toc-nav-text">&#x5E38;&#x7528;&#x7B97;&#x6CD5;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#算法实现"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#完整范例"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">&#x5B8C;&#x6574;&#x8303;&#x4F8B;</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#术语"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">&#x672F;&#x8BED;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#参考"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">&#x53C2;&#x8003;</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+                        
+                          <a class="tag" href="/tags/#编码算法" title="编码算法">编码算法</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
+                    
+                        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
+                    
+                        <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
+                    
+                        <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
+                    
+                        <li><a href="http://www.ityouknow.com" target="_blank">纯洁的微笑</a></li>
+                    
+                        <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
+                    
+                        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+                    
+                        <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
+                    
+                        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
+                    
+                        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+    <!-- 来必力City版公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    <!-- 来必力City版 公共JS代码 end -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+<!-- 添加自动推送链接 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- 复制添加版权申明-->
+<script>
+    /**/
+    function setClipboardText(event){
+        event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        var node = document.createElement('div');
+        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
+        var htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />著作权归作者所有。<br />'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+            + '作者：liaocan <br />链接：'
+            + location.href
+            + '<br />来源：liaocan.top<br /><br />'
+            + '</div>';
+        var textData = window.getSelection().getRangeAt(0)
+            + '\n\n著作权归作者所有。\n'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+            + '作者：liaocan\n'
+            + '链接：'
+            + location.href
+            + '来源：liaocan.top\n\n';
+        if(event.clipboardData){
+            event.clipboardData.setData("text/html", htmlData);
+            //setData(剪贴板格式, 数据) 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+            event.clipboardData.setData("text/plain",textData);
+        }
+        else if(window.clipboardData){ //window.clipboardData的作用是在页面上将需要的东西复制到剪贴板上，提供了对于预定义的剪贴板格式的访问，以便在编辑操作中使用。
+            return window.clipboardData.setData("text", textData);
+        }
+    };
+ 
+    document.addEventListener('copy',function(e){
+        setClipboardText(e);
+    });
+</script>
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/nqmysb" title="github">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://blog.csdn.net/nqmysbd" title="CSDN">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-csdn fa-stack-1x fa-inverse">C</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://yq.aliyun.com/u/nqmysb" title="云栖社区">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-alyun fa-stack-1x fa-inverse">云</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://gitee.com/liaocwang" title="gitee">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-git fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="mailto:593013537@qq.com" title="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Liao Can 2019 
+                    <br>
+                    Theme by <a target="_blank" href="http://www.huweihuang.com">胡伟煌</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://liaocan.top">Liaocan</a> 
+                     | 
+                     <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                    <br />
+                    <!--总访问量统计-->
+                    
+                        <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
+                            总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                        <div style="display:none" >本站访客数<span  id="busuanzi_value_site_uv"></span>人次</div>
+                    
+                    <!--总访问量统计-->
+                      
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://liaocan.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-132197826-1';
+    var _gaDomain = 'liaocan.top';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '6f0414ec28cbdc196e93beaa4472a18d';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://liaocan.top/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

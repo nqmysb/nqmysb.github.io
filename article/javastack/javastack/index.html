@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="iGDu0e88zUCIa6OhhkXgxyKDioORMrt1KC_43F_VRcg" />
+    <meta name="baidu-site-verification" content="A2ImdbykAi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/meditation.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+        IT技术网站直通车 - LiaoCan | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://liaocan.top/article/javastack/javastack/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.ax1x.com/2019/03/21/A3Q9N8.jpg')
+                /*post*/
+                
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#Java技术栈" title="Java技术栈">
+                                Java技术栈</a>
+                            
+                        </div>
+                        <h1>
+                            IT技术网站直通车
+                        </h1>
+                        <!-- <h2 class="subheading"></h2> -->
+                        <!--文章访问量统计-->
+                        
+                        <span id="busuanzi_container_page_pv">本文已被阅读过<span id="busuanzi_value_page_pv"></span>次</span>
+                        
+                        <!--文章访问量统计--> <span class="meta">
+                            Posted by
+                            Liao Can on
+                            2018-03-03
+                        </span>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Liao Can</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                        <li>
+                            <a href="/about/" >About</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/archive/" >Archives</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/tags/" >Tags</a>
+                        </li>
+                    
+
+
+                    <!-- 
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                     -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="it技术网站直通车">IT技术网站直通车</h1>
+<blockquote>
+<p>个人收集的IT技术网站集合，涉及web前后端，大数据，UI设计等。相当于一个学习网站的导航和直通车吧。<br>
+再也不用为了找不到之前收藏过的技术网站和博客而抓狂了！后续会陆续追加中。<br>
+欢迎评论区补充推荐！</p>
+</blockquote>
+<hr>
+<h2 id="web后端">web后端</h2>
+<h3 id="spring">spring</h3>
+<p><a href="https://spring.io/" target="_blank" rel="noopener">https://spring.io/</a><br>
+<a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a><br>
+<a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">https://spring.io/projects/spring-boot</a><br>
+<a href="https://springcloud.cc/spring-reference.html" target="_blank" rel="noopener">https://springcloud.cc/spring-reference.html</a><br>
+<a href="https://github.com/spring-projects" target="_blank" rel="noopener">https://github.com/spring-projects</a><br>
+<a href="https://spring.io/projects/spring-cloud" target="_blank" rel="noopener">https://spring.io/projects/spring-cloud</a></p>
+<h3 id="mybatis">mybatis</h3>
+<p><a href="http://www.mybatis.org/mybatis-3/zh/index.html" target="_blank" rel="noopener">http://www.mybatis.org/mybatis-3/zh/index.html</a><br>
+<a href="https://github.com/mybatis" target="_blank" rel="noopener">https://github.com/mybatis</a></p>
+<p>MybatisPlus<br>
+<a href="https://mp.baomidou.com/" target="_blank" rel="noopener">https://mp.baomidou.com/</a></p>
+<h3 id="负载均衡">负载均衡</h3>
+<p><a href="https://nginx.org/" target="_blank" rel="noopener">https://nginx.org/</a></p>
+<h3 id="微服务">微服务</h3>
+<p>Spring Cloud中国社区<br>
+<a href="http://springcloud.cn/" target="_blank" rel="noopener">http://springcloud.cn/</a><br>
+<a href="http://blog.springcloud.cn/" target="_blank" rel="noopener">http://blog.springcloud.cn/</a></p>
+<h3 id="消息队列">消息队列</h3>
+<p>大型网站架构之分布式消息队列 <a href="http://blog.csdn.net/shaobingj126/article/details/50585035" target="_blank" rel="noopener">http://blog.csdn.net/shaobingj126/article/details/50585035</a><br>
+消息队列的使用场景 <a href="https://www.zhihu.com/question/34243607/answer/127666030" target="_blank" rel="noopener">https://www.zhihu.com/question/34243607/answer/127666030</a><br>
+浅谈异步消息队列模型 <a href="http://www.cnblogs.com/sunkeydev/p/5248855.html" target="_blank" rel="noopener">http://www.cnblogs.com/sunkeydev/p/5248855.html</a><br>
+消息队列的两种模式 <a href="http://blog.csdn.net/heyutao007/article/details/50131089" target="_blank" rel="noopener">http://blog.csdn.net/heyutao007/article/details/50131089</a></p>
+<p>rabbitmq<br>
+RabbitMQ主页 <a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">https://www.rabbitmq.com/</a><br>
+RabbitMQ学习教程 <a href="https://www.rabbitmq.com/getstarted.html" target="_blank" rel="noopener">https://www.rabbitmq.com/getstarted.html</a><br>
+专栏:RabbitMQ从入门到精通 <a href="http://blog.csdn.net/column/details/rabbitmq.html" target="_blank" rel="noopener">http://blog.csdn.net/column/details/rabbitmq.html</a><br>
+RabbitMQ能为你做些什么 <a href="http://rabbitmq.mr-ping.com/description.html" target="_blank" rel="noopener">http://rabbitmq.mr-ping.com/description.html</a><br>
+RabbitMQ指南(1)-特性及功能 <a href="https://blog.zenfery.cc/archives/79.html" target="_blank" rel="noopener">https://blog.zenfery.cc/archives/79.html</a></p>
+<p>RocketMQ<br>
+主页 <a href="https://github.com/alibaba/RocketMQ" target="_blank" rel="noopener">https://github.com/alibaba/RocketMQ</a><br>
+RocketMQ 原理简介 <a href="http://alibaba.github.io/RocketMQ-docs/document/design/RocketMQ_design.pdf" target="_blank" rel="noopener">http://alibaba.github.io/RocketMQ-docs/document/design/RocketMQ_design.pdf</a><br>
+RocketMQ与kafka对比（18项差异） <a href="http://jm.taobao.org/2016/03/24/rmq-vs-kafka/" target="_blank" rel="noopener">http://jm.taobao.org/2016/03/24/rmq-vs-kafka/</a></p>
+<p>activemq<br>
+ActiveMQ主页 <a href="http://activemq.apache.org/" target="_blank" rel="noopener">http://activemq.apache.org/</a><br>
+Apache ActiveMQ介绍 <a href="http://jfires.iteye.com/blog/1187688" target="_blank" rel="noopener">http://jfires.iteye.com/blog/1187688</a><br>
+ActiveMQ的简介与安装 <a href="http://blog.csdn.net/sl1992/article/details/72824562" target="_blank" rel="noopener">http://blog.csdn.net/sl1992/article/details/72824562</a><br>
+ActiveMQ 和消息简介 <a href="http://www.cnblogs.com/craftsman-gao/p/7002605.html" target="_blank" rel="noopener">http://www.cnblogs.com/craftsman-gao/p/7002605.html</a></p>
+<p>kafka<br>
+Kafka主页： <a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><br>
+Kafka特性 <a href="http://www.cnblogs.com/lsx1993/p/4847719.html" target="_blank" rel="noopener">http://www.cnblogs.com/lsx1993/p/4847719.html</a><br>
+Kafka客户端支持语言 <a href="https://cwiki.apache.org/confluence/display/KAFKA/Clients" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/KAFKA/Clients</a></p>
+<h3 id="rpc-框架">RPC 框架</h3>
+<p><a href="http://dubbo.incubator.apache.org/en-us/" target="_blank" rel="noopener">dubbo</a> - 阿里开源的rpc框架，国内java圈很火<br>
+<a href="http://dubbo.incubator.apache.org/en-us/" target="_blank" rel="noopener">http://dubbo.incubator.apache.org/en-us/</a></p>
+<h3 id="分布式系统">分布式系统</h3>
+<p><a href="http://zookeeper.apache.org/" target="_blank" rel="noopener">zookeeper</a> - 简单来说就是一个java实现的强一致的kv存储系统</p>
+<h3 id="缓存">缓存</h3>
+<p>redis<br>
+<a href="https://github.com/antirez/redis" target="_blank" rel="noopener">https://github.com/antirez/redis</a><br>
+mongodb<br>
+<a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">https://www.mongodb.com/download-center/community</a><br>
+memcached<br>
+<a href="https://memcached.org/" target="_blank" rel="noopener">https://memcached.org/</a><br>
+ehcache<br>
+<a href="https://www.ehcache.org/" target="_blank" rel="noopener">https://www.ehcache.org/</a></p>
+<h3 id="容器与资源编排">容器与资源编排</h3>
+<p>kubernetes - google的容器编排<br>
+<a href="https://github.com/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes</a></p>
+<h3 id="日志框架">日志框架</h3>
+<p><a href="https://liaocan.top/article/javalog/java-log/">https://liaocan.top/article/javalog/java-log/</a></p>
+<h3 id="搜索引擎">搜索引擎</h3>
+<p><a href="https://www.jianshu.com/p/0193dc44135b" target="_blank" rel="noopener">《倒排索引–搜索引擎入门》</a></p>
+<p>Lucene<br>
+<a href="https://www.cnblogs.com/rodge-run/p/6551152.html" target="_blank" rel="noopener">《Lucene入门简介》</a></p>
+<p>Elasticsearch<br>
+<a href="https://elasticsearch.cn/book/elasticsearch_definitive_guide_2.x/index.html" target="_blank" rel="noopener">《Elasticsearch权威指南-中文版》</a><br>
+<a href="https://blog.csdn.net/laoyang360/article/details/52244917" target="_blank" rel="noopener">《Elasticsearch学习，请先看这一篇！》</a><br>
+<a href="https://blog.csdn.net/cyony/article/details/65437708" target="_blank" rel="noopener">《Elasticsearch索引原理》</a></p>
+<p>Solr<br>
+<a href="https://blog.csdn.net/u011936655/article/details/51960005" target="_blank" rel="noopener">《 Apache Solr入门教程》</a><br>
+<a href="https://blog.csdn.net/convict_eva/article/details/53537837" target="_blank" rel="noopener">《elasticsearch与solr比较》</a></p>
+<h3 id="更多后端技术网站汇总">更多后端技术网站汇总</h3>
+<p><a href="https://github.com/xingshaocheng/architect-awesome/blob/master/README.md" target="_blank" rel="noopener">https://github.com/xingshaocheng/architect-awesome/blob/master/README.md</a></p>
+<h2 id="大数据">大数据</h2>
+<h3 id="hadoop">Hadoop</h3>
+<p><a href="https://blog.csdn.net/houbin0912/article/details/72967178" target="_blank" rel="noopener">《用通俗易懂的话说下hadoop是什么,能做什么》</a><br>
+<a href="http://gitbook.cn/books/5954c9600326c7705af8a92a/index.html" target="_blank" rel="noopener">《史上最详细的Hadoop环境搭建》</a></p>
+<h3 id="hdfs">HDFS</h3>
+<p><a href="https://segmentfault.com/a/1190000011575458" target="_blank" rel="noopener">《【Hadoop学习】HDFS基本原理》</a></p>
+<h3 id="mapreduce">MapReduce</h3>
+<p><a href="https://blog.csdn.net/oppo62258801/article/details/72884633" target="_blank" rel="noopener">《用通俗易懂的大白话讲解Map/Reduce原理》</a><br>
+<a href="https://blog.csdn.net/foye12/article/details/78358292" target="_blank" rel="noopener">《 简单的map-reduce的java例子》</a></p>
+<h3 id="yarn">Yarn</h3>
+<p><a href="http://www.cnblogs.com/codeOfLife/p/5492740.html" target="_blank" rel="noopener">《初步掌握Yarn的架构及原理》</a></p>
+<h3 id="spark">Spark</h3>
+<p><a href="http://www.cnblogs.com/tgzhu/p/5818374.html" target="_blank" rel="noopener">《Spark(一): 基本架构及原理》</a></p>
+<h2 id="web前端">web前端</h2>
+<h3 id="前端入门">前端入门</h3>
+<p>支付宝前端团队关于前端入门到进阶的学习文档-前端九部<br>
+<a href="https://www.yuque.com/fe9" target="_blank" rel="noopener">https://www.yuque.com/fe9</a></p>
+<h3 id="react">react</h3>
+<p><a href="https://reactjs.org/" target="_blank" rel="noopener">https://reactjs.org/</a><br>
+<a href="https://react.docschina.org/" target="_blank" rel="noopener">https://react.docschina.org/</a><br>
+<a href="https://reactjs.org/docs/hello-world.html" target="_blank" rel="noopener">https://reactjs.org/docs/hello-world.html</a><br>
+<a href="http://react.yubolun.com/" target="_blank" rel="noopener">http://react.yubolun.com/</a><br>
+<a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html</a><br>
+<a href="https://cn.redux.js.org/docs/react-redux/" target="_blank" rel="noopener">https://cn.redux.js.org/docs/react-redux/</a><br>
+<a href="https://github.com/reduxjs/react-redux" target="_blank" rel="noopener">https://github.com/reduxjs/react-redux</a></p>
+<h3 id="angular">angular</h3>
+<p><a href="https://angular.io/" target="_blank" rel="noopener">https://angular.io/</a></p>
+<h3 id="vue">vue</h3>
+<p><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">https://cn.vuejs.org/</a></p>
+<h3 id="组件库">组件库</h3>
+<p><a href="https://ant.design/index-cn" target="_blank" rel="noopener">https://ant.design/index-cn</a><br>
+<a href="https://getbootstrap.com/" target="_blank" rel="noopener">https://getbootstrap.com/</a><br>
+<a href="https://jquery.com/" target="_blank" rel="noopener">https://jquery.com/</a><br>
+<a href="https://foundation.zurb.com/" target="_blank" rel="noopener">https://foundation.zurb.com/</a><br>
+<a href="https://www.iviewui.com/" target="_blank" rel="noopener">https://www.iviewui.com/</a><br>
+<a href="http://www.jeasyui.com/" target="_blank" rel="noopener">http://www.jeasyui.com/</a><br>
+<a href="http://ngx-bootstrap.com/#/" target="_blank" rel="noopener">http://ngx-bootstrap.com/#/</a></p>
+<h3 id="图表库">图表库</h3>
+<p><a href="https://echarts.baidu.com/" target="_blank" rel="noopener">https://echarts.baidu.com/</a><br>
+<a href="https://d3js.org/" target="_blank" rel="noopener">https://d3js.org/</a></p>
+<h3 id="es6">ES6</h3>
+<p><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">http://es6.ruanyifeng.com/</a></p>
+<h3 id="runoob">runoob</h3>
+<p><a href="http://www.runoob.com/" target="_blank" rel="noopener">http://www.runoob.com/</a></p>
+<h3 id="更多前端组件大集合">更多前端组件大集合</h3>
+<p><a href="https://www.cnblogs.com/liuzhibin/p/5944821.html" target="_blank" rel="noopener">https://www.cnblogs.com/liuzhibin/p/5944821.html</a></p>
+<h2 id="社区">社区</h2>
+<p>GitChat : <a href="http://gitbook.cn/" target="_blank" rel="noopener">http://gitbook.cn/</a><br>
+CSDN: <a href="https://blog.csdn.net/nav/career" target="_blank" rel="noopener">https://blog.csdn.net/nav/career</a><br>
+知乎： <a href="https://www.zhihu.com/" target="_blank" rel="noopener">https://www.zhihu.com/</a><br>
+简书： <a href="https://www.jianshu.com/" target="_blank" rel="noopener">https://www.jianshu.com/</a><br>
+程序师：<a href="http://www.techug.com/" target="_blank" rel="noopener">http://www.techug.com/</a><br>
+github : <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a><br>
+coding  : <a href="https://coding.net/" target="_blank" rel="noopener">https://coding.net/</a><br>
+twitter ： <a href="https://twitter.com/" target="_blank" rel="noopener">https://twitter.com/</a><br>
+InfoQ：<a href="https://www.infoq.com/" target="_blank" rel="noopener">https://www.infoq.com/</a><br>
+博客园 ： <a href="https://www.cnblogs.com/" target="_blank" rel="noopener">https://www.cnblogs.com/</a><br>
+SegmentFault : <a href="https://segmentfault.com/" target="_blank" rel="noopener">https://segmentfault.com/</a><br>
+V2EX : <a href="https://www.v2ex.com/" target="_blank" rel="noopener">https://www.v2ex.com/</a><br>
+开源中国 ： <a href="https://www.oschina.net/" target="_blank" rel="noopener">https://www.oschina.net/</a><br>
+w3school ： <a href="http://www.w3school.com.cn/" target="_blank" rel="noopener">http://www.w3school.com.cn/</a><br>
+51cto ： <a href="http://www.51cto.com/" target="_blank" rel="noopener">http://www.51cto.com/</a><br>
+掘金 ： <a href="https://juejin.im/" target="_blank" rel="noopener">https://juejin.im/</a><br>
+gitee : <a href="https://gitee.com/" target="_blank" rel="noopener">https://gitee.com/</a><br>
+ITEye : <a href="https://www.iteye.com/" target="_blank" rel="noopener">https://www.iteye.com/</a><br>
+Java编程 Spring框架 Ajax技术 agile敏捷软件开发 ruby on rails实践 - 做最棒的软件开发交流社区<br>
+itpub : <a href="http://blog.itpub.net/" target="_blank" rel="noopener">http://blog.itpub.net/</a><br>
+伯乐在线 ： <a href="http://blog.jobbole.com/" target="_blank" rel="noopener">http://blog.jobbole.com/</a><br>
+DZone<br>
+<a href="https://dzone.com/" target="_blank" rel="noopener">https://dzone.com/</a><br>
+DZone.com是世界上最大的在线社区之一，全世界的开发技术人员通过共享知识来了解最新的技术趋势，了解新技术，方法和最佳实践。<br>
+阿里云-云栖社区 ：<a href="https://yq.aliyun.com/" target="_blank" rel="noopener">https://yq.aliyun.com/</a></p>
+<h2 id="优秀博客">优秀博客</h2>
+<p>酷客：<a href="https://coolshell.cn" target="_blank" rel="noopener">https://coolshell.cn</a><br>
+facebook : <a href="https://link.zhihu.com/?target=https%3A//developers.facebook.com/blog/" target="_blank" rel="noopener">https://link.zhihu.com/?target=https%3A//developers.facebook.com/blog/</a><br>
+google : <a href="https://link.zhihu.com/?target=http%3A//research.google.com/" target="_blank" rel="noopener">https://link.zhihu.com/?target=http%3A//research.google.com/</a><br>
+奇虎360技术博客: <a href="http://blogs.360.cn/" target="_blank" rel="noopener">http://blogs.360.cn/</a><br>
+美团技术团队 : <a href="https://tech.meituan.com/" target="_blank" rel="noopener">https://tech.meituan.com/</a><br>
+阮一峰 : <a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener">http://www.ruanyifeng.com/</a><br>
+米扑博客 ： <a href="https://blog.mimvp.com/" target="_blank" rel="noopener">https://blog.mimvp.com/</a><br>
+Java 译站 : <a href="http://it.deepinmind.com/" target="_blank" rel="noopener">http://it.deepinmind.com/</a><br>
+周良的博客 : <a href="https://www.aips.me/" target="_blank" rel="noopener">https://www.aips.me/</a><br>
+IT 宅 : <a href="http://www.itzhai.com/" target="_blank" rel="noopener">http://www.itzhai.com/</a><br>
+MacTalk-池建强的随想录 : <a href="http://macshuo.com/" target="_blank" rel="noopener">http://macshuo.com/</a><br>
+何登成的技术博客 : <a href="http://hedengcheng.com/" target="_blank" rel="noopener">http://hedengcheng.com/</a><br>
+刘未鹏 | MIND HACKS : <a href="http://mindhacks.cn/" target="_blank" rel="noopener">http://mindhacks.cn/</a><br>
+四火的唠叨 : <a href="http://www.raychase.net/" target="_blank" rel="noopener">http://www.raychase.net/</a><br>
+云风的 BLOG : <a href="https://blog.codingnow.com/" target="_blank" rel="noopener">https://blog.codingnow.com/</a><br>
+破船之家 : <a href="http://beyondvincent.com/" target="_blank" rel="noopener">http://beyondvincent.com/</a><br>
+老赵点滴 - 追求编程之美 : <a href="http://blog.zhaojie.me/" target="_blank" rel="noopener">http://blog.zhaojie.me/</a><br>
+何登成的技术博客 : <a href="http://hedengcheng.com/" target="_blank" rel="noopener">http://hedengcheng.com/</a><br>
+BlueDavy之技术Blog : <a href="http://bluedavy.me/" target="_blank" rel="noopener">http://bluedavy.me/</a><br>
+并发编程网 : <a href="http://ifeve.com/" target="_blank" rel="noopener">http://ifeve.com/</a><br>
+Tim’s blog : <a href="https://timyang.net/" target="_blank" rel="noopener">https://timyang.net/</a><br>
+Draveness’s Blog ： <a href="https://draveness.me/" target="_blank" rel="noopener">https://draveness.me/</a><br>
+<a href="http://hellojava.info/" target="_blank" rel="noopener">hellojava-阿里毕玄</a><br>
+<a href="http://cmsblogs.com/" target="_blank" rel="noopener">Cm’s Blog</a><br>
+<a href="http://blog.didispace.com/" target="_blank" rel="noopener">程序猿DD-翟永超-《Spring Cloud微服务实战》作者</a><br>
+杨青青博客：<a href="https://www.yangqq.com" target="_blank" rel="noopener">https://www.yangqq.com</a></p>
+<h2 id="在线教育类">在线教育类</h2>
+<p>极客学院<br>
+<a href="http://www.jikexueyuan.com/" target="_blank" rel="noopener">http://www.jikexueyuan.com/</a><br>
+希赛网<br>
+<a href="http://www.educity.cn/" target="_blank" rel="noopener">http://www.educity.cn/</a><br>
+51CTO学院<br>
+<a href="http://edu.51cto.com/?www" target="_blank" rel="noopener">http://edu.51cto.com/?www</a><br>
+麦子学院<br>
+<a href="http://www.maizitime.com/" target="_blank" rel="noopener">http://www.maizitime.com/</a><br>
+慕课网<br>
+<a href="http://www.imooc.com/" target="_blank" rel="noopener">http://www.imooc.com/</a></p>
+<h2 id="设计">设计</h2>
+<p>Iconfont-阿里巴巴矢量图标库<br>
+<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">https://www.iconfont.cn/</a><br>
+icons8<br>
+<a href="https://icons8.com/" target="_blank" rel="noopener">https://icons8.com/</a><br>
+千图网<br>
+<a href="https://www.58pic.com/" target="_blank" rel="noopener">https://www.58pic.com/</a><br>
+云设计工具 PS AI<br>
+<a href="https://uzer.me/" target="_blank" rel="noopener">https://uzer.me/</a><br>
+字体<br>
+<a href="http://www.hellofont.cn/" target="_blank" rel="noopener">http://www.hellofont.cn/</a><br>
+<a href="https://www.hellofont.com/" target="_blank" rel="noopener">https://www.hellofont.com/</a><br>
+花瓣<br>
+<a href="https://huaban.com/" target="_blank" rel="noopener">https://huaban.com/</a><br>
+Muzli<br>
+<a href="https://muz.li/" target="_blank" rel="noopener">https://muz.li/</a><br>
+昵图网<br>
+<a href="http://user.nipic.com/" target="_blank" rel="noopener">http://user.nipic.com/</a></p>
+<h2 id="图床">图床</h2>
+<p>爱信息图床<br>
+<a href="https://tu.aixinxi.net/" target="_blank" rel="noopener">https://tu.aixinxi.net/</a><br>
+路过图床 可批量上传<br>
+<a href="https://imgchr.com/" target="_blank" rel="noopener">https://imgchr.com/</a><br>
+七牛云<br>
+<a href="https://portal.qiniu.com" target="_blank" rel="noopener">https://portal.qiniu.com</a><br>
+<a href="http://SM.MS" target="_blank" rel="noopener">SM.MS</a><br>
+<a href="https://sm.ms" target="_blank" rel="noopener">https://sm.ms</a><br>
+小贱贱图床<br>
+<a href="http://pic.xiaojianjian.net" target="_blank" rel="noopener">http://pic.xiaojianjian.net</a><br>
+又拍云<br>
+<a href="https://www.upyun.com" target="_blank" rel="noopener">https://www.upyun.com</a><br>
+腾讯云<br>
+<a href="https://cloud.tencent.com" target="_blank" rel="noopener">https://cloud.tencent.com</a><br>
+聚合图床<br>
+<a href="https://www.superbed.cn" target="_blank" rel="noopener">https://www.superbed.cn</a><br>
+极简图床 提供管理 需要云空间<br>
+<a href="http://jiantuku.com" target="_blank" rel="noopener">http://jiantuku.com</a><br>
+cloudinary<br>
+<a href="https://cloudinary.com/" target="_blank" rel="noopener">https://cloudinary.com/</a></p>
+<h2 id="markdowm工具">markdowm工具</h2>
+<p>作业部落<br>
+<a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">https://www.zybuluo.com/mdeditor</a></p>
+<h2 id="笔记工具">笔记工具</h2>
+<p>有道云笔记<br>
+<a href="https://note.youdao.com" target="_blank" rel="noopener">https://note.youdao.com</a></p>
+<h2 id="ppt学习">PPT学习</h2>
+<p>锐普PPT论坛<br>
+<a href="http://www.rapidbbs.cn/" target="_blank" rel="noopener">http://www.rapidbbs.cn/</a><br>
+PPT网站导航<br>
+<a href="http://www.hippter.com/" target="_blank" rel="noopener">http://www.hippter.com/</a></p>
+
+                
+
+                <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/source-analysis/source-analysis1/" data-toggle="tooltip" data-placement="top" title="Spring源码分析-IOC容器">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/pattern/23pattern/" data-toggle="tooltip" data-placement="top" title="23种设计模式详解以及Java代码实现">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay_url.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/wechatpay_url.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+                <br>
+
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>   
+                
+                <!-- require APlayer -->
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                <div class="aplayer"
+                    data-id="2576984498"
+                    data-server="tecent"
+                    data-type="playlist"
+                    data-fixed="true" 
+                    >
+                </div>
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC80MTg2NC8xODQxMA=="></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#it技术网站直通车"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">IT&#x6280;&#x672F;&#x7F51;&#x7AD9;&#x76F4;&#x901A;&#x8F66;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web后端"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">web&#x540E;&#x7AEF;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#spring"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">spring</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mybatis"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">mybatis</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#负载均衡"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">&#x8D1F;&#x8F7D;&#x5747;&#x8861;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#微服务"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">&#x5FAE;&#x670D;&#x52A1;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#消息队列"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">&#x6D88;&#x606F;&#x961F;&#x5217;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#rpc-框架"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">RPC &#x6846;&#x67B6;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分布式系统"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#缓存"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">&#x7F13;&#x5B58;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#容器与资源编排"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">&#x5BB9;&#x5668;&#x4E0E;&#x8D44;&#x6E90;&#x7F16;&#x6392;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#日志框架"><span class="toc-nav-number">1.1.10.</span> <span class="toc-nav-text">&#x65E5;&#x5FD7;&#x6846;&#x67B6;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#搜索引擎"><span class="toc-nav-number">1.1.11.</span> <span class="toc-nav-text">&#x641C;&#x7D22;&#x5F15;&#x64CE;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#更多后端技术网站汇总"><span class="toc-nav-number">1.1.12.</span> <span class="toc-nav-text">&#x66F4;&#x591A;&#x540E;&#x7AEF;&#x6280;&#x672F;&#x7F51;&#x7AD9;&#x6C47;&#x603B;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#大数据"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x5927;&#x6570;&#x636E;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#hadoop"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Hadoop</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#hdfs"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">HDFS</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mapreduce"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">MapReduce</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#yarn"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">Yarn</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#spark"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">Spark</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web前端"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">web&#x524D;&#x7AEF;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#前端入门"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">&#x524D;&#x7AEF;&#x5165;&#x95E8;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#react"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">react</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#angular"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">angular</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#vue"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">vue</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#组件库"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">&#x7EC4;&#x4EF6;&#x5E93;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#图表库"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">&#x56FE;&#x8868;&#x5E93;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#es6"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">ES6</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#runoob"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">runoob</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#更多前端组件大集合"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">&#x66F4;&#x591A;&#x524D;&#x7AEF;&#x7EC4;&#x4EF6;&#x5927;&#x96C6;&#x5408;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#社区"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">&#x793E;&#x533A;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#优秀博客"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">&#x4F18;&#x79C0;&#x535A;&#x5BA2;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#在线教育类"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">&#x5728;&#x7EBF;&#x6559;&#x80B2;&#x7C7B;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#设计"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">&#x8BBE;&#x8BA1;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#图床"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">&#x56FE;&#x5E8A;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#markdowm工具"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">markdowm&#x5DE5;&#x5177;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#笔记工具"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">&#x7B14;&#x8BB0;&#x5DE5;&#x5177;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ppt学习"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">PPT&#x5B66;&#x4E60;</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java技术栈" title="Java技术栈">Java技术栈</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
+                    
+                        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
+                    
+                        <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
+                    
+                        <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
+                    
+                        <li><a href="http://www.ityouknow.com" target="_blank">纯洁的微笑</a></li>
+                    
+                        <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
+                    
+                        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+                    
+                        <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
+                    
+                        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
+                    
+                        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+    <!-- 来必力City版公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    <!-- 来必力City版 公共JS代码 end -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+<!-- 添加自动推送链接 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- 复制添加版权申明-->
+<script>
+    /**/
+    function setClipboardText(event){
+        event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        var node = document.createElement('div');
+        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
+        var htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />著作权归作者所有。<br />'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+            + '作者：liaocan <br />链接：'
+            + location.href
+            + '<br />来源：liaocan.top<br /><br />'
+            + '</div>';
+        var textData = window.getSelection().getRangeAt(0)
+            + '\n\n著作权归作者所有。\n'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+            + '作者：liaocan\n'
+            + '链接：'
+            + location.href
+            + '来源：liaocan.top\n\n';
+        if(event.clipboardData){
+            event.clipboardData.setData("text/html", htmlData);
+            //setData(剪贴板格式, 数据) 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+            event.clipboardData.setData("text/plain",textData);
+        }
+        else if(window.clipboardData){ //window.clipboardData的作用是在页面上将需要的东西复制到剪贴板上，提供了对于预定义的剪贴板格式的访问，以便在编辑操作中使用。
+            return window.clipboardData.setData("text", textData);
+        }
+    };
+ 
+    document.addEventListener('copy',function(e){
+        setClipboardText(e);
+    });
+</script>
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/nqmysb" title="github">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://blog.csdn.net/nqmysbd" title="CSDN">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-csdn fa-stack-1x fa-inverse">C</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://yq.aliyun.com/u/nqmysb" title="云栖社区">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-alyun fa-stack-1x fa-inverse">云</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://gitee.com/liaocwang" title="gitee">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-git fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="mailto:593013537@qq.com" title="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Liao Can 2019 
+                    <br>
+                    Theme by <a target="_blank" href="http://www.huweihuang.com">胡伟煌</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://liaocan.top">Liaocan</a> 
+                     | 
+                     <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                    <br />
+                    <!--总访问量统计-->
+                    
+                        <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
+                            总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                        <div style="display:none" >本站访客数<span  id="busuanzi_value_site_uv"></span>人次</div>
+                    
+                    <!--总访问量统计-->
+                      
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://liaocan.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-132197826-1';
+    var _gaDomain = 'liaocan.top';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '6f0414ec28cbdc196e93beaa4472a18d';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://liaocan.top/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="iGDu0e88zUCIa6OhhkXgxyKDioORMrt1KC_43F_VRcg" />
+    <meta name="baidu-site-verification" content="A2ImdbykAi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/meditation.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+        数据仓库总结 - LiaoCan | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://liaocan.top/article/bigdata/dataware/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.ax1x.com/2019/03/21/A3Q9N8.jpg')
+                /*post*/
+                
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#大数据" title="大数据">
+                                大数据</a>
+                            
+                        </div>
+                        <h1>
+                            数据仓库总结
+                        </h1>
+                        <!-- <h2 class="subheading"></h2> -->
+                        <!--文章访问量统计-->
+                        
+                        <span id="busuanzi_container_page_pv">本文已被阅读过<span id="busuanzi_value_page_pv"></span>次</span>
+                        
+                        <!--文章访问量统计--> <span class="meta">
+                            Posted by
+                            Liao Can on
+                            2018-12-12
+                        </span>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Liao Can</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                        <li>
+                            <a href="/about/" >About</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/archive/" >Archives</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/tags/" >Tags</a>
+                        </li>
+                    
+
+
+                    <!-- 
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                     -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="数据仓库">数据仓库</h1>
+<h2 id="大数据平台">大数据平台</h2>
+<h3 id="简介">简介</h3>
+<p>通常说的大数据平台主要包括三部分：</p>
+<ol>
+<li>数据相关的工具、产品和技术：</li>
+</ol>
+<ul>
+<li>批量数据采集传输sqoop，spark</li>
+<li>离线数据处理Hadoop，Hive，Spark</li>
+<li>实时流处理Storm，Spark Streaming，Flink</li>
+</ul>
+<ol start="2">
+<li>数据资产：</li>
+</ol>
+<ul>
+<li>公司业务本身产生和沉淀的数据</li>
+<li>公司运作产生的数据（如财务、行政）</li>
+<li>第三方数据：外界购买、交换或者爬虫而来的数据</li>
+</ul>
+<ol start="3">
+<li>数据管理：有了工具和数据，需要进行管理才能让数据价值最大和风险最小</li>
+</ol>
+<ul>
+<li>相关数据管理技术和概念：数据仓库、数据建模、数据质量、数据规范、数据安全和元数据管理</li>
+</ul>
+<h3 id="离线平台">离线平台</h3>
+<ul>
+<li>对分析需求最擅长，也是最成熟的，使用最广泛的。</li>
+<li>开源的解决方案和商业性的解决方案很多</li>
+<li>是构建公司和企业数据平台的根本和基础</li>
+<li>也是目前数据平台的主战场</li>
+</ul>
+<h4 id="离线数据平台架构">离线数据平台架构</h4>
+<p>离线数据平台架构</p>
+<ul>
+<li>在大数据出现之前，离线数据平台就是数据仓库，数据部门也就是数据仓库部门</li>
+<li>hadoop出现之前，数据仓库的主要技术是商业化数据，比如微软的SQL Server、甲骨文<br>
+Oracle、IBM的DB2等</li>
+<li>随着数据量的爆炸性增长，Hadoop的MapReduce，Spark，Hive等大数据技术被应用到<br>
+数据仓库中。</li>
+<li>离线数据平台另一关键技术是数据的建模：维度表 事实表</li>
+<li>离线数据内容建设会对精心加工后的数据进行分层：</li>
+</ul>
+<ol>
+<li>ODS原始数据层</li>
+<li>DWD明细数据层</li>
+<li>DWS汇总层</li>
+<li>ADS集市数据层</li>
+</ol>
+<h4 id="数据仓库技术-oltpampolap">数据仓库技术 -OLTP&amp;OLAP</h4>
+<ul>
+<li>OLTP：(online transaction Processing)：</li>
+</ul>
+<ol>
+<li>OLTP数据库，如商业性的Oracle、MS SQL Server和开源的MySQL等关系数据库</li>
+<li>主要用于事务处理：增删改查</li>
+<li>OLTP核心需求：单条记录的高效快速处理，索引技术、分库分表</li>
+</ol>
+<ul>
+<li>OLAP：</li>
+</ul>
+<ol>
+<li>OLAP数据库，专门的分析型数据库，是为了满足分析人员的统计分析需求而发展起来的</li>
+<li>OLAP一般只需要处理数据查询请求，数据都是批量导入的，因此通过列存储、列压缩和<br>
+位图索引等技术可以大大加快响应请求速度</li>
+</ol>
+<h4 id="oltpampolap对比">OLTP&amp;OLAP对比</h4>
+<ul>
+<li>需求上不同：</li>
+</ul>
+<ol start="2">
+<li>OLTP侧重单条数据的处理效率</li>
+<li>OLAP侧重数据分析，需要访问大量的数据，单条数据分析没有意义</li>
+</ol>
+<ul>
+<li>资源和性能上：</li>
+</ul>
+<ol>
+<li>分析上需要频繁的统计和查询，统计需要全表扫描，会大量占用数据库的资源，严重影响<br>
+线上的OLTP的性能，所以需要单独为分析建立OLAP的分析型的数据库。</li>
+<li>OLTP的分布式为了解决海量单条数据请求压力，将所有用户请求均匀分布到每个节点上</li>
+<li>OLAP的分布式为了将用户单次对大数据集的请求任务分配到各个节点上独立计算然后再进<br>
+行汇总返回（map reduce原理）</li>
+</ol>
+<p>OLTP和OLAP数据库简单对比</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th style="text-align:right">OLTP</th>
+<th style="text-align:center">OLAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户</td>
+<td style="text-align:right">操作人员、一线管理人员</td>
+<td style="text-align:center">分析决策人员、高级管理人员</td>
+</tr>
+<tr>
+<td>功能</td>
+<td style="text-align:right">日常操作</td>
+<td style="text-align:center">分析决策</td>
+</tr>
+<tr>
+<td>读写</td>
+<td style="text-align:right">一般读写数条记录</td>
+<td style="text-align:center">一次读取大量记录</td>
+</tr>
+<tr>
+<td>用户数</td>
+<td style="text-align:right">面向外部的用户数上亿都可能、面向</td>
+<td style="text-align:center">一般面向内部，几十个抑或上千个，</td>
+</tr>
+<tr>
+<td>内部系统</td>
+<td style="text-align:right">用户数一般有限</td>
+<td style="text-align:center">取决于公司规模大小</td>
+</tr>
+<tr>
+<td>DB大小</td>
+<td style="text-align:right">一般不存储历史数据，MB、GB</td>
+<td style="text-align:center">包含历史数据，GB、TB、PB级别</td>
+</tr>
+<tr>
+<td>响应时间</td>
+<td style="text-align:right">毫秒级 秒、</td>
+<td style="text-align:center">分钟甚至小时</td>
+</tr>
+<tr>
+<td>DB设计</td>
+<td style="text-align:right">面向应用</td>
+<td style="text-align:center">面向主题</td>
+</tr>
+<tr>
+<td>事务支持</td>
+<td style="text-align:right">必须支持</td>
+<td style="text-align:center">没必要，不支持</td>
+</tr>
+<tr>
+<td>数据</td>
+<td style="text-align:right">当前应用的，最新的数据</td>
+<td style="text-align:center">历史的、聚集的、多维、集成、统一的数据</td>
+</tr>
+</tbody>
+</table>
+<h4 id="分析型数据库">分析型数据库</h4>
+<ul>
+<li>专门分析型数据库出现标志着数据仓库由学术（概念阶段）进入工业阶段</li>
+<li>商业性的MPP（分布式的分析型数据库）和类MPP架构应运而生：<br>
+Orcale Exadata、天睿公司的Teradata、IBM收购的Netezza、EMC公司的Greenplum、惠普的HP<br>
+Vertica等<br>
+通过一站式解决方案和产品“一体机”运营： 数据仓库软件+配套硬件设施（服务器、存储设备、高速<br>
+网络交换设备），实现开箱即用。</li>
+<li>OLAP用户单次请求大量数据的统计分析，OLTP所有用户单条数据请求：<br>
+OLAP需要列式存储：列存储的类型是固定的，可以很容易采用高压缩比的算法进行压缩和解压缩，磁</li>
+</ul>
+<p>盘I/O会大大减少，列存储只需要读取对应的列，不需用读取整个表的所有字段进行处理<br>
+– OLTP行式存储：把所有字段都存储在一起</p>
+<h4 id="hadoop数据仓库">Hadoop数据仓库</h4>
+<p>• Hadoop内在技术决定：容易扩展、成本低廉，这两点是决定流行的<br>
+关键，如果大公司使用MPP，会有想当大的开销。<br>
+• 基于Hadoop的数据仓库的解决方案（Hive）面临最大的挑战是数据<br>
+查询的延迟</p>
+<h4 id="数据仓库建模技术">数据仓库建模技术</h4>
+<ul>
+<li>三种搭建数据仓库的方式：</li>
+</ul>
+<ol>
+<li>传统OLTP数据库中搭建</li>
+<li>商业性数据仓库产品中搭建（MPP架构的Teradata）</li>
+<li>基于Hadoop来搭建</li>
+</ol>
+<ul>
+<li>不管哪种方式都会面临以下问题：</li>
+</ul>
+<ol>
+<li>怎么组织数据仓库中的数据？</li>
+<li>怎么组织才能使得数据使用最为方便和便捷？</li>
+<li>怎么组织才能使得数据仓库具有良好的可扩展性和可维护性？</li>
+</ol>
+<h4 id="两种数据仓库的架构">两种数据仓库的架构</h4>
+<p>• 在数据仓库领域有两个派系：Bill Inmon建模方法论和Ralph Kimball建<br>
+模方法论<br>
+• Bill Inmon被称为“数据仓库之父”<br>
+• Ralph Kimball被称为“商业智能之父”<br>
+• 两种观点诞生以来，围绕“哪种架构最佳”的争论一直存在，但一直无<br>
+法形成统一的结论<br>
+• 供用户不同的场合、针对不同的应用场景选择某方法或者采用混合两者的方法</p>
+<h4 id="ralphakimball建模方法论">RalphaKimball建模方法论</h4>
+<p>• Kimball对数据仓库的理论与维度设计和建模有关。维度建模将客观世界分为：<br>
+<strong>度量</strong>： 主要由业务过程和支持业务的源系统产生的数据，常以数值形式（订单金额、库存数量）存在，称为事实<br>
+<strong>上下文</strong>：围绕着事实的大量文本形式存在的上下文，这些上下文通常被直观<br>
+地分割成多个独立的逻辑块，维度建模称之为维。维描述了度量的5个W（When、Where、What、Who和Why）信息，比如：什么时间下单、何种方式下单、买的是什么、客户是谁。</p>
+<h5 id="星形架构">星形架构</h5>
+<p>• 维度建模的Kimball数据仓库通常以星形架构来呈现<br>
+• 由于星形紧贴业务过程，非常直观和符合业务人员的视角，因此被广泛和大量使用</p>
+<h4 id="基于维度的-总线体系架构">基于维度的 “总线体系架构 ”</h4>
+<p>• Kimball对数据仓库建模理论的第二大贡献是基于维度的“总线体系架构”。<br>
+• 总线体系架构和一致性维度一起保证了多个主题的事实表和维度表能够最终集成在一起，提供一致<br>
+和唯一的口径给业务人员。<br>
+• Kimball维度建模的主题主要以星形架构为主，主题与主题之间则用一致性维度和企业总线体系架<br>
+构保证数据仓库的一致性。</p>
+<h4 id="仓库体系架构">仓库体系架构</h4>
+<h4 id="billinmon建模方法论">BillInmon建模方法论</h4>
+<p>• Bill Inmon是第一个提出来OLAP和数据仓库概念的人，所以被称之为“数据仓库之父”<br>
+• 他认为：数据仓库是“在企业管理和决策中面向主题的、集成的、与时间相关的、不可修改<br>
+的数据集合”<br>
+• 数据仓库更像是一种过程，对分布在企业内部各处的业务数据的整合、加工和分析的过程，<br>
+而不是一种可以够买的产品。称之为“企业信息化工厂”</p>
+<h5 id="企业级数据仓库体系架构">企业级数据仓库体系架构</h5>
+<h5 id="企业数据仓库">企业数据仓库</h5>
+<p>• Inmon的企业信息化工程包括源头系统、准备区、ETL、企业数据仓库、数据集市等，而企业数据仓库是企业化信息工厂的枢纽。<br>
+• 数据集市，所谓“集市”，就是部门级的数据仓库，Inmon主张从企业数据仓库中提取所需要的数据，从而保证数据的一致性。<br>
+• 不同点：<br>
+– 不同于Kimball，Inmon认为企业数据仓库应为原子数据的集成仓库，应该用第三范式和ER理论而非维度建模的事实表和维度表来建模。<br>
+– Inmon认为先有企业数据仓库才可能开始建立部门级的数据集市。<br>
+• Inmon也认为应该用Kimball的维度建模理论来构建数据集市。</p>
+<h4 id="数据仓库建模实践">数据仓库建模实践</h4>
+<p>• Inmon的方法是一种由上而下（top-down）的数据仓库建模方法，主张首先要对企业数据仓库进行总体规划，并将不同的OLTP数据集中到面向对象主题、集成的、不易失的和时间变化的企业数据仓库中。数据集市应该是数据仓库的子集，每个数据集市都是为独立部门专门设计的。<br>
+• Kimball方法相反，是一种自下向上的（down-top）。Kimball认为数据仓库是一系列数据集市的集合，企业可以通过一致性的维度表和“企业总线架构”来递增式集成各个数据集市，从而构建整个企业的数据仓库。<br>
+• 对比：<br>
+– Inmon的方法部署和开发周期较长，但是容易维护而且高度集成。由于互联网业务变化快，系统一直变，数据一直变，导致可能永远设计不出一个企业数据仓库，所以可以先建立数据集市，而后根据业务进展再沉淀出企业数据仓库。<br>
+– Kimball的方法可以迅速响应业务需求，快速构建一个数据仓库，成效要求快，投资回报快，但是后期集成和维护较为麻烦。</p>
+<h4 id="数据仓库逻辑架构设计">数据仓库逻辑架构设计</h4>
+<p>• 离线数据仓库通常基于维度建模理论来构建，但是除此之外，离线数据仓库通常<br>
+还会从逻辑上进行分层，这也是业界最佳实践。分层主要基于以下考虑：<br>
+– 隔离性：<br>
+• 数据是精心准备、规范、干净，方便理解和使用<br>
+• 上游业务系统的变动给下游使用的用户最小化影响<br>
+– 性能和可维护性：<br>
+• 数据加工和处理都在数据团队，相同的业务逻辑不用重复执行，减少存储和计算的开销<br>
+• 分层可以将处理逻辑解耦，方便定位问题和修复<br>
+– 规范性：对于公司和团队，需要有统一的口径</p>
+<h4 id="数据仓库分层">数据仓库分层</h4>
+<p>• ODS层：数据仓库源头系统的数据表通常会原封不动地存储一份，这称为ODS（Operation Data Store）层，存储着历史增量和全量数据。<br>
+• DW层（DWD和DWS层）：数据仓库明细层DWD和数据仓库汇总层DWS是数据平台的主要内容。它们是通过ODS层经过ETL清洗、转换、加载生成的，基于维度建模理论来构建，通过一致性维度和数据总线来保证各个子主题的维度一致性。<br>
+• 应用层（ADS）：应用层主要是各个业务方或者部门基于DWD和DWS建立的数据集市（DM），数据集市是相对于数据仓库来说的。一般应用层的数据是来源于DW层，原则上是不能访问ODS层的。对比于DW层，应用层只包含部门或业务方自己关心的明细层和汇总层的数据。</p>
+<h5 id="数据分层架构图">数据分层架构图</h5>
+<h3 id="实时数据平台架构">实时数据平台架构</h3>
+<p>• 离线数据平台产出数据的周期一般是天，也就是说，今天看到的是昨天的数据，对于大部分的分<br>
+析和“看”数据场景来说，这种T+1的离线数据可以满足业务分析需求<br>
+• 实时数据：<br>
+– 业务场景需要马上看到业务效果，尤其是在业务促销活动（双十一大促、618大促）等<br>
+– 算法需求：实时数据训练的算法效果和离线数据训练的算法效果有着天壤之别，因为时效性比较好，带来<br>
+的算法效果会更好</p>
+<h4 id="实时平台架构">实时平台架构</h4>
+<h4 id="实时数据平台">实时数据平台</h4>
+<p>• 实时数据平台首先要保证数据来源的实时性。数据来源主要分为两类：</p>
+<ol>
+<li>数据库：注意业内最佳实践并不是直接访问数据库抽取数据，而是会直接采集数据变更日志</li>
+<li>日志文件<br>
+• 数据采集工具（Flume）采集binlog事件，产生速度和频率通常取决于源头系统。和下游的实时数据处理工具（Storm、Spark、Flink等流计算框架和平台）处理数据的速度通常是不匹配的。<br>
+• 实时数据处理通常还会从某个历史时间点重启以及多个实时任务都要使用同一源头数据的需求，因此通常还会引入消息中间件（消息队列比如kafka）来作为缓冲，从而达到实时数据采集和处理适配</li>
+</ol>
+<h4 id="实时数据存储">实时数据存储</h4>
+<p>• 实时数据存储根据下游数据使用的不同方式通常放在不同的数据存储内。<br>
+• 对于数据在线服务（即数据使用方传入某业务ID，然后获取到所有此ID的相关字段），通常放在HBase内<br>
+• 对于实时数据大屏，通常放在某关系数据库（如Mysql）内，有时为了提高性能并减轻对底层数据库的压力，还<br>
+会使用缓存数据库（Redis）等</p>
+<h3 id="数据管理">数据管理</h3>
+<p>• 对于一个公司和组织来说，仅有数据的技术是不够的，还必须对数据进行管理。<br>
+• 数据管理的范畴很广，但是具体主要包含以下几个：<br>
+‒ 数据探查<br>
+‒ 数据集成<br>
+‒ 数据质量<br>
+‒ 元数据管理<br>
+‒ 数据屏蔽</p>
+<h3 id="数据探查">数据探查</h3>
+<p>• 数据探查就是对数据本身和关联关系等进行分析，包括但不限于：</p>
+<ul>
+<li>需要的数据是否有</li>
+<li>都有哪些字段</li>
+<li>字段含义是否规范明确</li>
+<li>字段的分析和质量如何</li>
+</ul>
+<p>• 数据探查常用的分析技术包括：</p>
+<ul>
+<li>主外键</li>
+<li>字段类型</li>
+<li>字段长度</li>
+<li>null值占比</li>
+<li>枚举值分布</li>
+<li>最小值</li>
+<li>最大值</li>
+<li>平均值</li>
+</ul>
+<h3 id="数据探查">数据探查</h3>
+<p>• 数据探查分为战略性和战术性的。<br>
+• 战略性：是指使用数据之前首先对数据进行轻量级的数据分析，确定其是否可用、数据稳定性<br>
+如何，以决定是否可以纳入数据平台使用。这是构建数据平台的首要任务，不合格的数据源头<br>
+必须尽快剔除。<br>
+• 战术性：是指用技术手段对数据进行详尽的分析，发现尽可能多的数据质量问题并反馈给业务<br>
+人员或者通知源头系统进行改进。<br>
+• 数据探查是构建数据平台的基础，好的数据探查工作直接为后续的数据建模、数据集成和数据<br>
+质量等工作提供了指导，也能让数据平台团队对数据做到心中有数。</p>
+<h3 id="数据集成">数据集成</h3>
+<p>• 数据仓库的数据集成也叫ETL（抽取：extract、转换：transform、加载：load）是数据平台构建的核心，也是数据平台构建过程最耗时的过程。<br>
+• ETL泛指讲数据从数据源抽取、经过清洗、转换、关联等转换，并最终按照预先设计的数据模型将数据加载到数据仓库的过程。<br>
+• ETL处理的结果是为数据使用者提供一个汇总、规范、包含所有相关订单信息的宽表。（就是select *就能拿到所有想要的数据）<br>
+• ETL过程技术上需要解耦任务，这样会产生大量的执行job，这些需要通过专门的调度和管理，关键是设置checkpoint保证出错时重跑成本低。<br>
+• ETL开源工具：Kettle、Talend，Hive，spark</p>
+<h3 id="数据质量">数据质量</h3>
+<p>• 数据质量问题始终是每个数据相关人员的核心诉求，尤其是数据分析师、数据开发工程师、业务分析接口人<br>
+• 这些人经常面临的问题：“这个数据准确么？”<br>
+• 或者被质疑：<br>
+– “这个数据有问题”<br>
+– “这个数据肯定是错误的”</p>
+<p>• 数据的准与不准需要从以下4个方面进行衡量：<br>
+– 完整性：是指数据信息是否存在缺失状况，不完整的数据质量会大大降低<br>
+• 数据记录缺失<br>
+• 数据记录中字段值缺失<br>
+– 一致性：指数据是否遵循了统一的规范，是否保持统一的格式<br>
+• 数据记录的规范：IP地址一定是有4个0~255的数据加上“.”组成<br>
+• 数据是否合乎逻辑：互联年龄主要集中在12-60，不可能是负数，也不可能大于1000<br>
+– 准确性：指数据记录的信息是否存在异常或错误，是否符合业务的预期<br>
+• 与一致性的区别：准确性不只是规则上的不一致，更多的是业务规则的冲突，比如：业务规定某字段值只有（1,0），但是出现了3或者其他字符串<br>
+– 及时性：指数据的产生时间是否及时、准时，符合预期。</p>
+<p>• 数据从生产到消费有很多环节，每个环节都可能出现数据质量问题，但是对于直接使用数据的人来说，数据开发团队被视为数据质量问题的第一责任人，数据开发团队有义务和责任来解决数据质量问题，推动解决问题。<br>
+• 数据质量问题需要借助系统和工具才能落地，主要监控：<br>
+– 数据行数波动<br>
+– 主键重复<br>
+– 字段空值比，空值率<br>
+– 枚举值检查、枚举值占比<br>
+– 字段最小值、最大值、均值、数值合计</p>
+<p>• 通过这些指标+业务规则监测来衡量是否有数质量问题，如果发现系统报警，需要第一时间<br>
+解决和修复。</p>
+<h3 id="数据屏蔽">数据屏蔽</h3>
+<p>• 数据仓库存储了企业所有的数据，其中有些数据是非常敏感的，比如用户的信用卡信息、身份证、手机号等，这些信息如果泄露会给企业和公司带来灾难性的后果。但如果直接删除，会对开发测试和分析统计带来影响。<br>
+• 数据屏蔽就是对数据进行脱敏，进行不可逆的处理，既能满足开发测试和统计分析使用<br>
+• 主要方法：<br>
+– 替换：用预先准备的测试数据来替换真实的敏感数据<br>
+– 洗牌（shuffle）：和替换一直，只是替换的数据集是其本身<br>
+– 删除/加扰：删除会破坏数据完整性，可以通过“<em>”来替代，150</em>***6789<br>
+– 加密：通过加密算法，将原始数据变为无意义字符，只有应用“密钥”才能查看原始数据</p>
+<h2 id="维度建模技术">维度建模技术</h2>
+<h3 id="维度建模过程">维度建模过程</h3>
+<p>• 维度建模过程顺序分为四个过程：</p>
+<ol>
+<li>选取业务过程：针对项目业务活动，不如百度主要业务活动是搜索，维度模型是同部门捆绑在一起的，所以无法避<br>
+免数据不一致的情况，（比如业务编码、含义），需要从全局考虑。</li>
+<li>定义粒度：对事实表实际代表的内容和含义给出明确的说明，粒度传递了事实表度量值相联系的细节所达到的程度<br>
+的信息。（比如：订单信息orders表，更细粒度的priors表每个订单具体的商品信息）粒度定义需要最大程度选择<br>
+业务过程中最为原子性的粒度，这样能让后续处理更加灵活</li>
+<li>确定维度：维度是对度量的上下文和环境的描述。（比如用户的注册的基本信息，商品的基本属性信息）</li>
+<li>确定事实：通过业务过程可能要分析什么来确定。比如促销活动，需要度量的是销售量和销售金额</li>
+</ol>
+<h3 id="维度表设计">维度表设计</h3>
+<p>• 维度表示维度建模的灵魂，在维度表设计中碰到的问题直接关系到维度建模的好坏。<br>
+• 主要问题：<br>
+– 维度变化：维度是缓慢变化的过程<br>
+– 维度层次：某个维度表中的属性之间存在的从属关系<br>
+– 维度一致性：两个维度如果有关系，要么相同，要么是子集。不一致包括表内容和属性上的不一致。<br>
+– 维度整合和拆分：同一个维度来自多个业务系统，需要整合和拆分。<br>
+– 维度其他</p>
+<h3 id="维度变化">维度变化</h3>
+<p>• 维度表的数据通常来自与业务系统，商品是会发生变化的，比如商品的所属类目、商品价格、商品描述<br>
+等。这些变化可能是之前错误的修正，或者实际商品更新。这个变化称为“缓慢变化维”<br>
+• 确定源数据变化在维度表中如何表示非常重要，根据变化内容的不同，下游分析可能要求用不同的办法<br>
+来处理。<br>
+– 商品的描述信息变化：也许业务人员不太敏感，可以直接覆盖<br>
+– 商品所属类目变化：涉及到这个商品的销售活动是哪个类目的<br>
+• 是全部归到新类目，还是全部归到旧类目？<br>
+• 变化前归到就类目，还是变化后归到新类目？</p>
+<p>• 缓慢变化维的几种处理办法：<br>
+– 重新维度值：当一个维度值属性发生变化时，重写维度值方法直接用新值覆盖旧值。在<br>
+不需要保留维度属性历史变化的情况。<br>
+– 插入新的维度行：不维护维度属性变化，通过插入新的行来保存和记录变化的情况。保<br>
+存了变化前后的历史数据，但是没有变化的数据会有冗余现象。<br>
+– 插入新的维度列：下游分析需要用到变化前和变化后的属性值，有能用变化后的属性值<br>
+来分析变化前的所有事实，这时可以采用插入新的维度列。这样会导致表结构需要发生<br>
+变化，或者提前预留。</p>
+<h3 id="维度层次">维度层次</h3>
+<p>• 维度层次指的是某个维度表中属性之间存在的从属关系问题。比如商品的类目可能是有层次的（一级类<br>
+目、二级类目、三级类目等），那么维度建模如何处理这些层次结构的呢？<br>
+• 有两种处理办法：<br>
+– 将所有维度层次结构去全部扁平化，冗余存储到一个表中，星形架构<br>
+– 新建类目维度表，并在维度表中维护父子关系，雪花架构<br>
+• 在维度建表中一般采用星形架构，虽然牺牲了部分的存储，但是给用户使用带来了便捷，也减低了学习<br>
+使用的成本。<br>
+• 维度层级结构通常和钻取练习在一起，所谓钻取就是对信息的持续深入挖掘。<br>
+• 钻取的实质是增加或者减少维度分为两种：<br>
+– 向下钻取：从汇总数据深入到细节数据。比如年度销售总额增长20%，增加时间维度，分析季度增长率</p>
+<p>– 向上钻取：从细节数据概括到汇总数据。</p>
+<h3 id="维度一致性">维度一致性</h3>
+<p>• 维度设计理论中，数据仓库是在对多个主题、多个业务过程的多次迭代过程中逐步建立的，逻辑上划分<br>
+迭代过程为数据集市<br>
+– 数据集市一般由一张和多张紧密关联的事实表以及多个维度表组成，一般是部门或者面向某个特定的主题。<br>
+– 数据仓库则是企业级的、面向主题的、集成的数据集合<br>
+• 如果分步建立数据集市的过程中维度表不一致，那么数据集市就会变成孤立的集市，不能从逻辑上组合<br>
+成一个集成的数据仓库，而一致性就是为了解决这个问题。<br>
+• 维度一致性：两个维度如果有关系，要么完全一样，要么数据逻辑上是另一个的子集。<br>
+– 内容不一致：某种交易上缺失了部分商品，那么对这些缺失商品的交易分析无法完成。<br>
+– 维度不一致：比如日期格式、类目和日组合成一个数据信息、<br>
+• 可以采用共享同一个维度表或者让其中一个维度表示另一个维度表的子集的方式保证一致性。</p>
+<h3 id="维度整合-amp拆分">维度整合 &amp;拆分</h3>
+<p>• 有时候出现同一个维度表来自于多个前台业务系统的问题，此时会带来维度整合和拆分问题。比如：移<br>
+动端交易系统和PC端交易系统的系统架构和底层数据库、表结构等的不同。<br>
+• 同一个维度的整个需要考虑以下问题：<br>
+– 命名规范：要确保一致和统一<br>
+– 字段类型：统一整合为一个字段类型<br>
+– 字段编码和含义：编码及含义要整个为一致的。<br>
+• 对于业务系统的不同通常有两种处理办法：<br>
+– 建立一个基础的维度表，此基础维度表包含这些不同业务的共有属性，同时简历各自业务的单独维度表以包含其独<br>
+特的业务属性。<br>
+– 拆分，即不合并，即各个业务差异独特性的业务各自建立完全独立的两个维度表，各自管理各自维度表和属性。</p>
+<p>• 实际操作中，对于业务差异大的业务，耦合在一起并不能带来很大的便利和好处，因此通常倾向于拆分（<br>
+即不合并），各自管理各自的维度表。对于业务相似度比较大的业务，则可以采用第一种办法。</p>
+<p>深入事实表<br>
+• 事实表示维度建模的核心和基本表。事实表存储了业务过程的各种度量和事实，而这些度量和事实正是<br>
+下游数据使用人员关心和分析的对象。<br>
+• 事实表的三种主要的类型：<br>
+– 事务事实表：记录业务过程原子粒度的事件，每个事务一条记录。<br>
+– 快照事实表：业务的状态（当前状态、历史状态），比如商品的库存，挤压促销。<br>
+– 累计快照事实表：适用于具有工作流或者流水线形式的业务的分析。比如：漏斗分析（浏览、点击、转化）</p>
+<p>数据仓库<br>
+事务事实表<br>
+• 事务事实表记录业务过程的事件，而且是原子粒度的事件。<br>
+• 数据在事务发生后产生，数据的粒度通常是每个事务一条记录。<br>
+• 一旦事务被提交，事实表数据被插入。<br>
+• 通过事务事实表存储单词业务事件/行为的细节，以及存储与事件相关的维度细节，<br>
+用户可以单独聚合分析业务事件和行为。</p>
+<p>数据仓库<br>
+事务事实表<br>
+• 结合超市零售业务以及维度建模的四个环节来说明事务事实表：</p>
+<ol>
+<li>
+<p>选择业务过程<br>
+• 理解POS系统记录的顾客购买情况，什么时候、什么商品、哪个收银台、销售了哪些商品等</p>
+</li>
+<li>
+<p>定义粒度<br>
+• 用户购买行为体现在一张小票，事务事实选择最原子粒度的事件，所以小票的子项目（商品）是超市零<br>
+售事务事实表的粒度</p>
+</li>
+<li>
+<p>确定维度<br>
+• 粒度确定后，销售日期、销售商品、销售收银台、收银员、销售门店等维度就容易被确定下来了。细节<br>
+（促销行为）</p>
+</li>
+<li>
+<p>确定事实<br>
+• 确定哪些事实和度量应该在事实表中出现。本例：商品销售数量、销售价格、销售金额等</p>
+</li>
+</ol>
+<p>数据仓库<br>
+快照事实表<br>
+• 在实际业务中，除了关心单次的业务事件和行为外，很多时候还关心业务的状态（<br>
+当前状态、历史状态），比如在商品中对应的是库存情况。<br>
+• 快照事实表，又叫周期快照事实表，指间隔一定的周期对业务的状态进行一次拍照<br>
+并记录下来的事实表。最常见的例子：销售库存，账户余额等<br>
+• 对比事务事实表发生才会记录，周期快照则必须捕获当前每个实体的状态。比如：<br>
+某个商品当天没有售卖，事务事实表不会有记录，但周期快照需要对其库存进行定<br>
+时记录。<br>
+• 周期快照事实表的周期需要和业务方共同确定，最常见的周期（day、Week、</p>
+<p>Month）</p>
+<p>数据仓库<br>
+快照事实表<br>
+• 以超市的库存业务啦介绍周期快照事实表的设计过程：</p>
+<ol>
+<li>选择业务过程<br>
+• 业务目的为了更好理解超市库存情况，业务过程就是商品库存情况。什么时候、什么商品、哪个仓库的库存<br>
+量</li>
+<li>定义粒度<br>
+• 主要指定库存的周期。周期为day的记录计算：100家连锁店*10000个商品=100w行记录/day</li>
+<li>确定维度<br>
+• 周期（天、周、月等）、商品、仓库</li>
+<li>确定事实</li>
+</ol>
+<p>• 库存量、增量度量（库存价值、库存成本、周期销售量、去化天数【基于周期内销售预计需要库存天数】）</p>
+<p>数据仓库<br>
+累计快照事实表<br>
+• 累计快照事实表非常适用于具有工作流或者流水线形式业务的分析，这些业务通<br>
+常涉及多个时间点或者有主要的里程碑事件，是从全流程角度对业务状态的拍照<br>
+• 以车险举例：<br>
+– 主要事件：客户报案、保险公司立案、客户提交理赔材料、理赔审批通过和付款。<br>
+– 目标：分析各个理赔的状态、步骤间的耗时</p>
+<ol>
+<li>
+<p>选择业务过程：更好的理解保险公司的车险理赔业务，业务过程是车险理赔</p>
+</li>
+<li>
+<p>定义粒度：某个客户的保险理赔申请作为一个记录</p>
+</li>
+<li>
+<p>确定维度：快照周期、理赔申请人、受理人、审核人、网点等</p>
+</li>
+<li>
+<p>确定事实：索赔金额、审批金额、打款金额、处理时长</p>
+</li>
+</ol>
+<h2 id="数据仓库构建">数据仓库构建</h2>
+<h3 id="业务需求">业务需求</h3>
+<p>• 以零售业务为例，涉及到全国连锁业务形态、收银台购物流程、商品供应链、商品库存管理等。这么大规模<br>
+的零售，运营设计到什么？<br>
+– 整个公司的整体销售趋势如何？<br>
+– 是否应该对某些滞销商品进行促销？<br>
+– 客户是否流失？<br>
+– 某些畅销商品是否应该及时补货？<br>
+– 如何选择自营商品从而利润最大化？<br>
+• 数据仓库平台是以上问题实现数据化运营的前提和基础。基于数据仓库平台生成的各种销售报表和库存报表是<br>
+公司管理层和各个城市运营人员决策的主要依据。</p>
+<h3 id="数据仓库架构设计">数据仓库架构设计</h3>
+<p>• 数据仓库在实际设计中，通常出于可维护性、性能成本以及使用便捷性考虑，会对数据仓库中的表进行分层<br>
+• ODS层：源头数据原封不同存储一份，是后面DW层（仓库层）的源数据，ODS层存储的是历史增量或者全<br>
+量数据<br>
+• DW层：<br>
+– ODS层经过ETL生成，这一层的数据一定是清洗过的，干净的、一致的、规范的、准确的数据。下游用户直接使用DW层<br>
+数据，而ODS层原则上不允许下游用户直接接触。<br>
+– 明细层：保存最细粒度的事实表和维度表<br>
+– 汇总层：设计主要是出于性能以及避免重复计算考虑，如何设计需要根据业务需求以及明细层实际汇总频率来确定<br>
+– 原则上，业务使用频繁的维度需要对这些数据建立汇总层，汇总的指标可以和业务需求方共同设计完成。<br>
+• 应用层：数据来源于DW层，原则上访问不了ODS层。各个业务方或者部门可以建立自己的数据集市（Data</p>
+<p>Mart），只包含部门或者业务方自己关心的明细层和汇总层的数据。一般由下游用户自己维护和开发。</p>
+<h3 id="数据仓库规范设计">数据仓库规范设计</h3>
+<p>• 对于公司来说，使用数据的用户成百上千，如何降低大家对于数据使用的沟通成本、如何通过规范大家的行<br>
+为来降低使用数据的风险。需要通过规范来实现。<br>
+• 数据仓库的规范包括很多方面，主要有：<br>
+–命名规范<br>
+–开发规范<br>
+–流程规范<br>
+– 安全规范<br>
+– 质量规范</p>
+<h4 id="命名规范">命名规范</h4>
+<p>• 表命名规范：为了让数据所有相关方对于表包含的信息有一个共同的认知。比如说属于哪一层（ODS,DW明<br>
+细，DW汇总、应用层）？哪个业务线/部门？哪个维度（商品、卖家、买家、类目）？哪个时间跨度（天、<br>
+月、年、实时）？增量还是全量？<br>
+• 数据平台建设者应该首先规定数据仓库的分层、业务/部门、常见威慑时间跨度的英文缩写，并根据这个缩写<br>
+来命名。</p>
+<h4 id="开发规范">开发规范</h4>
+<p>• 开发规范主要用于规范和约束数据开发人员和使用人员的习惯，以最大限度降低数据使用风险，并同时保证<br>
+用户准守最佳实践。主要包括以下几个方面：<br>
+–数据任务的分类和存放（即目录结构的划分）：公共代码如何存放，个人代码如何存放，项目和产品的代码如何分类存<br>
+放，实际项目中需要统筹规划并保证每人都遵守，方便用户找到对应项目、产品或者各个层次的代码（ODS、DWD、<br>
+DWS、ADS）<br>
+– 代码的编程规范：比如任务注释的规范必须包含哪几部分、代码对其规范、代码的开发约定等<br>
+– 最佳实践：有些最佳实践（灵活运用时间分区、timestamp定义到毫秒还是秒、数据类型定义规范多个）都需要开发规<br>
+范来约束，以确保最佳实践得以落地。</p>
+<h4 id="流程规范">流程规范</h4>
+<h3 id="数据仓库构建示例-商品维度表">数据仓库构建示例 - -商品维度表</h3>
+<p>• 商品维度表命名dim_fr_item，设计说明：</p>
+<ol>
+<li>维度表设计的首要问题是维度表的拆分以及合并问题<br>
+– 主要存放共有属性</li>
+<li>对于缓慢变化维和微型维度的问题，dim_fr_item通过快<br>
+照和分区字段来解决。<br>
+– dim_fr_item将每天存放一份全量数据快照，存放的生命周期<br>
+由业务需求确定<br>
+• 出于属性扩展性考虑，dim_fr_item将包含JSON和<br>
+KeyValue的大字端，但相应地会增加了使用成本。</li>
+</ol>
+<p>数据仓库<br>
+销售事实表</p>
+<p>数据仓库<br>
+销售事实表</p>
+<p>数据仓库<br>
+数据平台架构 - -数据湖<br>
+• 数据湖和数据仓库的核心区别：<br>
+1.数据湖存放所有数据：数据湖存储结构化、半结构化（JSON、XML）和非结构化（语音、视频）数据，同时存放所有数据，<br>
+不仅包括现在需要用到的数据，也包括以后会用到的数据或者压根不用的数据；而数据仓库通常存放的是经过处理、结构化<br>
+的数据<br>
+2.Schema-On-Read：数据在数据湖中保存他们原有的形态知道即将被使用的时候才会进行转换（shema-on-read）；而数<br>
+据仓库在写入之前必须定义好结构和形态（schema-on-write）<br>
+3.更容易适应变化：若数据有价值且可被重复利用的，转换为日常任务。如果没用的无须投入人力和时间成本<br>
+4.更快的洞察能力：因为数据湖包含所有数据和数据类型，并且它能够让用户在数据经过清洗、转换、结构化之前就访问数据<br>
+，这种方式使得用户能够比传统数据仓库方式更快得到结果。鼓励用户自助、自由分析数据。</p>
+
+                
+
+                <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/js/colorSelect/" data-toggle="tooltip" data-placement="top" title="香港地铁站点主题色的配色">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/source-analysis/source-analysis1/" data-toggle="tooltip" data-placement="top" title="Spring源码分析-IOC容器">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay_url.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/wechatpay_url.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+                <br>
+
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>   
+                
+                <!-- require APlayer -->
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                <div class="aplayer"
+                    data-id="2576984498"
+                    data-server="tecent"
+                    data-type="playlist"
+                    data-fixed="true" 
+                    >
+                </div>
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC80MTg2NC8xODQxMA=="></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数据仓库"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#大数据平台"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x5927;&#x6570;&#x636E;&#x5E73;&#x53F0;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#简介"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">&#x7B80;&#x4ECB;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#离线平台"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">&#x79BB;&#x7EBF;&#x5E73;&#x53F0;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#离线数据平台架构"><span class="toc-nav-number">1.1.2.1.</span> <span class="toc-nav-text">&#x79BB;&#x7EBF;&#x6570;&#x636E;&#x5E73;&#x53F0;&#x67B6;&#x6784;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据仓库技术-oltpampolap"><span class="toc-nav-number">1.1.2.2.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x6280;&#x672F; -OLTP&amp;OLAP</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#oltpampolap对比"><span class="toc-nav-number">1.1.2.3.</span> <span class="toc-nav-text">OLTP&amp;OLAP&#x5BF9;&#x6BD4;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#分析型数据库"><span class="toc-nav-number">1.1.2.4.</span> <span class="toc-nav-text">&#x5206;&#x6790;&#x578B;&#x6570;&#x636E;&#x5E93;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hadoop数据仓库"><span class="toc-nav-number">1.1.2.5.</span> <span class="toc-nav-text">Hadoop&#x6570;&#x636E;&#x4ED3;&#x5E93;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据仓库建模技术"><span class="toc-nav-number">1.1.2.6.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x5EFA;&#x6A21;&#x6280;&#x672F;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#两种数据仓库的架构"><span class="toc-nav-number">1.1.2.7.</span> <span class="toc-nav-text">&#x4E24;&#x79CD;&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x7684;&#x67B6;&#x6784;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ralphakimball建模方法论"><span class="toc-nav-number">1.1.2.8.</span> <span class="toc-nav-text">RalphaKimball&#x5EFA;&#x6A21;&#x65B9;&#x6CD5;&#x8BBA;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#星形架构"><span class="toc-nav-number">1.1.2.8.1.</span> <span class="toc-nav-text">&#x661F;&#x5F62;&#x67B6;&#x6784;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#基于维度的-总线体系架构"><span class="toc-nav-number">1.1.2.9.</span> <span class="toc-nav-text">&#x57FA;&#x4E8E;&#x7EF4;&#x5EA6;&#x7684; &#x201C;&#x603B;&#x7EBF;&#x4F53;&#x7CFB;&#x67B6;&#x6784; &#x201D;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#仓库体系架构"><span class="toc-nav-number">1.1.2.10.</span> <span class="toc-nav-text">&#x4ED3;&#x5E93;&#x4F53;&#x7CFB;&#x67B6;&#x6784;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#billinmon建模方法论"><span class="toc-nav-number">1.1.2.11.</span> <span class="toc-nav-text">BillInmon&#x5EFA;&#x6A21;&#x65B9;&#x6CD5;&#x8BBA;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#企业级数据仓库体系架构"><span class="toc-nav-number">1.1.2.11.1.</span> <span class="toc-nav-text">&#x4F01;&#x4E1A;&#x7EA7;&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x4F53;&#x7CFB;&#x67B6;&#x6784;</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#企业数据仓库"><span class="toc-nav-number">1.1.2.11.2.</span> <span class="toc-nav-text">&#x4F01;&#x4E1A;&#x6570;&#x636E;&#x4ED3;&#x5E93;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据仓库建模实践"><span class="toc-nav-number">1.1.2.12.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x5EFA;&#x6A21;&#x5B9E;&#x8DF5;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据仓库逻辑架构设计"><span class="toc-nav-number">1.1.2.13.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x903B;&#x8F91;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据仓库分层"><span class="toc-nav-number">1.1.2.14.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x5206;&#x5C42;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#数据分层架构图"><span class="toc-nav-number">1.1.2.14.1.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x5206;&#x5C42;&#x67B6;&#x6784;&#x56FE;</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#实时数据平台架构"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x5E73;&#x53F0;&#x67B6;&#x6784;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#实时平台架构"><span class="toc-nav-number">1.1.3.1.</span> <span class="toc-nav-text">&#x5B9E;&#x65F6;&#x5E73;&#x53F0;&#x67B6;&#x6784;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#实时数据平台"><span class="toc-nav-number">1.1.3.2.</span> <span class="toc-nav-text">&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x5E73;&#x53F0;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#实时数据存储"><span class="toc-nav-number">1.1.3.3.</span> <span class="toc-nav-text">&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x5B58;&#x50A8;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据管理"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x7BA1;&#x7406;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据探查"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x63A2;&#x67E5;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据探查"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x63A2;&#x67E5;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据集成"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x96C6;&#x6210;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据质量"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x8D28;&#x91CF;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据屏蔽"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x5C4F;&#x853D;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#维度建模技术"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x7EF4;&#x5EA6;&#x5EFA;&#x6A21;&#x6280;&#x672F;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#维度建模过程"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">&#x7EF4;&#x5EA6;&#x5EFA;&#x6A21;&#x8FC7;&#x7A0B;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#维度表设计"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">&#x7EF4;&#x5EA6;&#x8868;&#x8BBE;&#x8BA1;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#维度变化"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">&#x7EF4;&#x5EA6;&#x53D8;&#x5316;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#维度层次"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">&#x7EF4;&#x5EA6;&#x5C42;&#x6B21;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#维度一致性"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">&#x7EF4;&#x5EA6;&#x4E00;&#x81F4;&#x6027;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#维度整合-amp拆分"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">&#x7EF4;&#x5EA6;&#x6574;&#x5408; &amp;&#x62C6;&#x5206;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据仓库构建"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x6784;&#x5EFA;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#业务需求"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">&#x4E1A;&#x52A1;&#x9700;&#x6C42;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据仓库架构设计"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据仓库规范设计"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x89C4;&#x8303;&#x8BBE;&#x8BA1;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#命名规范"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">&#x547D;&#x540D;&#x89C4;&#x8303;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#开发规范"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">&#x5F00;&#x53D1;&#x89C4;&#x8303;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#流程规范"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">&#x6D41;&#x7A0B;&#x89C4;&#x8303;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据仓库构建示例-商品维度表"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x6784;&#x5EFA;&#x793A;&#x4F8B; - -&#x5546;&#x54C1;&#x7EF4;&#x5EA6;&#x8868;</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#大数据" title="大数据">大数据</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
+                    
+                        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
+                    
+                        <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
+                    
+                        <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
+                    
+                        <li><a href="http://www.ityouknow.com" target="_blank">纯洁的微笑</a></li>
+                    
+                        <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
+                    
+                        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+                    
+                        <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
+                    
+                        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
+                    
+                        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+    <!-- 来必力City版公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    <!-- 来必力City版 公共JS代码 end -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+<!-- 添加自动推送链接 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- 复制添加版权申明-->
+<script>
+    /**/
+    function setClipboardText(event){
+        event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        var node = document.createElement('div');
+        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
+        var htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />著作权归作者所有。<br />'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+            + '作者：liaocan <br />链接：'
+            + location.href
+            + '<br />来源：liaocan.top<br /><br />'
+            + '</div>';
+        var textData = window.getSelection().getRangeAt(0)
+            + '\n\n著作权归作者所有。\n'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+            + '作者：liaocan\n'
+            + '链接：'
+            + location.href
+            + '来源：liaocan.top\n\n';
+        if(event.clipboardData){
+            event.clipboardData.setData("text/html", htmlData);
+            //setData(剪贴板格式, 数据) 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+            event.clipboardData.setData("text/plain",textData);
+        }
+        else if(window.clipboardData){ //window.clipboardData的作用是在页面上将需要的东西复制到剪贴板上，提供了对于预定义的剪贴板格式的访问，以便在编辑操作中使用。
+            return window.clipboardData.setData("text", textData);
+        }
+    };
+ 
+    document.addEventListener('copy',function(e){
+        setClipboardText(e);
+    });
+</script>
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/nqmysb" title="github">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://blog.csdn.net/nqmysbd" title="CSDN">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-csdn fa-stack-1x fa-inverse">C</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://yq.aliyun.com/u/nqmysb" title="云栖社区">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-alyun fa-stack-1x fa-inverse">云</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://gitee.com/liaocwang" title="gitee">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-git fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="mailto:593013537@qq.com" title="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Liao Can 2019 
+                    <br>
+                    Theme by <a target="_blank" href="http://www.huweihuang.com">胡伟煌</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://liaocan.top">Liaocan</a> 
+                     | 
+                     <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                    <br />
+                    <!--总访问量统计-->
+                    
+                        <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
+                            总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                        <div style="display:none" >本站访客数<span  id="busuanzi_value_site_uv"></span>人次</div>
+                    
+                    <!--总访问量统计-->
+                      
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://liaocan.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-132197826-1';
+    var _gaDomain = 'liaocan.top';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '6f0414ec28cbdc196e93beaa4472a18d';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://liaocan.top/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

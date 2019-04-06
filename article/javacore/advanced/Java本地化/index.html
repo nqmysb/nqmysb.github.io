@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="iGDu0e88zUCIa6OhhkXgxyKDioORMrt1KC_43F_VRcg" />
+    <meta name="baidu-site-verification" content="A2ImdbykAi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/meditation.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+        [java核心技术] Java本地化 - LiaoCan | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://liaocan.top/article/javacore/advanced/Java本地化/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/article_header/guangzhou3.jpg')
+                /*post*/
+                
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#java核心技术" title="java核心技术">
+                                java核心技术</a>
+                            
+                        </div>
+                        <h1>
+                            [java核心技术] Java本地化
+                        </h1>
+                        <!-- <h2 class="subheading"></h2> -->
+                        <!--文章访问量统计-->
+                        
+                        <span id="busuanzi_container_page_pv">本文已被阅读过<span id="busuanzi_value_page_pv"></span>次</span>
+                        
+                        <!--文章访问量统计--> <span class="meta">
+                            Posted by
+                            Liao Can on
+                            2015-05-06
+                        </span>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Liao Can</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                        <li>
+                            <a href="/about/" >About</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/archive/" >Archives</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/tags/" >Tags</a>
+                        </li>
+                    
+
+
+                    <!-- 
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                     -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="背景知识">背景知识</h2>
+<p>通讯的发达，使得世界各地交流越来越紧密。许多的软件产品也要面向世界上不同国家的用户。其中，语言障碍显然是产品在不同语种用户中进行推广的一个重要问题。</p>
+<p>本文围绕本地化这一主题，先介绍国际标准的语言编码，然后讲解在 Java 应用中如何去实现本地化。</p>
+<h3 id="语言编码-国家地区编码">语言编码、国家/地区编码</h3>
+<p>做 web 开发的朋友可能多多少少接触过类似 <strong>zh-cn</strong>, <strong>en-us</strong> 这样的编码字样。</p>
+<p>这些编码是用来表示指定的国家地区的语言类型的。那么，这些含有特殊含义的编码是如何产生的呢？</p>
+<p><a href="http://www.loc.gov/standards/iso639-2/php/English_list.php" target="_blank" rel="noopener"><strong>ISO-639</strong></a> 标准使用编码定义了国际上常见的语言，每一种语言由两个小写字母表示。</p>
+<p><a href="https://www.iso.org/obp/ui/#iso:std:iso:3166:-2:ed-3:v1:en,fr" target="_blank" rel="noopener"><strong>ISO-3166</strong></a> 标准使用编码定义了国家/地区，每个国家/地区由两个大写字母表示。</p>
+<p>下表列举了一些常见国家、地区的语言编码：</p>
+<table>
+<thead>
+<tr>
+<th>国家/地区</th>
+<th>语言编码</th>
+<th>国家/地区</th>
+<th>语言编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简体中文(中国)</td>
+<td>zh-cn</td>
+<td>繁体中文(台湾地区)</td>
+<td>zh-tw</td>
+</tr>
+<tr>
+<td>繁体中文(香港)</td>
+<td>zh-hk</td>
+<td>英语(香港)</td>
+<td>en-hk</td>
+</tr>
+<tr>
+<td>英语(美国)</td>
+<td>en-us</td>
+<td>英语(英国)</td>
+<td>en-gb</td>
+</tr>
+<tr>
+<td>英语(全球)</td>
+<td>en-ww</td>
+<td>英语(加拿大)</td>
+<td>en-ca</td>
+</tr>
+<tr>
+<td>英语(澳大利亚)</td>
+<td>en-au</td>
+<td>英语(爱尔兰)</td>
+<td>en-ie</td>
+</tr>
+<tr>
+<td>英语(芬兰)</td>
+<td>en-fi</td>
+<td>芬兰语(芬兰)</td>
+<td>fi-fi</td>
+</tr>
+<tr>
+<td>英语(丹麦)</td>
+<td>en-dk</td>
+<td>丹麦语(丹麦)</td>
+<td>da-dk</td>
+</tr>
+<tr>
+<td>英语(以色列)</td>
+<td>en-il</td>
+<td>希伯来语(以色列)</td>
+<td>he-il</td>
+</tr>
+<tr>
+<td>英语(南非)</td>
+<td>en-za</td>
+<td>英语(印度)</td>
+<td>en-in</td>
+</tr>
+<tr>
+<td>英语(挪威)</td>
+<td>en-no</td>
+<td>英语(新加坡)</td>
+<td>en-sg</td>
+</tr>
+<tr>
+<td>英语(新西兰)</td>
+<td>en-nz</td>
+<td>英语(印度尼西亚)</td>
+<td>en-id</td>
+</tr>
+<tr>
+<td>英语(菲律宾)</td>
+<td>en-ph</td>
+<td>英语(泰国)</td>
+<td>en-th</td>
+</tr>
+<tr>
+<td>英语(马来西亚)</td>
+<td>en-my</td>
+<td>英语(阿拉伯)</td>
+<td>en-xa</td>
+</tr>
+<tr>
+<td>韩文(韩国)</td>
+<td>ko-kr</td>
+<td>日语(日本)</td>
+<td>ja-jp</td>
+</tr>
+<tr>
+<td>荷兰语(荷兰)</td>
+<td>nl-nl</td>
+<td>荷兰语(比利时)</td>
+<td>nl-be</td>
+</tr>
+<tr>
+<td>葡萄牙语(葡萄牙)</td>
+<td>pt-pt</td>
+<td>葡萄牙语(巴西)</td>
+<td>pt-br</td>
+</tr>
+<tr>
+<td>法语(法国)</td>
+<td>fr-fr</td>
+<td>法语(卢森堡)</td>
+<td>fr-lu</td>
+</tr>
+<tr>
+<td>法语(瑞士)</td>
+<td>fr-ch</td>
+<td>法语(比利时)</td>
+<td>fr-be</td>
+</tr>
+<tr>
+<td>法语(加拿大)</td>
+<td>fr-ca</td>
+<td>西班牙语(拉丁美洲)</td>
+<td>es-la</td>
+</tr>
+<tr>
+<td>西班牙语(西班牙)</td>
+<td>es-es</td>
+<td>西班牙语(阿根廷)</td>
+<td>es-ar</td>
+</tr>
+<tr>
+<td>西班牙语(美国)</td>
+<td>es-us</td>
+<td>西班牙语(墨西哥)</td>
+<td>es-mx</td>
+</tr>
+<tr>
+<td>西班牙语(哥伦比亚)</td>
+<td>es-co</td>
+<td>西班牙语(波多黎各)</td>
+<td>es-pr</td>
+</tr>
+<tr>
+<td>德语(德国)</td>
+<td>de-de</td>
+<td>德语(奥地利)</td>
+<td>de-at</td>
+</tr>
+<tr>
+<td>德语(瑞士)</td>
+<td>de-ch</td>
+<td>俄语(俄罗斯)</td>
+<td>ru-ru</td>
+</tr>
+<tr>
+<td>意大利语(意大利)</td>
+<td>it-it</td>
+<td>希腊语(希腊)</td>
+<td>el-gr</td>
+</tr>
+<tr>
+<td>挪威语(挪威)</td>
+<td>no-no</td>
+<td>匈牙利语(匈牙利)</td>
+<td>hu-hu</td>
+</tr>
+<tr>
+<td>土耳其语(土耳其)</td>
+<td>tr-tr</td>
+<td>捷克语(捷克共和国)</td>
+<td>cs-cz</td>
+</tr>
+<tr>
+<td>斯洛文尼亚语</td>
+<td>sl-sl</td>
+<td>波兰语(波兰)</td>
+<td>pl-pl</td>
+</tr>
+<tr>
+<td>瑞典语(瑞典)</td>
+<td>sv-se</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注：由表中可以看出语言、国家/地区编码一般都是英文单词的缩写。</strong></p>
+<h3 id="字符编码">字符编码</h3>
+<p>在此处，引申一下字符编码的概念。</p>
+<p><strong>是不是有了语言、国家/地区编码，计算机就可以识别各种语言了？</strong></p>
+<p>答案是否。作为程序员，相信每个人都会遇到过这样的情况：期望打印中文，结果输出的却是乱码。</p>
+<p>这种情况，往往是因为字符编码的问题。</p>
+<p>计算机在设计之初，并没有考虑多个国家，多种不同语言的应用场景。当时定义一种<code>ASCII</code>码，将字母、数字和其他符号编号用 7 比特的二进制数来表示。后来，计算机在世界开始普及，为了适应多种文字，出现了多种编码格式，例如中文汉字一般使用的编码格式为<code>GB2312</code>、<code>GBK</code>。</p>
+<p>由此，又产生了一个问题，<strong>不同字符编码之间互相无法识别</strong>。于是，为了一统江湖，出现了 <code>unicode</code> 编码。它为每种语言的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台的文本转换需求。</p>
+<p>有人不禁要问，既然 <code>Unicode</code> 可以支持所有语言的字符，那还要其他字符编码做什么？</p>
+<p><code>Unicode</code>  有一个缺点：为了支持所有语言的字符，所以它需要用更多位数去表示，比如 <code>ASCII</code> 表示一个英文字符只需要一个字节，而  <code>Unicode</code>  则需要两个字节。很明显，如果字符数多，这样的效率会很低。</p>
+<p>为了解决这个问题，有出现了一些中间格式的字符编码：如 <code>UTF-8</code>、<code>UTF-16</code>、<code>UTF-32</code> 等（中国的程序员一般使用<strong>UTF-8</strong>编码）。</p>
+<h2 id="java-中实现本地化">Java 中实现本地化</h2>
+<p>本地化的实现原理很简单：</p>
+<ol>
+<li>先定义好不同语种的模板；</li>
+<li>选择语种；</li>
+<li>加载指定语种的模板。</li>
+</ol>
+<p>接下来，本文会按照步骤逐一讲解实现本地化的具体步骤</p>
+<h3 id="定义不同语种的模板">定义不同语种的模板</h3>
+<p><strong>Java 中将多语言文本存储在格式为 <code>properties</code> 的资源文件中。</strong></p>
+<p>它必须遵照以下的命名规范：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;资源名&gt;_&lt;语言代码&gt;_&lt;国家/地区编码&gt;.properties</span><br></pre></td></tr></table></figure>
+<p>其中，语言编码和国家/地区编码都是可选的。</p>
+<p>注：<code>&lt;资源名&gt;.properties</code> 命名的本地化资源文件是<strong>默认的资源文件</strong>，即某个本地化类型在系统中找不到对应的资源文件，就采用这个默认的资源文件。</p>
+<h4 id="定义-properties-文件">定义 properties 文件</h4>
+<p>在<code>src/main/resources/locales</code>  路径下定义名为 content 的不同语种资源文件：</p>
+<p><strong>content_en_US.properties</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">helloWorld = HelloWorld!</span><br><span class="line">time = The current time is %s.</span><br></pre></td></tr></table></figure>
+<p><strong>content_zh_CN.properties</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">helloWorld = \u4e16\u754c\uff0c\u4f60\u597d\uff01</span><br><span class="line">time = \u5f53\u524d\u65f6\u95f4\u662f\u0025\u0073\u3002</span><br></pre></td></tr></table></figure>
+<p>可以看到：几个资源文件中，定义的 Key  完全一致，只是  Value  是对应语言的字符串。</p>
+<p>虽然属性值各不相同，但属性名却是相同的，这样应用程序就可以通过 Locale 对象和属性名精确调用到某个具体的属性值了。</p>
+<h4 id="unicode-转换工具">Unicode  转换工具</h4>
+<p>上一节中，我们定义的中文资源文件中的属性值都是以\u 开头的四位 16 进制数。其实，这表示的是一个 Unicode 编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">helloWorld = \u4e16\u754c\uff0c\u4f60\u597d\uff01</span><br><span class="line">time = \u5f53\u524d\u65f6\u95f4\u662f\u0025\u0073\u3002</span><br></pre></td></tr></table></figure>
+<p>本文的字符编码中提到了，为了达到跨编码也正常显示的目的，有必要将非 <code>ASCII</code>  字符转为  <code>Unicode</code>  编码。上面的中文资源文件就是中文转为  <code>Unicode</code>  的结果。</p>
+<p>怎么将非 <code>ASCII</code>  字符转为  <code>Unicode</code>  编码呢？</p>
+<p>JDK 在 bin 目录下为我们提供了一个转换工具：<strong>native2ascii</strong>。</p>
+<p>它可以将中文字符的资源文件转换为 <code>Unicode</code> 代码格式的文件，命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">native2ascii [-reverse] [-encoding 编码] [输入文件 [输出文件]]</span><br></pre></td></tr></table></figure>
+<p>假设<strong>content_zh_CN.properties</strong>  在 <code>d:\</code>  目录。执行以下命令可以新建一个名为  <strong>content_zh_CN_new.properties</strong> 的文件，其中的内容就中文字符转为  <code>UTF-8</code>  编码格式的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">native2ascii -encoding utf-8 d:\content_zh_CN.properties d:\content_zh_CN_new.properties</span><br></pre></td></tr></table></figure>
+<h3 id="选择语种">选择语种</h3>
+<p>定义了多语言资源文件，第二步就是根据本地语种选择模板文件了。</p>
+<h4 id="locale">Locale</h4>
+<p>在 Java 中，一个 <code>java.util.Locale</code> 对象表示了特定的地理、政治和文化地区。需要 Locale 来执行其任务的操作称为语言环境敏感的操作，它使用 Locale 为用户量身定制本地信息。</p>
+<p>它有三个构造方法</p>
+<p><code>Locale(String language)</code> ：根据语言编码初始化<br>
+<code>Locale(String language, String country)</code> ：根据语言编码、国家编码初始化<br>
+<code>Locale(String language, String country, String variant)</code> ：根据语言编码、国家编码、变体初始化</p>
+<p>此外，Locale 定义了一些常用的 Locale 常量：<code>Locale.ENGLISH</code>、<code>Locale.CHINESE</code> 等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化一个通用英语的locale.</span></span><br><span class="line">Locale locale1 = <span class="keyword">new</span> Locale(<span class="string">"en"</span>);</span><br><span class="line"><span class="comment">// 初始化一个加拿大英语的locale.</span></span><br><span class="line">Locale locale2 = <span class="keyword">new</span> Locale(<span class="string">"en"</span>, <span class="string">"CA"</span>);</span><br><span class="line"><span class="comment">// 初始化一个美式英语变种硅谷英语的locale</span></span><br><span class="line">Locale locale3 = <span class="keyword">new</span> Locale(<span class="string">"en"</span>, <span class="string">"US"</span>, <span class="string">"SiliconValley"</span>);</span><br><span class="line"><span class="comment">// 根据Locale常量初始化一个简体中文</span></span><br><span class="line">Locale locale4 = Locale.SIMPLIFIED_CHINESE;</span><br></pre></td></tr></table></figure>
+<h3 id="加载指定语种的模板">加载指定语种的模板</h3>
+<h4 id="resourceboundle">ResourceBoundle</h4>
+<p>Java 为我们提供了用于加载本地化资源文件的工具类：<code>java.util.ResourceBoundle</code>。</p>
+<p><code>ResourceBoundle</code> 提供了多个名为 <code>getBundle</code> 的静态重载方法，这些方法的作用是用来根据资源名、Locale 选择指定语种的资源文件。需要说明的是： <code>getBundle</code> 方法的第一个参数一般都是<code>baseName</code> ，这个参数表示资源文件名。</p>
+<p><code>ResourceBoundle</code> 还提供了名为 <code>getString</code> 的方法，用来获取资源文件中 key 对应的 value。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 根据语言+地区编码初始化</span></span><br><span class="line">    ResourceBundle rbUS = ResourceBundle.getBundle(<span class="string">"locales.content"</span>, <span class="keyword">new</span> Locale(<span class="string">"en"</span>, <span class="string">"US"</span>));</span><br><span class="line">    <span class="comment">// 根据Locale常量初始化</span></span><br><span class="line">    ResourceBundle rbZhCN = ResourceBundle.getBundle(<span class="string">"locales.content"</span>, Locale.SIMPLIFIED_CHINESE);</span><br><span class="line">    <span class="comment">// 获取本地系统默认的Locale初始化</span></span><br><span class="line">    ResourceBundle rbDefault = ResourceBundle.getBundle(<span class="string">"locales.content"</span>);</span><br><span class="line">    <span class="comment">// ResourceBundle rbDefault =ResourceBundle.getBundle("locales.content", Locale.getDefault()); // 与上行代码等价</span></span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">"us-US:"</span> + rbUS.getString(<span class="string">"helloWorld"</span>));</span><br><span class="line">    System.out.println(<span class="string">"us-US:"</span> + String.format(rbUS.getString(<span class="string">"time"</span>), <span class="string">"08:00"</span>));</span><br><span class="line">    System.out.println(<span class="string">"zh-CN："</span> + rbZhCN.getString(<span class="string">"helloWorld"</span>));</span><br><span class="line">    System.out.println(<span class="string">"zh-CN："</span> + String.format(rbZhCN.getString(<span class="string">"time"</span>), <span class="string">"08:00"</span>));</span><br><span class="line">    System.out.println(<span class="string">"default："</span> + rbDefault.getString(<span class="string">"helloWorld"</span>));</span><br><span class="line">    System.out.println(<span class="string">"default："</span> + String.format(rbDefault.getString(<span class="string">"time"</span>), <span class="string">"08:00"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">us-US:HelloWorld!</span><br><span class="line">us-US:The current time is 08:00.</span><br><span class="line">zh-CN：世界，你好！</span><br><span class="line">zh-CN：当前时间是08:00。</span><br><span class="line">default：世界，你好！</span><br><span class="line">default：当前时间是08:00。</span><br></pre></td></tr></table></figure>
+<p>注：在加载资源时，如果指定的本地化资源文件不存在，它会尝试按下面的顺序加载其他的资源：本地系统默认本地化对象对应的资源 -&gt;  默认的资源。如果指定错误，Java 会提示找不到资源文件。</p>
+<h2 id="支持本地化的工具类">支持本地化的工具类</h2>
+<p>Java  中也提供了几个支持本地化的格式化工具类。例如：<code>NumberFormat</code>、<code>DateFormat</code>、<code>MessageFormat</code></p>
+<h3 id="numberformat">NumberFormat</h3>
+<p><code>NumberFormat</code>  是所有数字格式类的基类。它提供格式化和解析数字的接口。它也提供了决定数字所属语言类型的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> num = <span class="number">123456.78</span>;</span><br><span class="line">	NumberFormat format = NumberFormat.getCurrencyInstance(Locale.SIMPLIFIED_CHINESE);</span><br><span class="line">	System.out.format(<span class="string">"%f 的本地化（%s）结果: %s"</span>, num, Locale.SIMPLIFIED_CHINESE, format.format(num));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="dateformat">DateFormat</h3>
+<p>DateFormat  是日期、时间格式化类的抽象类。它支持基于语言习惯的日期、时间格式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Date date = <span class="keyword">new</span> Date();</span><br><span class="line">	DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH);</span><br><span class="line">	DateFormat df2 = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.SIMPLIFIED_CHINESE);</span><br><span class="line">	System.out.format(<span class="string">"%s 的本地化（%s）结果: %s\n"</span>, date, Locale.SIMPLIFIED_CHINESE, df.format(date));</span><br><span class="line">	System.out.format(<span class="string">"%s 的本地化（%s）结果: %s\n"</span>, date, Locale.SIMPLIFIED_CHINESE, df2.format(date));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="messageformat">MessageFormat</h3>
+<p>Messageformat  提供一种与语言无关的拼接消息的方式。通过这种拼接方式，将最终呈现返回给使用者。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	String pattern1 = <span class="string">"&#123;0&#125;，你好！你于  &#123;1&#125; 消费  &#123;2&#125; 元。"</span>;</span><br><span class="line">	String pattern2 = <span class="string">"At &#123;1,time,short&#125; On &#123;1,date,long&#125;，&#123;0&#125; paid &#123;2,number, currency&#125;."</span>;</span><br><span class="line">	Object[] params = &#123;<span class="string">"Jack"</span>, <span class="keyword">new</span> GregorianCalendar().getTime(), <span class="number">8888</span>&#125;;</span><br><span class="line">	String msg1 = MessageFormat.format(pattern1, params);</span><br><span class="line">	MessageFormat mf = <span class="keyword">new</span> MessageFormat(pattern2, Locale.US);</span><br><span class="line">	String msg2 = mf.format(params);</span><br><span class="line">	System.out.println(msg1);</span><br><span class="line">	System.out.println(msg2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                
+
+                <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/javacore/advanced/encode/java-message-digest/" data-toggle="tooltip" data-placement="top" title="[编码算法] 消息摘要算法">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/javacore/advanced/Java正则/" data-toggle="tooltip" data-placement="top" title="[java核心技术] Java正则">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay_url.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/wechatpay_url.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+                <br>
+
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>   
+                
+                <!-- require APlayer -->
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                <div class="aplayer"
+                    data-id="2576984498"
+                    data-server="tecent"
+                    data-type="playlist"
+                    data-fixed="true" 
+                    >
+                </div>
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC80MTg2NC8xODQxMA=="></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#背景知识"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x80CC;&#x666F;&#x77E5;&#x8BC6;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#语言编码-国家地区编码"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x8BED;&#x8A00;&#x7F16;&#x7801;&#x3001;&#x56FD;&#x5BB6;/&#x5730;&#x533A;&#x7F16;&#x7801;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#字符编码"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x5B57;&#x7B26;&#x7F16;&#x7801;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#java-中实现本地化"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Java &#x4E2D;&#x5B9E;&#x73B0;&#x672C;&#x5730;&#x5316;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定义不同语种的模板"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">&#x5B9A;&#x4E49;&#x4E0D;&#x540C;&#x8BED;&#x79CD;&#x7684;&#x6A21;&#x677F;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#定义-properties-文件"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">&#x5B9A;&#x4E49; properties &#x6587;&#x4EF6;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#unicode-转换工具"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">Unicode&#xA0; &#x8F6C;&#x6362;&#x5DE5;&#x5177;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#选择语种"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">&#x9009;&#x62E9;&#x8BED;&#x79CD;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#locale"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Locale</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#加载指定语种的模板"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">&#x52A0;&#x8F7D;&#x6307;&#x5B9A;&#x8BED;&#x79CD;&#x7684;&#x6A21;&#x677F;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#resourceboundle"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">ResourceBoundle</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#支持本地化的工具类"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x652F;&#x6301;&#x672C;&#x5730;&#x5316;&#x7684;&#x5DE5;&#x5177;&#x7C7B;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#numberformat"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">NumberFormat</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dateformat"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">DateFormat</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#messageformat"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">MessageFormat</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
+                    
+                        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
+                    
+                        <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
+                    
+                        <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
+                    
+                        <li><a href="http://www.ityouknow.com" target="_blank">纯洁的微笑</a></li>
+                    
+                        <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
+                    
+                        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+                    
+                        <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
+                    
+                        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
+                    
+                        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+    <!-- 来必力City版公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    <!-- 来必力City版 公共JS代码 end -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+<!-- 添加自动推送链接 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- 复制添加版权申明-->
+<script>
+    /**/
+    function setClipboardText(event){
+        event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        var node = document.createElement('div');
+        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
+        var htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />著作权归作者所有。<br />'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+            + '作者：liaocan <br />链接：'
+            + location.href
+            + '<br />来源：liaocan.top<br /><br />'
+            + '</div>';
+        var textData = window.getSelection().getRangeAt(0)
+            + '\n\n著作权归作者所有。\n'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+            + '作者：liaocan\n'
+            + '链接：'
+            + location.href
+            + '来源：liaocan.top\n\n';
+        if(event.clipboardData){
+            event.clipboardData.setData("text/html", htmlData);
+            //setData(剪贴板格式, 数据) 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+            event.clipboardData.setData("text/plain",textData);
+        }
+        else if(window.clipboardData){ //window.clipboardData的作用是在页面上将需要的东西复制到剪贴板上，提供了对于预定义的剪贴板格式的访问，以便在编辑操作中使用。
+            return window.clipboardData.setData("text", textData);
+        }
+    };
+ 
+    document.addEventListener('copy',function(e){
+        setClipboardText(e);
+    });
+</script>
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/nqmysb" title="github">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://blog.csdn.net/nqmysbd" title="CSDN">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-csdn fa-stack-1x fa-inverse">C</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://yq.aliyun.com/u/nqmysb" title="云栖社区">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-alyun fa-stack-1x fa-inverse">云</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://gitee.com/liaocwang" title="gitee">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-git fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="mailto:593013537@qq.com" title="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Liao Can 2019 
+                    <br>
+                    Theme by <a target="_blank" href="http://www.huweihuang.com">胡伟煌</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://liaocan.top">Liaocan</a> 
+                     | 
+                     <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                    <br />
+                    <!--总访问量统计-->
+                    
+                        <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
+                            总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                        <div style="display:none" >本站访客数<span  id="busuanzi_value_site_uv"></span>人次</div>
+                    
+                    <!--总访问量统计-->
+                      
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://liaocan.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-132197826-1';
+    var _gaDomain = 'liaocan.top';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '6f0414ec28cbdc196e93beaa4472a18d';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://liaocan.top/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
