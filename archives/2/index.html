@@ -244,6 +244,42 @@
 
 <div class="post-preview">
 
+    <a href="/article/js/react1/">
+        <h2 class="post-title">
+            
+            React.js绑定this的5种方法
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+This is already quite flexible in javascript, and putting it in React makes our choice even more confusing. Let’s look at five binding methods for React this.
+
+Use React. createClass
+
+If you are u......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2017-05-12
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#前端" title="前端">前端</a>
+            
+              <a href="/tags/#React" title="React">React</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/js/router1/">
         <h2 class="post-title">
             
@@ -348,29 +384,26 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/1-并发简介/">
+    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
         <h2 class="post-title">
             
-            [java多线程] 1-并发简介
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            并发术语
-学习并发编程，免不了大量接触一些术语。其中，有些术语经常容易被混淆或分不清它们的差异，这里汇总一下。
-并发和并行
+            同步容器和并发容器
 
-例子
+本文内容基于 JDK1.8。
 
-你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。
-你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发。
-你吃饭吃到一半，电话来了，你一边打电话一边吃饭，这说明你支持并行。
+同步容器
+在 Java 中，同步容器主要包括 2 类：
 
+Vector、Stack、HashTable
 
-定义
-
-并发的关键......
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
         </div>
     </a>
     
@@ -392,26 +425,24 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
+    <a href="/article/javacore/concurrent/3-并发机制的底层实现/">
         <h2 class="post-title">
             
-            [java多线程] 5-同步容器和并发容器
+            [java多线程] 3-并发机制的底层实现
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            同步容器和并发容器
+            并发机制的底层实现
 
 本文内容基于 JDK1.8。
 
-同步容器
-在 Java 中，同步容器主要包括 2 类：
+concurrent 包的实现
+由于 Java 的 CAS 同时具有 volatile 读和 volatile 写的内存语义，因此 Java 线程之间的通信现在有了下面四种方式：
 
-Vector、Stack、HashTable
-
-Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
-Stack 也是一个同步容器，它的方法也用 s......
+A 线程写 volatile 变量，随后 B 线程读这个 volatile 变量。
+A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
         </div>
     </a>
     
@@ -562,66 +593,34 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/8-并发工具类/">
+    <a href="/article/javacore/concurrent/9-线程池/">
         <h2 class="post-title">
             
-            [java多线程] 8-并发工具类
+            [java多线程] 9-线程池
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            并发工具类
+            线程池
+概述
+什么是线程池？
+线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
+为什么要用线程池？
 
-本文内容基于 JDK1.8。
+降低资源消耗
 
-JDK 的 java.util.concurrent 包（即 juc）中提供了几个非常有用的并发工具类。
-CountDownLatch
-要点
+通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
 
-作用：字面意思为递减计数锁。它允许一个或多个线程等待，直到在其他线程中执行的一组操作完成。
-原理：CountDownLatch 维护一个计数器 count，表示需要等待的事件数量。countDown 方法......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
 
-</div>
-<hr>
+提高响应速度
 
-<div class="post-preview">
+当任务到达时，任务可以不需要等到线程创建就能立即执行。
 
-    <a href="/article/javacore/concurrent/7-原子变量类/">
-        <h2 class="post-title">
-            
-            [java多线程] 7-原子变量类
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            原子变量类
 
-本文内容基于 JDK1.8。
+提高线程的可管理性
 
-原子变量比锁的粒度更细，量级更轻，并且对于在多处理器系统上实现高性能的并发代码来说是非常关键的。
-原子变量类相当于一种泛化的volatile变量，能够支持原子的和有条件的读-改-写操作。
-原子类在内部使用现代 CPU 支持的 CAS 指令来实现同步。这些指令通常比锁更快。
-原子更新基本类型
-
-AtomicBoolean - 原子更新布尔类型。
-A......
+线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
         </div>
     </a>
     
@@ -692,6 +691,10 @@ A......
             
         
             
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            
+        
+            
         
             
             <a href="/tags/#前端" title="前端" rel="2">前端</a>
@@ -700,17 +703,19 @@ A......
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
-            
         
             
         
             
-            <a href="/tags/#java基础" title="java基础" rel="10">java基础</a>
+        
             
         
             
             <a href="/tags/#java核心技术" title="java核心技术" rel="17">java核心技术</a>
+            
+        
+            
+            <a href="/tags/#java基础" title="java基础" rel="10">java基础</a>
             
         
             
@@ -724,19 +729,15 @@ A......
             
         
             
-        
-            
-        
-            
-            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
-            
-        
-            
             <a href="/tags/#java核心" title="java核心" rel="9">java核心</a>
             
         
             
             <a href="/tags/#java多线程" title="java多线程" rel="10">java多线程</a>
+            
+        
+            
+            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
             
         
             
@@ -850,6 +851,10 @@ A......
     <ul>
       
         <li>
+          <a href="/article/springboot/springboot1/">Springboot2.0从零开始搭建脚手架(一)之整合MybatisPlus3.0+</a>
+        </li>
+      
+        <li>
           <a href="/article/jdk/jdk8new3/">JDK8的新特性（三）</a>
         </li>
       
@@ -863,10 +868,6 @@ A......
       
         <li>
           <a href="/article/jdk/jdk8new1/">JDK8的新特性（一）</a>
-        </li>
-      
-        <li>
-          <a href="/article/js/colorSelect/">香港地铁站点主题色的配色</a>
         </li>
       
     </ul>
@@ -907,7 +908,7 @@ A......
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>

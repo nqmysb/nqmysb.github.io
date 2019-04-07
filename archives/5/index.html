@@ -244,46 +244,6 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/4-JVM调优/">
-        <h2 class="post-title">
-            
-            [java虚拟机] 4-JVM 调优
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            JVM 调优概述
-性能定义
-
-吞吐量 - 指不考虑 GC 引起的停顿时间或内存消耗，垃圾收集器能支撑应用达到的最高性能指标。
-延迟 - 其度量标准是缩短由于垃圾啊收集引起的停顿时间或者完全消除因垃圾收集所引起的停顿，避免应用运行时发生抖动。
-内存占用 - 垃圾收集器流畅运行所需要的内存数量。
-
-调优原则
-GC 优化的两个目标：
-
-将进入老年代的对象数量降到最低
-减少 Full GC 的执行时......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/javacore/io/Java网络编程/">
         <h2 class="post-title">
             
@@ -328,33 +288,110 @@ InetAddress
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/3-类加载机制/">
+    <a href="/article/javacore/io/Java序列化/">
         <h2 class="post-title">
             
-            [java虚拟机] 3-类加载机制
+            Java 序列化
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            类是在运行期间动态加载的。
-类的生命周期
+            Java 序列化
+
+关键词：Serializable、Externalizable、ObjectInputStream、ObjectOutputStream
+
+1. 简介
+1.1. 定义
+序列化：序列化是将对象转换为字节流。
+反序列化：反序列化是将字节流转换为对象。
 
 
 
-包括以下 7 个阶段：
+1.2. 用途
+序列化的用途有：
 
-加载（Loading）
-验证（Verification）
-准备（Preparation）
-解析（Resolution）
-初始化（Initialization）
-使用（Using）
-卸载（Unloading）
+序列化可以将对象的字节序列持久化——保存在内存、文件、数据库中。
+在网络上传送对象的......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+        </div>
+    
 
-其中解析过程在某些情况下可以在初始化阶段之后再开始，这是为了支持 Java 的动态绑定。
-类初始化时机
-虚拟机......
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/io/Java流操作/">
+        <h2 class="post-title">
+            
+            Java 流操作
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Java 流操作
+
+关键词：InputStream、OutputStream、Reader、Writer
+
+1. 字符流和字节流
+JAVA IO 中的流操作分为两类：
+
+字节流主要操作字节类型数据（byte）。主要类是 InputStream（输入） 和 OutputStream（输出）。
+字符流主要操作字符类型数据，一个字符占两个字节。主要类是 Reader（输入） 和 Writer（输出......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#IO流" title="IO流">IO流</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/jvm/4-JVM调优/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 4-JVM 调优
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            JVM 调优概述
+性能定义
+
+吞吐量 - 指不考虑 GC 引起的停顿时间或内存消耗，垃圾收集器能支撑应用达到的最高性能指标。
+延迟 - 其度量标准是缩短由于垃圾啊收集引起的停顿时间或者完全消除因垃圾收集所引起的停顿，避免应用运行时发生抖动。
+内存占用 - 垃圾收集器流畅运行所需要的内存数量。
+
+调优原则
+GC 优化的两个目标：
+
+将进入老年代的对象数量降到最低
+减少 Full GC 的执行时......
         </div>
     </a>
     
@@ -374,25 +411,20 @@ InetAddress
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/JavaNIO/">
+    <a href="/article/javacore/jvm/2-垃圾收集/">
         <h2 class="post-title">
             
-            Java NIO
+            [java虚拟机] 2-垃圾收集
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java NIO
-
-Java NIO Tutorial
-Java NIO 浅析
-IBM: NIO 入门
-
-新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的，弥补了原来的 I/O 的不足，提供了高速的、面向块的 I/O。
-流与块
-I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的方式处理数据，而 NIO 以块的方式处理数据。
-面向流的 I/O 一次处理一个字节数......
+            程序计数器、虚拟机栈和本地方法栈这三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后也会消失，因此不需要对这三个区域进行垃圾回收。垃圾回收主要是针对 Java 堆和方法区进行。
+判断一个对象是否可回收
+1. 引用计数算法
+给对象添加一个引用计数器，当对象增加一个引用时计数器加 1，引用失效时计数器减 1。引用计数为 0 的对象可被回收。
+两个对象出现循环引用的情况下，此时引用计数......
         </div>
     </a>
     
@@ -402,9 +434,7 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
         </p>
         <div class="tags">
             
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#IO流" title="IO流">IO流</a>
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
             
         </div>
     
@@ -434,51 +464,6 @@ Linux 环境的 jdk 包，解压到本地即可。
 环境变量
 Windows
 计算机 &gt; 属性 &gt; 高级系统设置 &gt......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-02-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java基础" title="java基础">java基础</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/basic/1-Java简介/">
-        <h2 class="post-title">
-            
-            [java基础] Java 简介
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-关键词： JDK、JRE、JSR、JVM、Java SE、Java EE、Java ME
-
-Java 是一门面向对象编程语言。
-Java 具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点。Java 可以编写桌面应用程序、Web 应用程序、分布式系统和嵌入式系统应用程序等。
-Java 历史
-
-
-
-版本
-描述
-
-
-
-
-1991/1/1
-Sun 公司成立了 ......
         </div>
     </a>
     
@@ -579,23 +564,22 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/basic/3-Java基础语法/">
+    <a href="/article/javacore/basic/Java枚举/">
         <h2 class="post-title">
             
-            [java基础] Java 基础语法
+            [java基础] Java 枚举
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            
-:pushpin: 关键词：
+            知识点
 
-变量
-在 Java 语言中，所有的变量在使用前必须声明。声明变量的基本格式如下：
-1type identifier [ = value][, identifier [= value] ...] ;
-格式说明：type 为 Java 数据类型。identifier 是变量名。可以使用逗号隔开来声明多个同类型变量。
-以下列出了一些变量的声明实例。注意有些包含了初......
+概念
+enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
+在 Java 中，被 enum 关键字修饰的类型就是枚举类型。形式如下：
+1enum Color &#123; RED, GREEN, BLUE &#125;
+如果枚举不添加任何方法，枚举值默认为从 0 开始的有序数值。以 Color 枚举类型举例，它的枚举常量依次为 RED：0，GREEN：......
         </div>
     </a>
     
@@ -615,22 +599,32 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/basic/Java枚举/">
+    <a href="/article/javacore/basic/1-Java简介/">
         <h2 class="post-title">
             
-            [java基础] Java 枚举
+            [java基础] Java 简介
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            知识点
+            
+关键词： JDK、JRE、JSR、JVM、Java SE、Java EE、Java ME
 
-概念
-enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
-在 Java 中，被 enum 关键字修饰的类型就是枚举类型。形式如下：
-1enum Color &#123; RED, GREEN, BLUE &#125;
-如果枚举不添加任何方法，枚举值默认为从 0 开始的有序数值。以 Color 枚举类型举例，它的枚举常量依次为 RED：0，GREEN：......
+Java 是一门面向对象编程语言。
+Java 具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点。Java 可以编写桌面应用程序、Web 应用程序、分布式系统和嵌入式系统应用程序等。
+Java 历史
+
+
+
+版本
+描述
+
+
+
+
+1991/1/1
+Sun 公司成立了 ......
         </div>
     </a>
     
@@ -699,6 +693,10 @@ enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
             
         
             
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            
+        
+            
         
             
             <a href="/tags/#前端" title="前端" rel="2">前端</a>
@@ -707,17 +705,19 @@ enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
-            
         
             
         
             
-            <a href="/tags/#java基础" title="java基础" rel="10">java基础</a>
+        
             
         
             
             <a href="/tags/#java核心技术" title="java核心技术" rel="17">java核心技术</a>
+            
+        
+            
+            <a href="/tags/#java基础" title="java基础" rel="10">java基础</a>
             
         
             
@@ -731,19 +731,15 @@ enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
             
         
             
-        
-            
-        
-            
-            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
-            
-        
-            
             <a href="/tags/#java核心" title="java核心" rel="9">java核心</a>
             
         
             
             <a href="/tags/#java多线程" title="java多线程" rel="10">java多线程</a>
+            
+        
+            
+            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
             
         
             
@@ -857,6 +853,10 @@ enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
     <ul>
       
         <li>
+          <a href="/article/springboot/springboot1/">Springboot2.0从零开始搭建脚手架(一)之整合MybatisPlus3.0+</a>
+        </li>
+      
+        <li>
           <a href="/article/jdk/jdk8new3/">JDK8的新特性（三）</a>
         </li>
       
@@ -870,10 +870,6 @@ enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
       
         <li>
           <a href="/article/jdk/jdk8new1/">JDK8的新特性（一）</a>
-        </li>
-      
-        <li>
-          <a href="/article/js/colorSelect/">香港地铁站点主题色的配色</a>
         </li>
       
     </ul>
@@ -914,7 +910,7 @@ enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>

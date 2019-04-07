@@ -44,6 +44,13 @@
     </url>
 
     <url>
+        <loc>https://liaocan.top/tags/JDK/</loc>
+        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://liaocan.top/tags/%E8%AE%BE%E8%AE%A1/</loc>
         <lastmod>2019-04-06T15:10:22.434Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -59,13 +66,6 @@
 
     <url>
         <loc>https://liaocan.top/tags/React/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/JDK/</loc>
         <lastmod>2019-04-06T15:10:22.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -107,13 +107,6 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/tags/IO%E6%B5%81/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://liaocan.top/tags/java%E6%A0%B8%E5%BF%83/</loc>
         <lastmod>2019-04-06T15:10:22.434Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -122,6 +115,13 @@
 
     <url>
         <loc>https://liaocan.top/tags/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/IO%E6%B5%81/</loc>
         <lastmod>2019-04-06T15:10:22.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -151,6 +151,13 @@
     <url>
         <loc>https://liaocan.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
         <lastmod>2019-04-06T15:10:22.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/springboot/</loc>
+        <lastmod>2019-04-07T05:52:15.740Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

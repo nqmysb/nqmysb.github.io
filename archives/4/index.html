@@ -244,6 +244,41 @@
 
 <div class="post-preview">
 
+    <a href="/article/javacore/advanced/encode/java-encryption/">
+        <h2 class="post-title">
+            
+            [编码算法] Base64 编码
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Base64 编码
+算法简述
+定义
+Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。
+Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。Base64 并不是加密解密算法，尽管我们有时也听到使用 Base64 来加密解密......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/javacore/container/Queue/">
         <h2 class="post-title">
             
@@ -263,6 +298,51 @@ Queue 接口定义如下：
 BlockingQueue 接口
 BlockingQueue 接口定义如下：
 1public interface BlockingQueue&lt;E&gt; extends ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#java容器" title="java容器">java容器</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/container/List/">
+        <h2 class="post-title">
+            
+            java容器-List
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            List 概述
+List 接口定义：
+1public interface List&lt;E&gt; extends Collection&lt;E&gt;
+List 主要方法：
+
+
+
+List 常见子类：
+
+ArrayList - 动态数组。
+LinkedList - 双链表。
+
+ArrayList
+ArrayList 要点
+ArrayList 是一个数组队列，相当于动态数组。与 Java......
         </div>
     </a>
     
@@ -360,51 +440,6 @@ SortedMap 是继承于 Map 的接口。SortedMap 中的内容是排序的键值�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/container/List/">
-        <h2 class="post-title">
-            
-            java容器-List
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            List 概述
-List 接口定义：
-1public interface List&lt;E&gt; extends Collection&lt;E&gt;
-List 主要方法：
-
-
-
-List 常见子类：
-
-ArrayList - 动态数组。
-LinkedList - 双链表。
-
-ArrayList
-ArrayList 要点
-ArrayList 是一个数组队列，相当于动态数组。与 Java......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-05
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#java容器" title="java容器">java容器</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/javacore/container/Java容器概述/">
         <h2 class="post-title">
             
@@ -447,108 +482,25 @@ Java 容器框架主要分为 Collection 和 Map 两种。其中，Collection �
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/1-运行时数据区域/">
+    <a href="/article/javacore/io/JavaNIO/">
         <h2 class="post-title">
             
-            [java虚拟机] 1-运行时数据区域
+            Java NIO
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            
+            Java NIO
 
+Java NIO Tutorial
+Java NIO 浅析
+IBM: NIO 入门
 
-程序计数器
-记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空）。
-虚拟机栈
-每个 Java 方法在执行的同时会创建一个栈帧用于存储局部变量表、操作数栈、常量池引用等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在 Java 虚拟机栈中入栈和出栈的过程。
-
-
-
-可以通过 -Xss 这个虚拟机参数来指定一个程序的 Java 虚拟机栈内存大小：
-1java -......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/io/Java序列化/">
-        <h2 class="post-title">
-            
-            Java 序列化
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 序列化
-
-关键词：Serializable、Externalizable、ObjectInputStream、ObjectOutputStream
-
-1. 简介
-1.1. 定义
-序列化：序列化是将对象转换为字节流。
-反序列化：反序列化是将字节流转换为对象。
-
-
-
-1.2. 用途
-序列化的用途有：
-
-序列化可以将对象的字节序列持久化——保存在内存、文件、数据库中。
-在网络上传送对象的......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/io/Java流操作/">
-        <h2 class="post-title">
-            
-            Java 流操作
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 流操作
-
-关键词：InputStream、OutputStream、Reader、Writer
-
-1. 字符流和字节流
-JAVA IO 中的流操作分为两类：
-
-字节流主要操作字节类型数据（byte）。主要类是 InputStream（输入） 和 OutputStream（输出）。
-字符流主要操作字符类型数据，一个字符占两个字节。主要类是 Reader（输入） 和 Writer（输出......
+新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的，弥补了原来的 I/O 的不足，提供了高速的、面向块的 I/O。
+流与块
+I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的方式处理数据，而 NIO 以块的方式处理数据。
+面向流的 I/O 一次处理一个字节数......
         </div>
     </a>
     
@@ -561,39 +513,6 @@ JAVA IO 中的流操作分为两类：
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
               <a href="/tags/#IO流" title="IO流">IO流</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/jvm/2-垃圾收集/">
-        <h2 class="post-title">
-            
-            [java虚拟机] 2-垃圾收集
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            程序计数器、虚拟机栈和本地方法栈这三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后也会消失，因此不需要对这三个区域进行垃圾回收。垃圾回收主要是针对 Java 堆和方法区进行。
-判断一个对象是否可回收
-1. 引用计数算法
-给对象添加一个引用计数器，当对象增加一个引用时计数器加 1，引用失效时计数器减 1。引用计数为 0 的对象可被回收。
-两个对象出现循环引用的情况下，此时引用计数......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
             
         </div>
     
@@ -636,6 +555,92 @@ L......
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
               <a href="/tags/#IO流" title="IO流">IO流</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/jvm/3-类加载机制/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 3-类加载机制
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            类是在运行期间动态加载的。
+类的生命周期
+
+
+
+包括以下 7 个阶段：
+
+加载（Loading）
+验证（Verification）
+准备（Preparation）
+解析（Resolution）
+初始化（Initialization）
+使用（Using）
+卸载（Unloading）
+
+其中解析过程在某些情况下可以在初始化阶段之后再开始，这是为了支持 Java 的动态绑定。
+类初始化时机
+虚拟机......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/jvm/1-运行时数据区域/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 1-运行时数据区域
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+
+
+程序计数器
+记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空）。
+虚拟机栈
+每个 Java 方法在执行的同时会创建一个栈帧用于存储局部变量表、操作数栈、常量池引用等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在 Java 虚拟机栈中入栈和出栈的过程。
+
+
+
+可以通过 -Xss 这个虚拟机参数来指定一个程序的 Java 虚拟机栈内存大小：
+1java -......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
             
         </div>
     
@@ -694,6 +699,10 @@ L......
             
         
             
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            
+        
+            
         
             
             <a href="/tags/#前端" title="前端" rel="2">前端</a>
@@ -702,17 +711,19 @@ L......
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
-            
         
             
         
             
-            <a href="/tags/#java基础" title="java基础" rel="10">java基础</a>
+        
             
         
             
             <a href="/tags/#java核心技术" title="java核心技术" rel="17">java核心技术</a>
+            
+        
+            
+            <a href="/tags/#java基础" title="java基础" rel="10">java基础</a>
             
         
             
@@ -726,19 +737,15 @@ L......
             
         
             
-        
-            
-        
-            
-            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
-            
-        
-            
             <a href="/tags/#java核心" title="java核心" rel="9">java核心</a>
             
         
             
             <a href="/tags/#java多线程" title="java多线程" rel="10">java多线程</a>
+            
+        
+            
+            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
             
         
             
@@ -852,6 +859,10 @@ L......
     <ul>
       
         <li>
+          <a href="/article/springboot/springboot1/">Springboot2.0从零开始搭建脚手架(一)之整合MybatisPlus3.0+</a>
+        </li>
+      
+        <li>
           <a href="/article/jdk/jdk8new3/">JDK8的新特性（三）</a>
         </li>
       
@@ -865,10 +876,6 @@ L......
       
         <li>
           <a href="/article/jdk/jdk8new1/">JDK8的新特性（一）</a>
-        </li>
-      
-        <li>
-          <a href="/article/js/colorSelect/">香港地铁站点主题色的配色</a>
         </li>
       
     </ul>
@@ -909,7 +916,7 @@ L......
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>
