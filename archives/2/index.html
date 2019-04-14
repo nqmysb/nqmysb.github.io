@@ -244,6 +244,45 @@
 
 <div class="post-preview">
 
+    <a href="/article/pattern/23pattern/">
+        <h2 class="post-title">
+            
+            23种设计模式详解以及Java代码实现
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+设计模式是在软件开发中，经过验证的，用于解决在特定环境下、重复出现的、特定问题的解决方案。
+
+创建型
+
+创建型模式是抽象对象实例化的过程，用于帮助创建对象的实例。
+
+工厂模式
+简单工厂
+描述
+定义：提供一个创建对象实例的功能，而无须关心其具体实现。被创建实例的类型可以是接口、抽象类，也可以是具体的类。简单工厂方法的功能是选择合适的实现类并创建。本质是选择实现。简单工厂也称为静态工厂，可以把......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2017-07-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#设计模式" title="设计模式">设计模式</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/js/react1/">
         <h2 class="post-title">
             
@@ -384,26 +423,29 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
+    <a href="/article/javacore/concurrent/1-并发简介/">
         <h2 class="post-title">
             
-            [java多线程] 5-同步容器和并发容器
+            [java多线程] 1-并发简介
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            同步容器和并发容器
+            并发术语
+学习并发编程，免不了大量接触一些术语。其中，有些术语经常容易被混淆或分不清它们的差异，这里汇总一下。
+并发和并行
 
-本文内容基于 JDK1.8。
+例子
 
-同步容器
-在 Java 中，同步容器主要包括 2 类：
+你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。
+你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发。
+你吃饭吃到一半，电话来了，你一边打电话一边吃饭，这说明你支持并行。
 
-Vector、Stack、HashTable
 
-Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
-Stack 也是一个同步容器，它的方法也用 s......
+定义
+
+并发的关键......
         </div>
     </a>
     
@@ -554,73 +596,26 @@ A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/2-线程基础/">
+    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
         <h2 class="post-title">
             
-            [java多线程] 2-线程基础
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            线程简介
-什么是线程
-现代操作系统调度的最小单元是线程，也叫轻量级进程（Light Weight Process），在一个进程里可以创建多个线程，这些线程都拥有各自的计数器、堆栈和局部变量等属性，并且能够访问共享的内存变量。
-线程生命周期
+            同步容器和并发容器
 
-  
+本文内容基于 JDK1.8。
 
-java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一个时刻，线程只能处于其中的一个状态。
-以下是各状态的说明......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
+同步容器
+在 Java 中，同步容器主要包括 2 类：
 
-</div>
-<hr>
+Vector、Stack、HashTable
 
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/9-线程池/">
-        <h2 class="post-title">
-            
-            [java多线程] 9-线程池
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            线程池
-概述
-什么是线程池？
-线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
-为什么要用线程池？
-
-降低资源消耗
-
-通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
-
-
-提高响应速度
-
-当任务到达时，任务可以不需要等到线程创建就能立即执行。
-
-
-提高线程的可管理性
-
-线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
         </div>
     </a>
     
@@ -708,6 +703,8 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
         
             
         
+            
+            <a href="/tags/#springboot" title="springboot" rel="2">springboot</a>
             
         
             
@@ -851,6 +848,10 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
     <ul>
       
         <li>
+          <a href="/article/springboot/springboot2/">Springboot2.0从零开始搭建脚手架(二)-集成druid连接池和监控功能</a>
+        </li>
+      
+        <li>
           <a href="/article/springboot/springboot1/">Springboot2.0从零开始搭建脚手架(一)之整合MybatisPlus3.0+</a>
         </li>
       
@@ -864,10 +865,6 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
       
         <li>
           <a href="/article/jdk/jdk8new2/">JDK8的新特性（二）</a>
-        </li>
-      
-        <li>
-          <a href="/article/jdk/jdk8new1/">JDK8的新特性（一）</a>
         </li>
       
     </ul>
@@ -908,7 +905,7 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>

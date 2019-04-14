@@ -327,6 +327,10 @@ mapper记得加上@Mapper注解不然会报错</li>
                 <!-- Pager -->
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/article/springboot/springboot2/" data-toggle="tooltip" data-placement="top" title="Springboot2.0从零开始搭建脚手架(二)-集成druid连接池和监控功能">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
                             <a href="/article/jdk/jdk8new3/" data-toggle="tooltip" data-placement="top" title="JDK8的新特性（三）">Next Post &rarr;</a>
@@ -596,10 +600,27 @@ mapper记得加上@Mapper注解不然会报错</li>
                     // console.log($(a.currentTarget).attr("href"));
                     //跳转到指定锚点
                     // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
-                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
                 // }
+                // console.log(a,a.currentTarget,$(a.currentTarget),$(a.currentTarget)[0])
+                // a.currentTarget.scrollBy({ top: 0, left: 0, behavior: 'smooth' });
+                // a.currentTarget.scrollIntoView({behavior: 'smooth' });
+
         })  
+
+
+
 </script>
+
+
+
+    
+
+     
+  
+
+
+
 
     <!-- Footer -->
     <!-- Footer -->

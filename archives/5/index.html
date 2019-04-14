@@ -244,6 +244,46 @@
 
 <div class="post-preview">
 
+    <a href="/article/javacore/jvm/1-运行时数据区域/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 1-运行时数据区域
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+
+
+程序计数器
+记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空）。
+虚拟机栈
+每个 Java 方法在执行的同时会创建一个栈帧用于存储局部变量表、操作数栈、常量池引用等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在 Java 虚拟机栈中入栈和出栈的过程。
+
+
+
+可以通过 -Xss 这个虚拟机参数来指定一个程序的 Java 虚拟机栈内存大小：
+1java -......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/javacore/io/Java网络编程/">
         <h2 class="post-title">
             
@@ -444,64 +484,23 @@ GC 优化的两个目标：
 
 <div class="post-preview">
 
-    <a href="/article/javacore/basic/2-Java开发环境/">
+    <a href="/article/javacore/basic/3-Java基础语法/">
         <h2 class="post-title">
             
-            [java基础] Java 开发环境
+            [java基础] Java 基础语法
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
             
-:pushpin: 关键词： JAVA_HOME、CLASSPATH、Path、环境变量、IDE
+:pushpin: 关键词：
 
-下载
-进入 JDK 官方下载地址 ，根据自己的环境选择下载所需版本。
-安装
-windows 环境的 jdk 包是 exe 安装文件，启动后根据安装向导安装即可。
-Linux 环境的 jdk 包，解压到本地即可。
-环境变量
-Windows
-计算机 &gt; 属性 &gt; 高级系统设置 &gt......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-02-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java基础" title="java基础">java基础</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/basic/Java控制语句/">
-        <h2 class="post-title">
-            
-            [java基础] Java 控制语句
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 控制语句
-知识点
-
-选择语句
-if 语句
-if 语句会判断括号中的条件是否成立，如果成立则执行 if 语句中的代码块，否则跳过代码块继续执行。
-语法
-123if(布尔表达式) &#123;   //如果布尔表达式为true将执行的语句&#125;
-示例
-12345678910public class IfDemo &#123;    public static void main(......
+变量
+在 Java 语言中，所有的变量在使用前必须声明。声明变量的基本格式如下：
+1type identifier [ = value][, identifier [= value] ...] ;
+格式说明：type 为 Java 数据类型。identifier 是变量名。可以使用逗号隔开来声明多个同类型变量。
+以下列出了一些变量的声明实例。注意有些包含了初......
         </div>
     </a>
     
@@ -564,22 +563,25 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/basic/Java枚举/">
+    <a href="/article/javacore/basic/Java控制语句/">
         <h2 class="post-title">
             
-            [java基础] Java 枚举
+            [java基础] Java 控制语句
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            知识点
+            Java 控制语句
+知识点
 
-概念
-enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
-在 Java 中，被 enum 关键字修饰的类型就是枚举类型。形式如下：
-1enum Color &#123; RED, GREEN, BLUE &#125;
-如果枚举不添加任何方法，枚举值默认为从 0 开始的有序数值。以 Color 枚举类型举例，它的枚举常量依次为 RED：0，GREEN：......
+选择语句
+if 语句
+if 语句会判断括号中的条件是否成立，如果成立则执行 if 语句中的代码块，否则跳过代码块继续执行。
+语法
+123if(布尔表达式) &#123;   //如果布尔表达式为true将执行的语句&#125;
+示例
+12345678910public class IfDemo &#123;    public static void main(......
         </div>
     </a>
     
@@ -599,32 +601,21 @@ enum 的全称为 enumeration， 是 JDK 1.5 中引入的新特性。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/basic/1-Java简介/">
+    <a href="/article/javacore/basic/object/java-object-oriented/">
         <h2 class="post-title">
             
-            [java基础] Java 简介
+            [java基础] Java面向对象
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            
-关键词： JDK、JRE、JSR、JVM、Java SE、Java EE、Java ME
-
-Java 是一门面向对象编程语言。
-Java 具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点。Java 可以编写桌面应用程序、Web 应用程序、分布式系统和嵌入式系统应用程序等。
-Java 历史
-
-
-
-版本
-描述
-
-
-
-
-1991/1/1
-Sun 公司成立了 ......
+            Java 面向对象
+几乎所有 Java 教程对于 Java 的第一个定义都是：Java 是一门面向对象语言。在 Java 中，一切皆为对象。这样的话，听上去很绕，但其实并不是什么很高深的概念。
+了解面向对象之前，我们先细思一下编程以及编程语言的本质。
+抽象、封装、对象、属性、行为、类
+封装思想
+程序员希望计算机能够模拟现实世界的场景，代替人去执行计算任务。计算机不能理解现实场景的事物，需要程......
         </div>
     </a>
     
@@ -710,6 +701,8 @@ Sun 公司成立了 ......
         
             
         
+            
+            <a href="/tags/#springboot" title="springboot" rel="2">springboot</a>
             
         
             
@@ -853,6 +846,10 @@ Sun 公司成立了 ......
     <ul>
       
         <li>
+          <a href="/article/springboot/springboot2/">Springboot2.0从零开始搭建脚手架(二)-集成druid连接池和监控功能</a>
+        </li>
+      
+        <li>
           <a href="/article/springboot/springboot1/">Springboot2.0从零开始搭建脚手架(一)之整合MybatisPlus3.0+</a>
         </li>
       
@@ -866,10 +863,6 @@ Sun 公司成立了 ......
       
         <li>
           <a href="/article/jdk/jdk8new2/">JDK8的新特性（二）</a>
-        </li>
-      
-        <li>
-          <a href="/article/jdk/jdk8new1/">JDK8的新特性（一）</a>
         </li>
       
     </ul>
@@ -910,7 +903,7 @@ Sun 公司成立了 ......
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>

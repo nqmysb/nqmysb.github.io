@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="iGDu0e88zUCIa6OhhkXgxyKDioORMrt1KC_43F_VRcg" />
+    <meta name="baidu-site-verification" content="A2ImdbykAi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/meditation.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+        Springboot2.0从零开始搭建脚手架(二)-集成druid连接池和监控功能 - LiaoCan | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://liaocan.top/article/springboot/springboot2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://s2.ax1x.com/2019/03/21/A3QC4S.jpg')
+                /*post*/
+                
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#springboot" title="springboot">
+                                springboot</a>
+                            
+                        </div>
+                        <h1>
+                            Springboot2.0从零开始搭建脚手架(二)-集成druid连接池和监控功能
+                        </h1>
+                        <!-- <h2 class="subheading"></h2> -->
+                        <!--文章访问量统计-->
+                        
+                        <span id="busuanzi_container_page_pv">本文已被阅读过<span id="busuanzi_value_page_pv"></span>次</span>
+                        
+                        <!--文章访问量统计--> <span class="meta">
+                            Posted by
+                            Liao Can on
+                            2019-04-14
+                        </span>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Liao Can</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                        <li>
+                            <a href="/about/" >About</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/archive/" >Archives</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/tags/" >Tags</a>
+                        </li>
+                    
+
+
+                    <!-- 
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                     -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>springboot2.0使用 druid-spring-boot-starter 集成druid连接池和监控功能</p>
+</blockquote>
+<h2 id="添加maven依赖">添加maven依赖</h2>
+<p>在 Spring Boot 项目中加入druid-spring-boot-starter依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="jdbc配置">JDBC配置</h2>
+<p>application.properties配置文件中添加JDBC配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># JDBC配置   只有下面三个是必填项（使用内嵌数据库的话这三个也可以不用填，会使用默认配置），其他配置不是必须的</span><br><span class="line">spring.datasource.type=com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">spring.datasource.url=jdbc:oracle:thin:@//192.168.1.150:1521/orclpdb</span><br><span class="line">spring.datasource.username=LC_TEST</span><br><span class="line">spring.datasource.password=LC_TEST</span><br><span class="line"># driver-class-name 非必填可根据url推断</span><br><span class="line"># spring.datasource.driver-class-name=org.h2.Driver</span><br></pre></td></tr></table></figure>
+<h2 id="连接池配置">连接池配置</h2>
+<p>application.properties配置文件中添加连接池配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 连接池配置  Druid 数据源配置，继承spring.datasource.* 配置，相同则覆盖</span><br><span class="line">## 初始化连接池的连接数量 大小，最小，最大</span><br><span class="line">spring.datasource.druid.initial-size=2</span><br><span class="line">spring.datasource.druid.max-active=30</span><br><span class="line">spring.datasource.druid.min-idle=2</span><br><span class="line">spring.datasource.druid.max-wait=1234</span><br><span class="line"># 是否缓存preparedStatement，也就是PSCache  官方建议MySQL下建议关闭   个人建议如果想用SQL防火墙 建议打开</span><br><span class="line">spring.datasource.druid.pool-prepared-statements=true</span><br><span class="line">spring.datasource.druid.max-pool-prepared-statement-per-connection-size=5</span><br></pre></td></tr></table></figure>
+<h2 id="监控配置">监控配置</h2>
+<p>application.properties配置文件中添加监控配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 配置StatFilter </span><br><span class="line">spring.datasource.druid.filter.stat.enabled=true</span><br><span class="line"></span><br><span class="line"># 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙</span><br><span class="line">## stat是统计，wall是SQL防火墙，防SQL注入的，log4j是用来输出统计数据的</span><br><span class="line">spring.datasource.druid.filters=stat,wall,log4j</span><br><span class="line"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span><br><span class="line">spring.datasource.druid.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span><br><span class="line"></span><br><span class="line"># ！！！请勿配置timeBetweenLogStatsMillis 会定时输出日志 并导致统计的sql清零</span><br><span class="line">#spring.datasource.druid.timeBetweenLogStatsMillis=2000</span><br><span class="line"></span><br><span class="line"># 监控配置 </span><br><span class="line"></span><br><span class="line"># 是否启用StatFilter默认值false</span><br><span class="line">spring.datasource.druid.web-stat-filter.enabled= true </span><br><span class="line"># StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置</span><br><span class="line"># 是否启用StatViewServlet（监控页面）默认值为false（考虑到安全问题默认并未启动，如需启用建议设置密码或白名单以保障安全）</span><br><span class="line"></span><br><span class="line">spring.datasource.druid.stat-view-servlet.enabled= true </span><br><span class="line"># Spring监控配置，对spring内部接口调用的监控 说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置</span><br><span class="line">spring.datasource.druid.aop-patterns=com.nqmysb.scaffold.user.service.*.*</span><br></pre></td></tr></table></figure>
+<h2 id="配置servlet监控视图配置">配置Servlet（监控视图配置）</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.scaffold.servlet;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.StatViewServlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebInitParam;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * druid数据源状态监控.</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">@WebServlet</span>(urlPatterns=<span class="string">"/druid/*"</span>,</span><br><span class="line">        initParams=&#123;</span><br><span class="line">                <span class="meta">@WebInitParam</span>(name=<span class="string">"allow"</span>,value=<span class="string">"192.168.1.150"</span>),<span class="comment">// IP白名单(没有配置或者为空，则允许所有访问)</span></span><br><span class="line">                <span class="meta">@WebInitParam</span>(name=<span class="string">"deny"</span>,value=<span class="string">"127.0.0.1"</span>),<span class="comment">// IP黑名单 (存在共同时，deny优先于allow)</span></span><br><span class="line">                <span class="meta">@WebInitParam</span>(name=<span class="string">"loginUsername"</span>,value=<span class="string">"nqmysb"</span>),<span class="comment">// 用户名</span></span><br><span class="line">                <span class="meta">@WebInitParam</span>(name=<span class="string">"loginPassword"</span>,value=<span class="string">"nqmysb"</span>),<span class="comment">// 密码</span></span><br><span class="line">                <span class="meta">@WebInitParam</span>(name=<span class="string">"resetEnable"</span>,value=<span class="string">"false"</span>)<span class="comment">// 禁用HTML页面上的“Reset All”功能</span></span><br><span class="line">        &#125;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidStatViewServlet</span> <span class="keyword">extends</span> <span class="title">StatViewServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="过滤不需要监控的后缀">过滤不需要监控的后缀</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.scaffold.servlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebFilter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebInitParam;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.support.http.WebStatFilter;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * druid过滤器.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebFilter</span>(filterName = <span class="string">"druidWebStatFilter"</span>, urlPatterns = <span class="string">"/*"</span>,</span><br><span class="line">        initParams = &#123;</span><br><span class="line">                <span class="meta">@WebInitParam</span>(name = <span class="string">"exclusions"</span>, value = <span class="string">"*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"</span>)<span class="comment">//忽略资源</span></span><br><span class="line">        &#125;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidStatFilter</span> <span class="keyword">extends</span> <span class="title">WebStatFilter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="完整配置文件">完整配置文件</h2>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#服务端口</span><br><span class="line">server.port=8080</span><br><span class="line"></span><br><span class="line"># JDBC配置   只有下面三个是必填项（使用内嵌数据库的话这三个也可以不用填，会使用默认配置），其他配置不是必须的</span><br><span class="line">spring.datasource.type=com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">spring.datasource.url=jdbc:oracle:thin:@//192.168.1.150:1521/orclpdb</span><br><span class="line">spring.datasource.username=LC_TEST</span><br><span class="line">spring.datasource.password=LC_TEST</span><br><span class="line"># driver-class-name 非必填可根据url推断</span><br><span class="line"># spring.datasource.driver-class-name=org.h2.Driver</span><br><span class="line"></span><br><span class="line"># 链接池配置  Druid 数据源配置，继承spring.datasource.* 配置，相同则覆盖</span><br><span class="line">## 初始化连接池的连接数量 大小，最小，最大</span><br><span class="line">spring.datasource.druid.initial-size=2</span><br><span class="line">spring.datasource.druid.max-active=30</span><br><span class="line">spring.datasource.druid.min-idle=2</span><br><span class="line">spring.datasource.druid.max-wait=1234</span><br><span class="line"># 是否缓存preparedStatement，也就是PSCache  官方建议MySQL下建议关闭   个人建议如果想用SQL防火墙 建议打开</span><br><span class="line">spring.datasource.druid.pool-prepared-statements=true</span><br><span class="line">spring.datasource.druid.max-pool-prepared-statement-per-connection-size=5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 配置StatFilter </span><br><span class="line">spring.datasource.druid.filter.stat.enabled=true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙</span><br><span class="line">## stat是统计，wall是SQL防火墙，防SQL注入的，log4j是用来输出统计数据的</span><br><span class="line">spring.datasource.druid.filters=stat,wall,log4j</span><br><span class="line"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span><br><span class="line">spring.datasource.druid.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span><br><span class="line"># ！！！请勿配置timeBetweenLogStatsMillis 会定时输出日志 并导致统计的sql清零</span><br><span class="line">#spring.datasource.druid.timeBetweenLogStatsMillis=2000</span><br><span class="line"></span><br><span class="line"># 监控配置 </span><br><span class="line"># WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter</span><br><span class="line"># 是否启用StatFilter默认值false</span><br><span class="line">spring.datasource.druid.web-stat-filter.enabled= true </span><br><span class="line">#spring.datasource.druid.web-stat-filter.url-pattern=/*</span><br><span class="line">## 设置不统计哪些URL</span><br><span class="line">#spring.datasource.druid.web-stat-filter.exclusions=*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</span><br><span class="line">## spring.datasource.druid.web-stat-filter.session-stat-enable=</span><br><span class="line">## spring.datasource.druid.web-stat-filter.session-stat-max-count=</span><br><span class="line">## spring.datasource.druid.web-stat-filter.principal-session-name=</span><br><span class="line">## spring.datasource.druid.web-stat-filter.principal-cookie-name=</span><br><span class="line">## spring.datasource.druid.web-stat-filter.profile-enable=</span><br><span class="line"></span><br><span class="line"># StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置</span><br><span class="line"># 是否启用StatViewServlet（监控页面）默认值为false（考虑到安全问题默认并未启动，如需启用建议设置密码或白名单以保障安全）</span><br><span class="line">spring.datasource.druid.stat-view-servlet.enabled= true </span><br><span class="line">#spring.datasource.druid.stat-view-servlet.url-pattern=/druid/*</span><br><span class="line">## 禁止手动重置监控数据</span><br><span class="line">spring.datasource.druid.stat-view-servlet.reset-enable=false</span><br><span class="line">## 设置监控页面的登录名和密码</span><br><span class="line">#spring.datasource.druid.stat-view-servlet.login-username=nqmysb</span><br><span class="line">#spring.datasource.druid.stat-view-servlet.login-password=nqmysb</span><br><span class="line"># 白名单</span><br><span class="line">#spring.datasource.druid.stat-view-servlet.allow=</span><br><span class="line"># 黑名单（优先）</span><br><span class="line">#spring.datasource.druid.stat-view-servlet.deny=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Spring监控配置，对spring内部接口调用的监控 说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置</span><br><span class="line">spring.datasource.druid.aop-patterns=com.nqmysb.scaffold.user.service.*.*</span><br></pre></td></tr></table></figure>
+<h2 id="添加servlet扫描">添加Servlet扫描</h2>
+<p>在入口类中添加Servlet扫描注解，不添加无法访问druid监控页面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.scaffold;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.mybatis.spring.annotation.MapperScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletComponentScan;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.nqmysb.scaffold.mapper.*.*"</span>)</span><br><span class="line"><span class="meta">@ServletComponentScan</span>  <span class="comment">//扫描servlet</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootScaffoldApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(SpringbootScaffoldApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="监控数据接口测试">监控数据接口测试</h2>
+<p>编写获取监控数据接口druidStat</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.scaffold.user.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.stat.DruidStatManagerFacade;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.conditions.Wrapper;</span><br><span class="line"><span class="keyword">import</span> com.nqmysb.scaffold.user.entity.Userinfo;</span><br><span class="line"><span class="keyword">import</span> com.nqmysb.scaffold.user.service.impl.UserinfoServiceImpl;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> *  前端控制器</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2019-04-14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserinfoController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	  <span class="meta">@Autowired</span></span><br><span class="line">	  UserinfoServiceImpl userinfoServiceImpl;</span><br><span class="line"></span><br><span class="line">	    <span class="meta">@RequestMapping</span>(<span class="string">"/getUsers"</span>)</span><br><span class="line">	    <span class="meta">@ResponseBody</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> ArrayList&lt;Userinfo&gt; <span class="title">getUsers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    	Wrapper&lt;Userinfo&gt; queryWrapper = <span class="keyword">null</span>;</span><br><span class="line">	    	ArrayList&lt;Userinfo&gt; data = (ArrayList&lt;Userinfo&gt;) userinfoServiceImpl.list(queryWrapper);</span><br><span class="line">	        <span class="keyword">return</span> data;</span><br><span class="line">	    &#125;</span><br><span class="line">	    </span><br><span class="line">	    <span class="meta">@GetMapping</span>(<span class="string">"/druid/stat"</span>)</span><br><span class="line">	    <span class="meta">@ResponseBody</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> Object <span class="title">druidStat</span><span class="params">()</span></span>&#123;</span><br><span class="line">	        <span class="comment">// DruidStatManagerFacade#getDataSourceStatDataList 该方法可以获取所有数据源的监控数据，除此之外 DruidStatManagerFacade 还提供了一些其他方法，你可以按需选择使用。</span></span><br><span class="line">	        <span class="keyword">return</span> DruidStatManagerFacade.getInstance().getDataSourceStatDataList();</span><br><span class="line">	    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>启动项目 访问 <a href="http://localhost:8080/user/druid/stat" target="_blank" rel="noopener">http://localhost:8080/user/druid/stat</a> 结果如下：<br>
+<img src="https://img-blog.csdnimg.cn/20190414161002137.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25xbXlzYmQ=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+可以看到druid监控元数据信息</p>
+<h2 id="访问druid内置监控页面">访问druid内置监控页面</h2>
+<p>druid给我们提供了内置的监控web页面，项目启动之后访问：<a href="http://localhost:8080/druid/index.html" target="_blank" rel="noopener">http://localhost:8080/druid/index.html</a> 即可 如下：<br>
+<img src="https://img-blog.csdnimg.cn/20190414161425202.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25xbXlzYmQ=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="druid的监控内容">druid的监控内容</h2>
+<p>druid的监控内容主要有8大块,在web的监控页面中可以看到：</p>
+<ol>
+<li>数据源</li>
+<li>SQL监控：对执行的数据库SQL语句进行记录，并记录执行时间、事务次数等</li>
+<li>SQL防火墙： 对SQL进行预编译，并统计该条SQL的数据指标</li>
+<li>Web应用： 对发布的服务进行监控，统计访问次数，并发数等全局信息</li>
+<li>URI监控：对访问的URI进行统计，记录次数，并发数，执行jdbc数等</li>
+<li>Session监控：对用户请求后保存在服务器端的session进行记录，识别出每个用户访问了多少次数据库等</li>
+<li>Spring监控：（按需配置）利用aop对各个内容接口的执行时间、jdbc数进行记录</li>
+<li>json API : 监控数据的json api介绍</li>
+</ol>
+<h2 id="监控白黑名单">监控白黑名单</h2>
+<p>druid虽然提供了内置的监控web页面，但是存在安全隐患，容易将数据库信息暴露出来，所以可以设置访问的白黑名单<br>
+@WebInitParam(name=“allow”,value=“192.168.1.150”),// IP白名单(没有配置或者为空，则允许所有访问)<br>
+@WebInitParam(name=“deny”,value=“127.0.0.1”),// IP黑名单 (存在共同时，deny优先于allow)</p>
+<p>如上，当我们访问 <a href="http://127.0.0.1:8080/druid/api.html" target="_blank" rel="noopener">http://127.0.0.1:8080/druid/api.html</a> 时会显示没有权限<br>
+<img src="https://img-blog.csdnimg.cn/20190414162713432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25xbXlzYmQ=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="数据库密码加密">数据库密码加密</h2>
+<p>druid支持对数据库链接密码进行加密，在生产中为了安全我们可以进行加密数据库密码，配置如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.url=jdbc:oracle:thin:@//192.168.1.150:1521/orclpdb</span><br><span class="line">spring.datasource.username=root</span><br><span class="line"># 生成的加密后的密码（原密码 123456）</span><br><span class="line">spring.datasource.password=WVMjPhfXQrIsWRo0/RCqAVvYtTU9WNVToKJohb8AlUmHwnV6vwFL+FM2CNFDMJwGHW1iCmyaUlF+sgvFdogqEA==</span><br><span class="line"># 生成的公钥</span><br><span class="line">public-key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIiwHpFrDijV+GzwRTzWJk8D3j3jFfhsMFJ/7k1NTvBuLgL+TdIHgaMNOIEjHpXzuvX38J3FtOK8hLrySncVGOMCAwEAAQ==</span><br><span class="line"># 配置 connection-properties，启用加密，配置公钥。</span><br><span class="line">spring.datasource.druid.connection-properties=config.decrypt=true;config.decrypt.key=$&#123;public-key&#125;</span><br><span class="line"># 启用ConfigFilter</span><br><span class="line">spring.datasource.druid.filter.config.enabled=true</span><br></pre></td></tr></table></figure>
+<p>生成密码方式可以参考druid官方文档</p>
+<h2 id="测试druid监控功能">测试druid监控功能</h2>
+<ol>
+<li>访问我们写的getUsers 接口  <a href="http://127.0.0.1:8080/user/getUsers" target="_blank" rel="noopener">http://127.0.0.1:8080/user/getUsers</a><br>
+<img src="https://img-blog.csdnimg.cn/20190414163439350.png" alt="在这里插入图片描述"><br>
+然后访问druid监控页面<br>
+<img src="https://img-blog.csdnimg.cn/20190414163615333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25xbXlzYmQ=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+可以看到sql监控中有一个sql执行记录 已经执行过2次</li>
+<li>url监控页面中可以看到访问过的url列表<br>
+<img src="https://img-blog.csdnimg.cn/20190414163824968.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25xbXlzYmQ=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>spring监控页面中可以看到访问过的接口<br>
+<img src="https://img-blog.csdnimg.cn/20190414163942660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25xbXlzYmQ=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+如图我们配置的service层aop监控，我们也可以监控controller ，dao层。</li>
+</ol>
+<h2 id="值得提的问题">值得提的问题</h2>
+<p>我发现不配置Servlet（监控视图配置）然后开启servlet扫描，而是仅仅在主配置文件中配置StatViewServlet，通过 <a href="http://localhost:8080/druid" target="_blank" rel="noopener">http://localhost:8080/druid</a>  无法访问到druid内置的监控页面</p>
+<p>以上springboot2.0集成druid连接池和监控功能完毕！</p>
+
+                
+
+                <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/springboot/springboot1/" data-toggle="tooltip" data-placement="top" title="Springboot2.0从零开始搭建脚手架(一)之整合MybatisPlus3.0+">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay_url.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/wechatpay_url.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+                <br>
+
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>   
+                
+                <!-- require APlayer -->
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                <div class="aplayer"
+                    data-id="2576984498"
+                    data-server="tecent"
+                    data-type="playlist"
+                    data-fixed="true" 
+                    >
+                </div>
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC80MTg2NC8xODQxMA=="></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#添加maven依赖"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x6DFB;&#x52A0;maven&#x4F9D;&#x8D56;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jdbc配置"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">JDBC&#x914D;&#x7F6E;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#连接池配置"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x8FDE;&#x63A5;&#x6C60;&#x914D;&#x7F6E;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#监控配置"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">&#x76D1;&#x63A7;&#x914D;&#x7F6E;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#配置servlet监控视图配置"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">&#x914D;&#x7F6E;Servlet&#xFF08;&#x76D1;&#x63A7;&#x89C6;&#x56FE;&#x914D;&#x7F6E;&#xFF09;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#过滤不需要监控的后缀"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">&#x8FC7;&#x6EE4;&#x4E0D;&#x9700;&#x8981;&#x76D1;&#x63A7;&#x7684;&#x540E;&#x7F00;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#完整配置文件"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">&#x5B8C;&#x6574;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#添加servlet扫描"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">&#x6DFB;&#x52A0;Servlet&#x626B;&#x63CF;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#监控数据接口测试"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">&#x76D1;&#x63A7;&#x6570;&#x636E;&#x63A5;&#x53E3;&#x6D4B;&#x8BD5;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#访问druid内置监控页面"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">&#x8BBF;&#x95EE;druid&#x5185;&#x7F6E;&#x76D1;&#x63A7;&#x9875;&#x9762;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#druid的监控内容"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">druid&#x7684;&#x76D1;&#x63A7;&#x5185;&#x5BB9;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#监控白黑名单"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">&#x76D1;&#x63A7;&#x767D;&#x9ED1;&#x540D;&#x5355;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据库密码加密"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x5E93;&#x5BC6;&#x7801;&#x52A0;&#x5BC6;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#测试druid监控功能"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">&#x6D4B;&#x8BD5;druid&#x76D1;&#x63A7;&#x529F;&#x80FD;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#值得提的问题"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">&#x503C;&#x5F97;&#x63D0;&#x7684;&#x95EE;&#x9898;</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#springboot" title="springboot">springboot</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
+                    
+                        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
+                    
+                        <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
+                    
+                        <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
+                    
+                        <li><a href="http://www.ityouknow.com" target="_blank">纯洁的微笑</a></li>
+                    
+                        <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
+                    
+                        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+                    
+                        <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
+                    
+                        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
+                    
+                        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+    <!-- 来必力City版公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    <!-- 来必力City版 公共JS代码 end -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+<!-- 添加自动推送链接 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- 复制添加版权申明-->
+<script>
+    /**/
+    function setClipboardText(event){
+        event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        var node = document.createElement('div');
+        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
+        var htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />著作权归作者所有。<br />'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+            + '作者：liaocan <br />链接：'
+            + location.href
+            + '<br />来源：liaocan.top<br /><br />'
+            + '</div>';
+        var textData = window.getSelection().getRangeAt(0)
+            + '\n\n著作权归作者所有。\n'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+            + '作者：liaocan\n'
+            + '链接：'
+            + location.href
+            + '来源：liaocan.top\n\n';
+        if(event.clipboardData){
+            event.clipboardData.setData("text/html", htmlData);
+            //setData(剪贴板格式, 数据) 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+            event.clipboardData.setData("text/plain",textData);
+        }
+        else if(window.clipboardData){ //window.clipboardData的作用是在页面上将需要的东西复制到剪贴板上，提供了对于预定义的剪贴板格式的访问，以便在编辑操作中使用。
+            return window.clipboardData.setData("text", textData);
+        }
+    };
+ 
+    document.addEventListener('copy',function(e){
+        setClipboardText(e);
+    });
+</script>
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+                // console.log(a,a.currentTarget,$(a.currentTarget),$(a.currentTarget)[0])
+                // a.currentTarget.scrollBy({ top: 0, left: 0, behavior: 'smooth' });
+                // a.currentTarget.scrollIntoView({behavior: 'smooth' });
+
+        })  
+
+
+
+</script>
+
+
+
+    
+
+     
+  
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/nqmysb" title="github">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://blog.csdn.net/nqmysbd" title="CSDN">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-csdn fa-stack-1x fa-inverse">C</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://yq.aliyun.com/u/nqmysb" title="云栖社区">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-alyun fa-stack-1x fa-inverse">云</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://gitee.com/liaocwang" title="gitee">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-git fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="mailto:593013537@qq.com" title="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Liao Can 2019 
+                    <br>
+                    Theme by <a target="_blank" href="http://www.huweihuang.com">胡伟煌</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://liaocan.top">Liaocan</a> 
+                     | 
+                     <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                    <br />
+                    <!--总访问量统计-->
+                    
+                        <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
+                            总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                        <div style="display:none" >本站访客数<span  id="busuanzi_value_site_uv"></span>人次</div>
+                    
+                    <!--总访问量统计-->
+                      
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://liaocan.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-132197826-1';
+    var _gaDomain = 'liaocan.top';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '6f0414ec28cbdc196e93beaa4472a18d';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://liaocan.top/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
