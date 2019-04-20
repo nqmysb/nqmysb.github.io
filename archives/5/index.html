@@ -244,6 +244,46 @@
 
 <div class="post-preview">
 
+    <a href="/article/javacore/jvm/4-JVM调优/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 4-JVM 调优
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            JVM 调优概述
+性能定义
+
+吞吐量 - 指不考虑 GC 引起的停顿时间或内存消耗，垃圾收集器能支撑应用达到的最高性能指标。
+延迟 - 其度量标准是缩短由于垃圾啊收集引起的停顿时间或者完全消除因垃圾收集所引起的停顿，避免应用运行时发生抖动。
+内存占用 - 垃圾收集器流畅运行所需要的内存数量。
+
+调优原则
+GC 优化的两个目标：
+
+将进入老年代的对象数量降到最低
+减少 Full GC 的执行时......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/javacore/jvm/1-运行时数据区域/">
         <h2 class="post-title">
             
@@ -284,29 +324,27 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/Java网络编程/">
+    <a href="/article/javacore/io/Java常用IO类/">
         <h2 class="post-title">
             
-            Java 网络编程
+            Java 常用IO类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 网络编程
+            Java 常用 IO 类
 
-关键词：URL、InetAddress
+关键词：File、RandomAccessFile、System、Scanner
 
-Java 中的网络支持：
-
-InetAddress：用于表示网络上的硬件资源，即 IP 地址；
-URL：统一资源定位符；
-Sockets：使用 TCP 协议实现网络通信；
-Datagram：使用 UDP 协议实现网络通信。
-
-InetAddress
-没有公有的构造函数，只能通过静态方法来创建实例。
-12InetAddress.g......
+1. File
+File 类是 java.io 包中唯一对文件本身进行操作的类。它可以对文件、目录进行增删查操作。
+常用方法
+createNewFille
+可以使用 createNewFille() 方法创建一个新文件。
+注：
+Windows 中使用反斜杠表示目录的分隔符 \。
+L......
         </div>
     </a>
     
@@ -318,7 +356,53 @@ InetAddress
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
-              <a href="/tags/#网络编程" title="网络编程">网络编程</a>
+              <a href="/tags/#IO流" title="IO流">IO流</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/jvm/3-类加载机制/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 3-类加载机制
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            类是在运行期间动态加载的。
+类的生命周期
+
+
+
+包括以下 7 个阶段：
+
+加载（Loading）
+验证（Verification）
+准备（Preparation）
+解析（Resolution）
+初始化（Initialization）
+使用（Using）
+卸载（Unloading）
+
+其中解析过程在某些情况下可以在初始化阶段之后再开始，这是为了支持 Java 的动态绑定。
+类初始化时机
+虚拟机......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
             
         </div>
     
@@ -411,46 +495,6 @@ JAVA IO 中的流操作分为两类：
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/4-JVM调优/">
-        <h2 class="post-title">
-            
-            [java虚拟机] 4-JVM 调优
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            JVM 调优概述
-性能定义
-
-吞吐量 - 指不考虑 GC 引起的停顿时间或内存消耗，垃圾收集器能支撑应用达到的最高性能指标。
-延迟 - 其度量标准是缩短由于垃圾啊收集引起的停顿时间或者完全消除因垃圾收集所引起的停顿，避免应用运行时发生抖动。
-内存占用 - 垃圾收集器流畅运行所需要的内存数量。
-
-调优原则
-GC 优化的两个目标：
-
-将进入老年代的对象数量降到最低
-减少 Full GC 的执行时......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/javacore/jvm/2-垃圾收集/">
         <h2 class="post-title">
             
@@ -484,23 +528,66 @@ GC 优化的两个目标：
 
 <div class="post-preview">
 
-    <a href="/article/javacore/basic/3-Java基础语法/">
+    <a href="/article/javacore/io/JavaNIO/">
         <h2 class="post-title">
             
-            [java基础] Java 基础语法
+            Java NIO
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Java NIO
+
+Java NIO Tutorial
+Java NIO 浅析
+IBM: NIO 入门
+
+新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的，弥补了原来的 I/O 的不足，提供了高速的、面向块的 I/O。
+流与块
+I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的方式处理数据，而 NIO 以块的方式处理数据。
+面向流的 I/O 一次处理一个字节数......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#IO流" title="IO流">IO流</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/basic/2-Java开发环境/">
+        <h2 class="post-title">
+            
+            [java基础] Java 开发环境
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
             
-:pushpin: 关键词：
+:pushpin: 关键词： JAVA_HOME、CLASSPATH、Path、环境变量、IDE
 
-变量
-在 Java 语言中，所有的变量在使用前必须声明。声明变量的基本格式如下：
-1type identifier [ = value][, identifier [= value] ...] ;
-格式说明：type 为 Java 数据类型。identifier 是变量名。可以使用逗号隔开来声明多个同类型变量。
-以下列出了一些变量的声明实例。注意有些包含了初......
+下载
+进入 JDK 官方下载地址 ，根据自己的环境选择下载所需版本。
+安装
+windows 环境的 jdk 包是 exe 安装文件，启动后根据安装向导安装即可。
+Linux 环境的 jdk 包，解压到本地即可。
+环境变量
+Windows
+计算机 &gt; 属性 &gt; 高级系统设置 &gt......
         </div>
     </a>
     
@@ -544,78 +631,6 @@ GC 优化的两个目标：
 算术操作符
 算术操作符用在数学表达式中，它们的作用和在数学中的作用一样。下表列出了所有的算术操作符。
 表格中的示例假设整数变量 A 的值为 10，变量 B......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-02-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java基础" title="java基础">java基础</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/basic/Java控制语句/">
-        <h2 class="post-title">
-            
-            [java基础] Java 控制语句
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 控制语句
-知识点
-
-选择语句
-if 语句
-if 语句会判断括号中的条件是否成立，如果成立则执行 if 语句中的代码块，否则跳过代码块继续执行。
-语法
-123if(布尔表达式) &#123;   //如果布尔表达式为true将执行的语句&#125;
-示例
-12345678910public class IfDemo &#123;    public static void main(......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-02-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java基础" title="java基础">java基础</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/basic/object/java-object-oriented/">
-        <h2 class="post-title">
-            
-            [java基础] Java面向对象
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 面向对象
-几乎所有 Java 教程对于 Java 的第一个定义都是：Java 是一门面向对象语言。在 Java 中，一切皆为对象。这样的话，听上去很绕，但其实并不是什么很高深的概念。
-了解面向对象之前，我们先细思一下编程以及编程语言的本质。
-抽象、封装、对象、属性、行为、类
-封装思想
-程序员希望计算机能够模拟现实世界的场景，代替人去执行计算任务。计算机不能理解现实场景的事物，需要程......
         </div>
     </a>
     
@@ -690,19 +705,19 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
             
         
             
-            <a href="/tags/#前端" title="前端" rel="2">前端</a>
+            <a href="/tags/#前端" title="前端" rel="3">前端</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
             
         
             
         
             
         
-            
-        
-            
-        
-            
-            <a href="/tags/#springboot" title="springboot" rel="2">springboot</a>
             
         
             
@@ -846,6 +861,14 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
     <ul>
       
         <li>
+          <a href="/article/springboot/springboot3/">Springboot2.0从零开始搭建脚手架(三)-集成swagger2+lombok+fastjosn+MP分页</a>
+        </li>
+      
+        <li>
+          <a href="/article/js/knowledge_graph/">基于D3.js绘图组件的后端架构师技术栈图谱树</a>
+        </li>
+      
+        <li>
           <a href="/article/springboot/springboot2/">Springboot2.0从零开始搭建脚手架(二)-集成druid连接池和监控功能</a>
         </li>
       
@@ -855,14 +878,6 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
       
         <li>
           <a href="/article/jdk/jdk8new3/">JDK8的新特性（三）</a>
-        </li>
-      
-        <li>
-          <a href="/article/git/gh-pages/">巧用gh-pages分支发布自己的静态项目</a>
-        </li>
-      
-        <li>
-          <a href="/article/jdk/jdk8new2/">JDK8的新特性（二）</a>
         </li>
       
     </ul>
@@ -903,7 +918,7 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>

@@ -7,8 +7,24 @@
     </url>
 
     <url>
+        <loc>https://liaocan.top/article/springboot/springboot3/</loc>
+        <lastmod>2019-04-20T06:55:55.298Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://liaocan.top/article/springboot/springboot2/</loc>
-        <lastmod>2019-04-14T08:58:35.568Z</lastmod>
+        <lastmod>2019-04-20T06:18:06.691Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/article/js/knowledge_graph/</loc>
+        <lastmod>2019-04-20T06:18:06.690Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -303,7 +319,7 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/article/javacore/basic/3-Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</loc>
+        <loc>https://liaocan.top/article/javacore/basic/2-Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
         <lastmod>2019-04-06T15:10:22.418Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -311,7 +327,7 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/article/javacore/basic/2-Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
+        <loc>https://liaocan.top/article/javacore/basic/3-Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</loc>
         <lastmod>2019-04-06T15:10:22.418Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -359,7 +375,7 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/article/javacore/basic/Java%E6%93%8D%E4%BD%9C%E7%AC%A6/</loc>
+        <loc>https://liaocan.top/article/javacore/basic/Java%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</loc>
         <lastmod>2019-04-06T15:10:22.418Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -367,7 +383,7 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/article/javacore/basic/Java%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</loc>
+        <loc>https://liaocan.top/article/javacore/basic/Java%E6%93%8D%E4%BD%9C%E7%AC%A6/</loc>
         <lastmod>2019-04-06T15:10:22.418Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -423,7 +439,7 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/article/javacore/basic/object/java-object-oriented/</loc>
+        <loc>https://liaocan.top/article/javacore/advanced/encode/java-message-digest/</loc>
         <lastmod>2019-04-06T15:10:22.418Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -431,7 +447,7 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/article/javacore/advanced/encode/java-message-digest/</loc>
+        <loc>https://liaocan.top/article/javacore/basic/object/java-object-oriented/</loc>
         <lastmod>2019-04-06T15:10:22.418Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

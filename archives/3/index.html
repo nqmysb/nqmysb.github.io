@@ -244,34 +244,26 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/9-线程池/">
+    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
         <h2 class="post-title">
             
-            [java多线程] 9-线程池
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            线程池
-概述
-什么是线程池？
-线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
-为什么要用线程池？
+            同步容器和并发容器
 
-降低资源消耗
+本文内容基于 JDK1.8。
 
-通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
+同步容器
+在 Java 中，同步容器主要包括 2 类：
 
+Vector、Stack、HashTable
 
-提高响应速度
-
-当任务到达时，任务可以不需要等到线程创建就能立即执行。
-
-
-提高线程的可管理性
-
-线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
         </div>
     </a>
     
@@ -293,22 +285,29 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/4-内存模型/">
+    <a href="/article/javacore/concurrent/1-并发简介/">
         <h2 class="post-title">
             
-            [java多线程] 4-内存模型
+            [java多线程] 1-并发简介
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            内存模型
+            并发术语
+学习并发编程，免不了大量接触一些术语。其中，有些术语经常容易被混淆或分不清它们的差异，这里汇总一下。
+并发和并行
 
-本文内容基于 JDK1.8。
+例子
 
-内部原理
-JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
-JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
+你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。
+你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发。
+你吃饭吃到一半，电话来了，你一边打电话一边吃饭，这说明你支持并行。
+
+
+定义
+
+并发的关键......
         </div>
     </a>
     
@@ -450,33 +449,38 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java反射和动态代理/">
+    <a href="/article/javacore/concurrent/6-锁/">
         <h2 class="post-title">
             
-            [java核心技术] Java反射和动态代理
+            [java多线程] 6-锁
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            反射
-反射简介
-什么是反射
-反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
-简而言之：通过反射，我们可以在运行时获得程序或程序集中每一个类的成员和方法。
-反射的主要用途
+            锁
 
-开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
+本文内容基于 JDK1.8。
+
+概述
+概念
+公平锁/非公平锁
+公平锁是指多个线程按照申请锁的顺序来获取锁。
+非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
+对于 Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。
+对于......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Liao Can on
-            2015-05-06
+            2015-06-06
         </p>
         <div class="tags">
             
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
         </div>
     
@@ -486,19 +490,58 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java注解/">
+    <a href="/article/javacore/concurrent/4-内存模型/">
         <h2 class="post-title">
             
-            [java核心技术] Java注解
+            [java多线程] 4-内存模型
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            什么是注解（Annotation）
-Annotation（注解）就是 Java 提供了一种元程序中的元素关联任何信息和着任何元数据（metadata）的途径和方法。
-java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获取指定程序元素的注解对象，然后通过注解对象来获取注解里面的元数据。
-注解是 Java 5 及以后版本引入的。它可以用于创建文档，跟踪......
+            内存模型
+
+本文内容基于 JDK1.8。
+
+内部原理
+JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
+JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-06-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/Java本地化/">
+        <h2 class="post-title">
+            
+            [java核心技术] Java本地化
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            背景知识
+通讯的发达，使得世界各地交流越来越紧密。许多的软件产品也要面向世界上不同国家的用户。其中，语言障碍显然是产品在不同语种用户中进行推广的一个重要问题。
+本文围绕本地化这一主题，先介绍国际标准的语言编码，然后讲解在 Java 应用中如何去实现本地化。
+语言编码、国家/地区编码
+做 web 开发的朋友可能多多少少接触过类似 zh-cn, en-us 这样的编码字样。
+这些编码是用来表示指......
         </div>
     </a>
     
@@ -583,43 +626,6 @@ JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/javacore/advanced/Java正则/">
-        <h2 class="post-title">
-            
-            [java核心技术] Java正则
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            导读
-正则表达式是什么？有什么用？
-正则表达式(Regular Expression)是一种文本规则，可以用来校验、查找、替换与规则匹配的文本。
-又爱又恨的正则
-正则表达式是一个强大的文本匹配工具，但是它的规则实在很繁琐，而且理解起来也颇为蛋疼，容易让人望而生畏。
-如何学习正则
-刚接触正则时，我看了一堆正则的语义说明，但是仍然不明所以。后来，我多接触一些正则的应用实例，渐渐有了感觉，再结合语......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#regex" title="regex">regex</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -677,19 +683,19 @@ JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码
             
         
             
-            <a href="/tags/#前端" title="前端" rel="2">前端</a>
+            <a href="/tags/#前端" title="前端" rel="3">前端</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
             
         
             
         
             
         
-            
-        
-            
-        
-            
-            <a href="/tags/#springboot" title="springboot" rel="2">springboot</a>
             
         
             
@@ -833,6 +839,14 @@ JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码
     <ul>
       
         <li>
+          <a href="/article/springboot/springboot3/">Springboot2.0从零开始搭建脚手架(三)-集成swagger2+lombok+fastjosn+MP分页</a>
+        </li>
+      
+        <li>
+          <a href="/article/js/knowledge_graph/">基于D3.js绘图组件的后端架构师技术栈图谱树</a>
+        </li>
+      
+        <li>
           <a href="/article/springboot/springboot2/">Springboot2.0从零开始搭建脚手架(二)-集成druid连接池和监控功能</a>
         </li>
       
@@ -842,14 +856,6 @@ JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码
       
         <li>
           <a href="/article/jdk/jdk8new3/">JDK8的新特性（三）</a>
-        </li>
-      
-        <li>
-          <a href="/article/git/gh-pages/">巧用gh-pages分支发布自己的静态项目</a>
-        </li>
-      
-        <li>
-          <a href="/article/jdk/jdk8new2/">JDK8的新特性（二）</a>
         </li>
       
     </ul>
@@ -890,7 +896,7 @@ JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>
