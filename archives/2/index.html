@@ -167,13 +167,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -182,6 +175,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -509,26 +509,29 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
+    <a href="/article/javacore/concurrent/1-并发简介/">
         <h2 class="post-title">
             
-            [java多线程] 5-同步容器和并发容器
+            [java多线程] 1-并发简介
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            同步容器和并发容器
+            并发术语
+学习并发编程，免不了大量接触一些术语。其中，有些术语经常容易被混淆或分不清它们的差异，这里汇总一下。
+并发和并行
 
-本文内容基于 JDK1.8。
+例子
 
-同步容器
-在 Java 中，同步容器主要包括 2 类：
+你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。
+你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发。
+你吃饭吃到一半，电话来了，你一边打电话一边吃饭，这说明你支持并行。
 
-Vector、Stack、HashTable
 
-Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
-Stack 也是一个同步容器，它的方法也用 s......
+定义
+
+并发的关键......
         </div>
     </a>
     
@@ -591,34 +594,24 @@ Stack 也是一个同步容器，它的方法也用 s......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/Java并发面试题集/">
+    <a href="/article/javacore/concurrent/3-并发机制的底层实现/">
         <h2 class="post-title">
             
-            [java多线程] Java 并发面试题总结
+            [java多线程] 3-并发机制的底层实现
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 并发面试题总结
-1. 并发简介
-1.1. 什么是进程？什么是线程？进程和线程的区别？
+            并发机制的底层实现
 
-什么是进程
+本文内容基于 JDK1.8。
 
-简言之，进程可视为一个正在运行的程序。
-进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动。进程是操作系统进行资源分配的基本单位。
+concurrent 包的实现
+由于 Java 的 CAS 同时具有 volatile 读和 volatile 写的内存语义，因此 Java 线程之间的通信现在有了下面四种方式：
 
-
-什么是线程
-
-线程是操作系统进行调度的基本单位。
-
-
-进程 vs. 线程
-
-一个程序至少有一个进程，一个进程至少有一个线程。
-线程比进程......
+A 线程写 volatile 变量，随后 B 线程读这个 volatile 变量。
+A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
         </div>
     </a>
     
@@ -628,9 +621,9 @@ Stack 也是一个同步容器，它的方法也用 s......
         </p>
         <div class="tags">
             
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+              <a href="/tags/#java核心" title="java核心">java核心</a>
             
-              <a href="/tags/#面试题" title="面试题">面试题</a>
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
         </div>
     
@@ -683,11 +676,11 @@ Stack 也是一个同步容器，它的方法也用 s......
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#git" title="git" rel="1">git</a>
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
+            <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
