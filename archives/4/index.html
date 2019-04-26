@@ -167,6 +167,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -175,13 +182,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -244,19 +244,23 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/encode/java-message-digest/">
+    <a href="/article/javacore/advanced/Java反射和动态代理/">
         <h2 class="post-title">
             
-            [编码算法] 消息摘要算法
+            [java核心技术] Java反射和动态代理
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            消息摘要
-算法简述
-定义
-它是一个唯一对应一个消息或文本的固定长度的值，它由一个单向 Hash 加密函数对消息进行作用而产生。如果消息在途中改变了，则接收者通过对收到消息的新产生的摘要与原摘要比较，就可知道消息是否被改变了。因此消息摘要保证了消息的完整性。消息摘要采用单向 Hash  函数将需加密的明文&quot;摘要&quot;成一串密文，这一串密文亦称为数字指纹(Finger Print......
+            反射
+反射简介
+什么是反射
+反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
+简而言之：通过反射，我们可以在运行时获得程序或程序集中每一个类的成员和方法。
+反射的主要用途
+
+开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
         </div>
     </a>
     
@@ -267,76 +271,6 @@
         <div class="tags">
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/advanced/Java泛型/">
-        <h2 class="post-title">
-            
-            [java核心技术] Java泛型
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            泛型简介
-一般的类和方法，只能使用具体的类型：要么是基本类型，要么是自定义的类。如果要编写可以应用于多种类型的代码，这种刻板的限制对代码的束缚就会很大。
-JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码可以应用于多种类型。泛型的意思是：适用于各种各样的类型。
-泛型是实现容器类的基石。泛型的主要作用之一就是用来指定容器要持有什么类型的对象，而且由编译器来保证类型的正确性。
-基本类型......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/advanced/encode/java-encryption/">
-        <h2 class="post-title">
-            
-            [编码算法] Base64 编码
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Base64 编码
-算法简述
-定义
-Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。
-Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。Base64 并不是加密解密算法，尽管我们有时也听到使用 Base64 来加密解密......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
             
         </div>
     
@@ -361,6 +295,75 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
 语言编码、国家/地区编码
 做 web 开发的朋友可能多多少少接触过类似 zh-cn, en-us 这样的编码字样。
 这些编码是用来表示指......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/Java正则/">
+        <h2 class="post-title">
+            
+            [java核心技术] Java正则
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            导读
+正则表达式是什么？有什么用？
+正则表达式(Regular Expression)是一种文本规则，可以用来校验、查找、替换与规则匹配的文本。
+又爱又恨的正则
+正则表达式是一个强大的文本匹配工具，但是它的规则实在很繁琐，而且理解起来也颇为蛋疼，容易让人望而生畏。
+如何学习正则
+刚接触正则时，我看了一堆正则的语义说明，但是仍然不明所以。后来，我多接触一些正则的应用实例，渐渐有了感觉，再结合语......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#regex" title="regex">regex</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/Java注解/">
+        <h2 class="post-title">
+            
+            [java核心技术] Java注解
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            什么是注解（Annotation）
+Annotation（注解）就是 Java 提供了一种元程序中的元素关联任何信息和着任何元数据（metadata）的途径和方法。
+java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获取指定程序元素的注解对象，然后通过注解对象来获取注解里面的元数据。
+注解是 Java 5 及以后版本引入的。它可以用于创建文档，跟踪......
         </div>
     </a>
     
@@ -666,15 +669,11 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
-            
-        
-            
             <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
@@ -687,6 +686,10 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
         
             
             <a href="/tags/#React" title="React" rel="1">React</a>
+            
+        
+            
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
@@ -924,7 +927,13 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
     </div>
 </div>
 
-<script type="text/javascript" src="/js/tagsCloud.js"></script>
+<!-- <script type="text/javascript" src="/js/tagsCloud.js"></script> -->
+
+
+
+<!-- <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+</script> -->
 
 <style type="text/css">
     #tagscloud {
@@ -951,6 +960,7 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
         padding: 1px 5px;
         display: inline-block;
         border-radius: 3px;
+        white-space:nowrap;
     }
 </style>
 
@@ -1165,7 +1175,13 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
 
 
 
+<script type="text/javascript">
 
+    if(document.getElementById("tagscloud")) {
+        //按需加载
+        document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+    }
+</script>
 
 
 	<a id="rocket" href="#top" class=""></a>

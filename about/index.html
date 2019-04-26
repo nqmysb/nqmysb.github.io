@@ -167,6 +167,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -175,13 +182,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -354,15 +354,11 @@
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
-            
-        
-            
             <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
@@ -375,6 +371,10 @@
         
             
             <a href="/tags/#React" title="React" rel="1">React</a>
+            
+        
+            
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
@@ -612,7 +612,13 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/js/tagsCloud.js"></script>
+<!-- <script type="text/javascript" src="/js/tagsCloud.js"></script> -->
+
+
+
+<!-- <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+</script> -->
 
 <style type="text/css">
     #tagscloud {
@@ -639,6 +645,7 @@
         padding: 1px 5px;
         display: inline-block;
         border-radius: 3px;
+        white-space:nowrap;
     }
 </style>
 
@@ -853,7 +860,13 @@
 
 
 
+<script type="text/javascript">
 
+    if(document.getElementById("tagscloud")) {
+        //按需加载
+        document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+    }
+</script>
 
 
 	<a id="rocket" href="#top" class=""></a>

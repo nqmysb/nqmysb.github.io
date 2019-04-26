@@ -167,6 +167,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -175,13 +182,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -244,22 +244,70 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/4-内存模型/">
+    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
         <h2 class="post-title">
             
-            [java多线程] 4-内存模型
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            内存模型
+            同步容器和并发容器
 
 本文内容基于 JDK1.8。
 
-内部原理
-JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
-JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
+同步容器
+在 Java 中，同步容器主要包括 2 类：
+
+Vector、Stack、HashTable
+
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-06-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/concurrent/1-并发简介/">
+        <h2 class="post-title">
+            
+            [java多线程] 1-并发简介
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            并发术语
+学习并发编程，免不了大量接触一些术语。其中，有些术语经常容易被混淆或分不清它们的差异，这里汇总一下。
+并发和并行
+
+例子
+
+你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。
+你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发。
+你吃饭吃到一半，电话来了，你一边打电话一边吃饭，这说明你支持并行。
+
+
+定义
+
+并发的关键......
         </div>
     </a>
     
@@ -401,75 +449,26 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/9-线程池/">
+    <a href="/article/javacore/concurrent/6-锁/">
         <h2 class="post-title">
             
-            [java多线程] 9-线程池
+            [java多线程] 6-锁
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            线程池
-概述
-什么是线程池？
-线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
-为什么要用线程池？
-
-降低资源消耗
-
-通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
-
-
-提高响应速度
-
-当任务到达时，任务可以不需要等到线程创建就能立即执行。
-
-
-提高线程的可管理性
-
-线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
-        <h2 class="post-title">
-            
-            [java多线程] 5-同步容器和并发容器
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            同步容器和并发容器
+            锁
 
 本文内容基于 JDK1.8。
 
-同步容器
-在 Java 中，同步容器主要包括 2 类：
-
-Vector、Stack、HashTable
-
-Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
-Stack 也是一个同步容器，它的方法也用 s......
+概述
+概念
+公平锁/非公平锁
+公平锁是指多个线程按照申请锁的顺序来获取锁。
+非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
+对于 Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。
+对于......
         </div>
     </a>
     
@@ -491,34 +490,24 @@ Stack 也是一个同步容器，它的方法也用 s......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/Java并发面试题集/">
+    <a href="/article/javacore/concurrent/3-并发机制的底层实现/">
         <h2 class="post-title">
             
-            [java多线程] Java 并发面试题总结
+            [java多线程] 3-并发机制的底层实现
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 并发面试题总结
-1. 并发简介
-1.1. 什么是进程？什么是线程？进程和线程的区别？
+            并发机制的底层实现
 
-什么是进程
+本文内容基于 JDK1.8。
 
-简言之，进程可视为一个正在运行的程序。
-进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动。进程是操作系统进行资源分配的基本单位。
+concurrent 包的实现
+由于 Java 的 CAS 同时具有 volatile 读和 volatile 写的内存语义，因此 Java 线程之间的通信现在有了下面四种方式：
 
-
-什么是线程
-
-线程是操作系统进行调度的基本单位。
-
-
-进程 vs. 线程
-
-一个程序至少有一个进程，一个进程至少有一个线程。
-线程比进程......
+A 线程写 volatile 变量，随后 B 线程读这个 volatile 变量。
+A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
         </div>
     </a>
     
@@ -528,10 +517,10 @@ Stack 也是一个同步容器，它的方法也用 s......
         </p>
         <div class="tags">
             
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
               <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
-              <a href="/tags/#面试题" title="面试题">面试题</a>
-            
         </div>
     
 
@@ -540,23 +529,19 @@ Stack 也是一个同步容器，它的方法也用 s......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java反射和动态代理/">
+    <a href="/article/javacore/advanced/encode/java-message-digest/">
         <h2 class="post-title">
             
-            [java核心技术] Java反射和动态代理
+            [编码算法] 消息摘要算法
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            反射
-反射简介
-什么是反射
-反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
-简而言之：通过反射，我们可以在运行时获得程序或程序集中每一个类的成员和方法。
-反射的主要用途
-
-开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
+            消息摘要
+算法简述
+定义
+它是一个唯一对应一个消息或文本的固定长度的值，它由一个单向 Hash 加密函数对消息进行作用而产生。如果消息在途中改变了，则接收者通过对收到消息的新产生的摘要与原摘要比较，就可知道消息是否被改变了。因此消息摘要保证了消息的完整性。消息摘要采用单向 Hash  函数将需加密的明文&quot;摘要&quot;成一串密文，这一串密文亦称为数字指纹(Finger Print......
         </div>
     </a>
     
@@ -568,6 +553,8 @@ Stack 也是一个同步容器，它的方法也用 s......
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
+              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
+            
         </div>
     
 
@@ -576,22 +563,20 @@ Stack 也是一个同步容器，它的方法也用 s......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java正则/">
+    <a href="/article/javacore/advanced/encode/java-encryption/">
         <h2 class="post-title">
             
-            [java核心技术] Java正则
+            [编码算法] Base64 编码
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            导读
-正则表达式是什么？有什么用？
-正则表达式(Regular Expression)是一种文本规则，可以用来校验、查找、替换与规则匹配的文本。
-又爱又恨的正则
-正则表达式是一个强大的文本匹配工具，但是它的规则实在很繁琐，而且理解起来也颇为蛋疼，容易让人望而生畏。
-如何学习正则
-刚接触正则时，我看了一堆正则的语义说明，但是仍然不明所以。后来，我多接触一些正则的应用实例，渐渐有了感觉，再结合语......
+            Base64 编码
+算法简述
+定义
+Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。
+Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。Base64 并不是加密解密算法，尽管我们有时也听到使用 Base64 来加密解密......
         </div>
     </a>
     
@@ -603,7 +588,7 @@ Stack 也是一个同步容器，它的方法也用 s......
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
-              <a href="/tags/#regex" title="regex">regex</a>
+              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
             
         </div>
     
@@ -613,19 +598,20 @@ Stack 也是一个同步容器，它的方法也用 s......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java注解/">
+    <a href="/article/javacore/advanced/Java泛型/">
         <h2 class="post-title">
             
-            [java核心技术] Java注解
+            [java核心技术] Java泛型
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            什么是注解（Annotation）
-Annotation（注解）就是 Java 提供了一种元程序中的元素关联任何信息和着任何元数据（metadata）的途径和方法。
-java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获取指定程序元素的注解对象，然后通过注解对象来获取注解里面的元数据。
-注解是 Java 5 及以后版本引入的。它可以用于创建文档，跟踪......
+            泛型简介
+一般的类和方法，只能使用具体的类型：要么是基本类型，要么是自定义的类。如果要编写可以应用于多种类型的代码，这种刻板的限制对代码的束缚就会很大。
+JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码可以应用于多种类型。泛型的意思是：适用于各种各样的类型。
+泛型是实现容器类的基石。泛型的主要作用之一就是用来指定容器要持有什么类型的对象，而且由编译器来保证类型的正确性。
+基本类型......
         </div>
     </a>
     
@@ -688,15 +674,11 @@ java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
-            
-        
-            
             <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
@@ -709,6 +691,10 @@ java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获
         
             
             <a href="/tags/#React" title="React" rel="1">React</a>
+            
+        
+            
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
@@ -946,7 +932,13 @@ java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获
     </div>
 </div>
 
-<script type="text/javascript" src="/js/tagsCloud.js"></script>
+<!-- <script type="text/javascript" src="/js/tagsCloud.js"></script> -->
+
+
+
+<!-- <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+</script> -->
 
 <style type="text/css">
     #tagscloud {
@@ -973,6 +965,7 @@ java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获
         padding: 1px 5px;
         display: inline-block;
         border-radius: 3px;
+        white-space:nowrap;
     }
 </style>
 
@@ -1187,7 +1180,13 @@ java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获
 
 
 
+<script type="text/javascript">
 
+    if(document.getElementById("tagscloud")) {
+        //按需加载
+        document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+    }
+</script>
 
 
 	<a id="rocket" href="#top" class=""></a>
