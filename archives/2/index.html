@@ -509,22 +509,26 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/4-内存模型/">
+    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
         <h2 class="post-title">
             
-            [java多线程] 4-内存模型
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            内存模型
+            同步容器和并发容器
 
 本文内容基于 JDK1.8。
 
-内部原理
-JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
-JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
+同步容器
+在 Java 中，同步容器主要包括 2 类：
+
+Vector、Stack、HashTable
+
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
         </div>
     </a>
     
@@ -546,34 +550,26 @@ JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/9-线程池/">
+    <a href="/article/javacore/concurrent/6-锁/">
         <h2 class="post-title">
             
-            [java多线程] 9-线程池
+            [java多线程] 6-锁
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            线程池
+            锁
+
+本文内容基于 JDK1.8。
+
 概述
-什么是线程池？
-线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
-为什么要用线程池？
-
-降低资源消耗
-
-通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
-
-
-提高响应速度
-
-当任务到达时，任务可以不需要等到线程创建就能立即执行。
-
-
-提高线程的可管理性
-
-线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
+概念
+公平锁/非公平锁
+公平锁是指多个线程按照申请锁的顺序来获取锁。
+非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
+对于 Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。
+对于......
         </div>
     </a>
     
@@ -695,6 +691,10 @@ JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟�
             
         
             
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            
+        
+            
             <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
@@ -704,10 +704,6 @@ JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟�
         
             
             <a href="/tags/#React" title="React" rel="1">React</a>
-            
-        
-            
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
@@ -972,7 +968,7 @@ JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟�
         font-family: Arial;
         text-decoration: none;
         margin: 0 10px 15px 0;
-        line-height: 18px;
+        line-height: 17px;
         text-align: center;
         font-size: 12px;
         padding: 1px 5px;

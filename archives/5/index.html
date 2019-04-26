@@ -244,29 +244,27 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/Java网络编程/">
+    <a href="/article/javacore/jvm/4-JVM调优/">
         <h2 class="post-title">
             
-            Java 网络编程
+            [java虚拟机] 4-JVM 调优
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 网络编程
+            JVM 调优概述
+性能定义
 
-关键词：URL、InetAddress
+吞吐量 - 指不考虑 GC 引起的停顿时间或内存消耗，垃圾收集器能支撑应用达到的最高性能指标。
+延迟 - 其度量标准是缩短由于垃圾啊收集引起的停顿时间或者完全消除因垃圾收集所引起的停顿，避免应用运行时发生抖动。
+内存占用 - 垃圾收集器流畅运行所需要的内存数量。
 
-Java 中的网络支持：
+调优原则
+GC 优化的两个目标：
 
-InetAddress：用于表示网络上的硬件资源，即 IP 地址；
-URL：统一资源定位符；
-Sockets：使用 TCP 协议实现网络通信；
-Datagram：使用 UDP 协议实现网络通信。
-
-InetAddress
-没有公有的构造函数，只能通过静态方法来创建实例。
-12InetAddress.g......
+将进入老年代的对象数量降到最低
+减少 Full GC 的执行时......
         </div>
     </a>
     
@@ -276,9 +274,7 @@ InetAddress
         </p>
         <div class="tags">
             
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#网络编程" title="网络编程">网络编程</a>
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
             
         </div>
     
@@ -532,27 +528,25 @@ JAVA IO 中的流操作分为两类：
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/4-JVM调优/">
+    <a href="/article/javacore/io/JavaNIO/">
         <h2 class="post-title">
             
-            [java虚拟机] 4-JVM 调优
+            Java NIO
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            JVM 调优概述
-性能定义
+            Java NIO
 
-吞吐量 - 指不考虑 GC 引起的停顿时间或内存消耗，垃圾收集器能支撑应用达到的最高性能指标。
-延迟 - 其度量标准是缩短由于垃圾啊收集引起的停顿时间或者完全消除因垃圾收集所引起的停顿，避免应用运行时发生抖动。
-内存占用 - 垃圾收集器流畅运行所需要的内存数量。
+Java NIO Tutorial
+Java NIO 浅析
+IBM: NIO 入门
 
-调优原则
-GC 优化的两个目标：
-
-将进入老年代的对象数量降到最低
-减少 Full GC 的执行时......
+新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的，弥补了原来的 I/O 的不足，提供了高速的、面向块的 I/O。
+流与块
+I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的方式处理数据，而 NIO 以块的方式处理数据。
+面向流的 I/O 一次处理一个字节数......
         </div>
     </a>
     
@@ -562,7 +556,9 @@ GC 优化的两个目标：
         </p>
         <div class="tags">
             
-              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#IO流" title="IO流">IO流</a>
             
         </div>
     
@@ -705,6 +701,10 @@ Windows
             
         
             
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            
+        
+            
             <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
@@ -714,10 +714,6 @@ Windows
         
             
             <a href="/tags/#React" title="React" rel="1">React</a>
-            
-        
-            
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
@@ -982,7 +978,7 @@ Windows
         font-family: Arial;
         text-decoration: none;
         margin: 0 10px 15px 0;
-        line-height: 18px;
+        line-height: 17px;
         text-align: center;
         font-size: 12px;
         padding: 1px 5px;

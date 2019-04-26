@@ -244,23 +244,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java反射和动态代理/">
+    <a href="/article/javacore/advanced/Java泛型/">
         <h2 class="post-title">
             
-            [java核心技术] Java反射和动态代理
+            [java核心技术] Java泛型
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            反射
-反射简介
-什么是反射
-反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
-简而言之：通过反射，我们可以在运行时获得程序或程序集中每一个类的成员和方法。
-反射的主要用途
-
-开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
+            泛型简介
+一般的类和方法，只能使用具体的类型：要么是基本类型，要么是自定义的类。如果要编写可以应用于多种类型的代码，这种刻板的限制对代码的束缚就会很大。
+JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码可以应用于多种类型。泛型的意思是：适用于各种各样的类型。
+泛型是实现容器类的基石。泛型的主要作用之一就是用来指定容器要持有什么类型的对象，而且由编译器来保证类型的正确性。
+基本类型......
         </div>
     </a>
     
@@ -280,21 +277,19 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java本地化/">
+    <a href="/article/javacore/advanced/encode/java-message-digest/">
         <h2 class="post-title">
             
-            [java核心技术] Java本地化
+            [编码算法] 消息摘要算法
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            背景知识
-通讯的发达，使得世界各地交流越来越紧密。许多的软件产品也要面向世界上不同国家的用户。其中，语言障碍显然是产品在不同语种用户中进行推广的一个重要问题。
-本文围绕本地化这一主题，先介绍国际标准的语言编码，然后讲解在 Java 应用中如何去实现本地化。
-语言编码、国家/地区编码
-做 web 开发的朋友可能多多少少接触过类似 zh-cn, en-us 这样的编码字样。
-这些编码是用来表示指......
+            消息摘要
+算法简述
+定义
+它是一个唯一对应一个消息或文本的固定长度的值，它由一个单向 Hash 加密函数对消息进行作用而产生。如果消息在途中改变了，则接收者通过对收到消息的新产生的摘要与原摘要比较，就可知道消息是否被改变了。因此消息摘要保证了消息的完整性。消息摘要采用单向 Hash  函数将需加密的明文&quot;摘要&quot;成一串密文，这一串密文亦称为数字指纹(Finger Print......
         </div>
     </a>
     
@@ -305,6 +300,8 @@
         <div class="tags">
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
             
         </div>
     
@@ -586,25 +583,29 @@ Java 容器框架主要分为 Collection 和 Map 两种。其中，Collection �
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/JavaNIO/">
+    <a href="/article/javacore/io/Java网络编程/">
         <h2 class="post-title">
             
-            Java NIO
+            Java 网络编程
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java NIO
+            Java 网络编程
 
-Java NIO Tutorial
-Java NIO 浅析
-IBM: NIO 入门
+关键词：URL、InetAddress
 
-新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的，弥补了原来的 I/O 的不足，提供了高速的、面向块的 I/O。
-流与块
-I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的方式处理数据，而 NIO 以块的方式处理数据。
-面向流的 I/O 一次处理一个字节数......
+Java 中的网络支持：
+
+InetAddress：用于表示网络上的硬件资源，即 IP 地址；
+URL：统一资源定位符；
+Sockets：使用 TCP 协议实现网络通信；
+Datagram：使用 UDP 协议实现网络通信。
+
+InetAddress
+没有公有的构造函数，只能通过静态方法来创建实例。
+12InetAddress.g......
         </div>
     </a>
     
@@ -616,7 +617,7 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
-              <a href="/tags/#IO流" title="IO流">IO流</a>
+              <a href="/tags/#网络编程" title="网络编程">网络编程</a>
             
         </div>
     
@@ -677,6 +678,10 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
             
         
             
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            
+        
+            
             <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
@@ -686,10 +691,6 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
         
             
             <a href="/tags/#React" title="React" rel="1">React</a>
-            
-        
-            
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
@@ -954,7 +955,7 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
         font-family: Arial;
         text-decoration: none;
         margin: 0 10px 15px 0;
-        line-height: 18px;
+        line-height: 17px;
         text-align: center;
         font-size: 12px;
         padding: 1px 5px;
