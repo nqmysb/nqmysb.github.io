@@ -304,8 +304,9 @@ https://spring.io/projects/......
             
 Springboot2.0从零开始搭建脚手架(三)-集成swagger2+lombok+fastjosn+MybatisPlus分页插件+sqlj执行性能监控
 
-添加依赖
-12345678910111213141516171819202122232425262728293031&lt;!-- lombok --&gt; 		&lt;dependency&gt;            &lt......
+添加swagger2+lombok+fastjosn的依赖
+依赖的添加可以到对应组件的官方找，也可以直接去maven仓库直接搜。如果对应的依赖没有可以换一个仓库地址把依赖下到本地即可
+12345678910111213141516......
         </div>
     </a>
     
@@ -545,14 +546,8 @@ orElseG......
             
         </h3>
         <div class="post-content-preview">
-            
-官方文档
-https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
-教程
-http://www.runoob.com/java/java8-new-features.html
-
-Lambda表达式
-12345678910//示例：集合排序（函数体只有一行不需大括号）List&lt;String&gt......
+            Lambda表达式
+12345678910//示例：集合排序（函数体只有一行不需大括号）List&lt;String&gt; strList = Arrays.asList( "d", "a", "b" );		strList.sort( ( e1, e2 ) -&gt; e1.compareTo( e2 ) );		strList.forEach(( String e ) -&gt; Sy......
         </div>
     </a>
     
@@ -1046,6 +1041,7 @@ Lambda表达式
                         src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
                     </iframe>
                     <br />
+                    粤ICP备19058711号 |            
                     <!--总访问量统计-->
                     
                         <span id="busuanzi_container_site_pv" style="margin-left: 3px;">

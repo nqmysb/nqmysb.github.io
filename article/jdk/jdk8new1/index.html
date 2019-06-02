@@ -240,13 +240,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <blockquote>
-<p>官方文档<br>
-<a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html</a><br>
-教程<br>
-<a href="http://www.runoob.com/java/java8-new-features.html" target="_blank" rel="noopener">http://www.runoob.com/java/java8-new-features.html</a></p>
-</blockquote>
-<h2 id="lambda表达式">Lambda表达式</h2>
+                <h2 id="lambda表达式">Lambda表达式</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示例：集合排序（函数体只有一行不需大括号）</span></span><br><span class="line">List&lt;String&gt; strList = Arrays.asList( <span class="string">"d"</span>, <span class="string">"a"</span>, <span class="string">"b"</span> );</span><br><span class="line">		strList.sort( ( e1, e2 ) -&gt; e1.compareTo( e2 ) );</span><br><span class="line">		strList.forEach(( String e ) -&gt; System.out.println( e ));</span><br><span class="line"></span><br><span class="line"><span class="comment">//示例：遍历集合（函数体有多行代码需大括号）</span></span><br><span class="line">Arrays.asList( <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"d"</span> ).forEach(( String e ) -&gt; &#123;</span><br><span class="line">		    System.out.println( e );</span><br><span class="line">		    System.out.println( e );</span><br><span class="line">		&#125; );</span><br></pre></td></tr></table></figure>
 <h2 id="方法引用">方法引用</h2>
 <p>方法引用</p>
@@ -280,6 +274,11 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Function&lt;T, R&gt; 函数型接口：</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">functionTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">		String newStr = strHandler(<span class="string">"\t\t\t 呵呵   "</span>, (str) -&gt; str.trim());</span><br><span class="line">		System.out.println(newStr);</span><br><span class="line">		</span><br><span class="line">		String subStr = strHandler(<span class="string">"呵呵"</span>, (str) -&gt; str.substring(<span class="number">2</span>, <span class="number">5</span>));</span><br><span class="line">		System.out.println(subStr);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//需求：用于处理字符串</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">strHandler</span><span class="params">(String str, Function&lt;String, String&gt; fun)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> fun.apply(str);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>示例：断言型接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Predicate&lt;T&gt; 断言型接口：</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">predicateTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">		List&lt;String&gt; list = Arrays.asList(<span class="string">"Hello"</span>, <span class="string">"atguigu"</span>, <span class="string">"Lambda"</span>, <span class="string">"www"</span>, <span class="string">"ok"</span>);</span><br><span class="line">		List&lt;String&gt; strList = filterStr(list, (s) -&gt; s.length() &gt; <span class="number">3</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (String str : strList) &#123;</span><br><span class="line">			System.out.println(str);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//需求：将满足条件的字符串，放入集合中</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">filterStr</span><span class="params">(List&lt;String&gt; list, Predicate&lt;String&gt; pre)</span></span>&#123;</span><br><span class="line">		List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (String str : list) &#123;</span><br><span class="line">			<span class="keyword">if</span>(pre.test(str))&#123;</span><br><span class="line">				strList.add(str);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> strList;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="官方文档">官方文档</h2>
+<blockquote>
+<p><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html</a><br>
+教程 : <a href="http://www.runoob.com/java/java8-new-features.html" target="_blank" rel="noopener">http://www.runoob.com/java/java8-new-features.html</a></p>
+</blockquote>
 
                 
 
@@ -370,7 +369,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#lambda表达式"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Lambda&#x8868;&#x8FBE;&#x5F0F;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#方法引用"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x65B9;&#x6CD5;&#x5F15;&#x7528;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#构造器引用"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x6784;&#x9020;&#x5668;&#x5F15;&#x7528;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数组引用"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">&#x6570;&#x7EC4;&#x5F15;&#x7528;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数式接口"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#lambda表达式"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Lambda&#x8868;&#x8FBE;&#x5F0F;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#方法引用"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x65B9;&#x6CD5;&#x5F15;&#x7528;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#构造器引用"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x6784;&#x9020;&#x5668;&#x5F15;&#x7528;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数组引用"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">&#x6570;&#x7EC4;&#x5F15;&#x7528;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数式接口"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">&#x51FD;&#x6570;&#x5F0F;&#x63A5;&#x53E3;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#官方文档"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">&#x5B98;&#x65B9;&#x6587;&#x6863;</span></a></li></ol>
         
         </div>
       </aside>
@@ -549,7 +548,7 @@
 
 
 <!-- chrome Firefox 中文锚点定位失效-->
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <!-- smooth scroll behavior polyfill  -->
 <script type="text/javascript" src="/js/smoothscroll.js"></script>
 <script>
@@ -674,6 +673,7 @@
                         src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
                     </iframe>
                     <br />
+                    粤ICP备19058711号 |            
                     <!--总访问量统计-->
                     
                         <span id="busuanzi_container_site_pv" style="margin-left: 3px;">

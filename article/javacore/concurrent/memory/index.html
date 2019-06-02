@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="iGDu0e88zUCIa6OhhkXgxyKDioORMrt1KC_43F_VRcg" />
+    <meta name="baidu-site-verification" content="A2ImdbykAi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/meditation.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+        [java多线程] 4-内存模型 - LiaoCan | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://liaocan.top/article/javacore/concurrent/memory/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/article_header/guangzhou3.jpg')
+                /*post*/
+                
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#java核心" title="java核心">
+                                java核心</a>
+                            
+                            <a class="tag" href="/tags/#java多线程" title="java多线程">
+                                java多线程</a>
+                            
+                        </div>
+                        <h1>
+                            [java多线程] 4-内存模型
+                        </h1>
+                        <!-- <h2 class="subheading"></h2> -->
+                        <!--文章访问量统计-->
+                        
+                        <span id="busuanzi_container_page_pv">本文已被阅读过<span id="busuanzi_value_page_pv"></span>次</span>
+                        
+                        <!--文章访问量统计--> <span class="meta">
+                            Posted by
+                            Liao Can on
+                            2015-06-06
+                        </span>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Liao Can</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                        <li>
+                            <a href="/about/" >About</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/archive/" >Archives</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/tags/" >Tags</a>
+                        </li>
+                    
+
+
+                    <!-- 
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                     -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="内存模型">内存模型</h1>
+<blockquote>
+<p>本文内容基于 JDK1.8。</p>
+</blockquote>
+<h2 id="内部原理">内部原理</h2>
+<p>JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。</p>
+<p>JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元素，但不包括局部变量与方法参数，因为后者是线程私有的，不会被共享，自然就不会存在竞争问题。为了获得较好的执行效能，Java 内存模型并没有限制执行引擎使用处理器的特定寄存器或缓存来和主存进行交互，也没有限制即使编译器进行调整代码执行顺序这类优化措施。</p>
+<p>JMM 是围绕着在并发过程中如何处理原子性、可见性和有序性这 3 个特征来建立的。</p>
+<p>JMM 是通过各种操作来定义的，包括对变量的读写操作，监视器的加锁和释放操作，以及线程的启动和合并操作。</p>
+<h2 id="内存模型结构">内存模型结构</h2>
+<p>Java 内存模型把 Java 虚拟机内部划分为线程栈和堆。</p>
+<h3 id="线程栈">线程栈</h3>
+<p>每一个运行在 Java 虚拟机里的线程都拥有自己的线程栈。这个线程栈包含了这个线程调用的方法当前执行点相关的信息。一个线程仅能访问自己的线程栈。一个线程创建的本地变量对其它线程不可见，仅自己可见。即使两个线程执行同样的代码，这两个线程任然在在自己的线程栈中的代码来创建本地变量。因此，每个线程拥有每个本地变量的独有版本。</p>
+<p>所有原始类型的本地变量都存放在线程栈上，因此对其它线程不可见。一个线程可能向另一个线程传递一个原始类型变量的拷贝，但是它不能共享这个原始类型变量自身。</p>
+<h3 id="堆">堆</h3>
+<p>堆上包含在 Java 程序中创建的所有对象，无论是哪一个对象创建的。这包括原始类型的对象版本。如果一个对象被创建然后赋值给一个局部变量，或者用来作为另一个对象的成员变量，这个对象任然是存放在堆上。</p>
+<ul>
+<li>一个本地变量可能是原始类型，在这种情况下，它总是在线程栈上。</li>
+<li>一个本地变量也可能是指向一个对象的一个引用。在这种情况下，引用（这个本地变量）存放在线程栈上，但是对象本身存放在堆上。</li>
+<li>一个对象可能包含方法，这些方法可能包含本地变量。这些本地变量任然存放在线程栈上，即使这些方法所属的对象存放在堆上。</li>
+<li>一个对象的成员变量可能随着这个对象自身存放在堆上。不管这个成员变量是原始类型还是引用类型。</li>
+<li>静态成员变量跟随着类定义一起也存放在堆上。</li>
+<li>存放在堆上的对象可以被所有持有对这个对象引用的线程访问。当一个线程可以访问一个对象时，它也可以访问这个对象的成员变量。如果两个线程同时调用同一个对象上的同一个方法，它们将会都访问这个对象的成员变量，但是每一个线程都拥有这个本地变量的私有拷贝。</li>
+</ul>
+<p align="center">
+  <img src="http://dunwu.test.upcdn.net/images/java/concurrent/java-memory-model-3.png">
+</p>
+<h2 id="硬件内存架构">硬件内存架构</h2>
+<p>现代硬件内存模型与 Java 内存模型有一些不同。理解内存模型架构以及 Java 内存模型如何与它协同工作也是非常重要的。这部分描述了通用的硬件内存架构，下面的部分将会描述 Java 内存是如何与它“联手”工作的。</p>
+<p align="center">
+  <img src="http://dunwu.test.upcdn.net/images/java/concurrent/java-memory-model-4.png">
+</p>
+<p>一个现代计算机通常由两个或者多个 CPU。其中一些 CPU 还有多核。从这一点可以看出，在一个有两个或者多个 CPU 的现代计算机上同时运行多个线程是可能的。每个 CPU 在某一时刻运行一个线程是没有问题的。这意味着，如果你的 Java 程序是多线程的，在你的 Java 程序中每个 CPU 上一个线程可能同时（并发）执行。</p>
+<p>每个 CPU 都包含一系列的寄存器，它们是 CPU 内内存的基础。CPU 在寄存器上执行操作的速度远大于在主存上执行的速度。这是因为 CPU 访问寄存器的速度远大于主存。</p>
+<p>每个 CPU 可能还有一个 CPU 缓存层。实际上，绝大多数的现代 CPU 都有一定大小的缓存层。CPU 访问缓存层的速度快于访问主存的速度，但通常比访问内部寄存器的速度还要慢一点。一些 CPU 还有多层缓存，但这些对理解 Java 内存模型如何和内存交互不是那么重要。只要知道 CPU 中可以有一个缓存层就可以了。</p>
+<p>一个计算机还包含一个主存。所有的 CPU 都可以访问主存。主存通常比 CPU 中的缓存大得多。</p>
+<p>通常情况下，当一个 CPU 需要读取主存时，它会将主存的部分读到 CPU 缓存中。它甚至可能将缓存中的部分内容读到它的内部寄存器中，然后在寄存器中执行操作。当 CPU 需要将结果写回到主存中去时，它会将内部寄存器的值刷新到缓存中，然后在某个时间点将值刷新回主存。</p>
+<p>当 CPU 需要在缓存层存放一些东西的时候，存放在缓存中的内容通常会被刷新回主存。CPU 缓存可以在某一时刻将数据局部写到它的内存中，和在某一时刻局部刷新它的内存。它不会再某一时刻读/写整个缓存。通常，在一个被称作“cache lines”的更小的内存块中缓存被更新。一个或者多个缓存行可能被读到缓存，一个或者多个缓存行可能再被刷新回主存。</p>
+<h2 id="jmm-和硬件内存架构之间的桥接">JMM 和硬件内存架构之间的桥接</h2>
+<p>上面已经提到，Java 内存模型与硬件内存架构之间存在差异。硬件内存架构没有区分线程栈和堆。对于硬件，所有的线程栈和堆都分布在主内中。部分线程栈和堆可能有时候会出现在 CPU 缓存中和 CPU 内部的寄存器中。如下图所示：</p>
+<p align="center">
+  <img src="http://dunwu.test.upcdn.net/images/java/concurrent/java-memory-model-5.png">
+</p>
+<p>当对象和变量被存放在计算机中各种不同的内存区域中时，就可能会出现一些具体的问题。主要包括如下两个方面：</p>
+<ul>
+<li>线程对共享变量修改的可见性</li>
+<li>当读，写和检查共享变量时出现 race conditions</li>
+</ul>
+<p align="center">
+  <img src="http://dunwu.test.upcdn.net/images/java/concurrent/java-memory-model-6.png">
+</p>
+<h3 id="共享对象可见性">共享对象可见性</h3>
+<p>如果两个或者更多的线程在没有正确的使用 volatile 声明或者同步的情况下共享一个对象，一个线程更新这个共享对象可能对其它线程来说是不接见的。</p>
+<p>想象一下，共享对象被初始化在主存中。跑在 CPU 上的一个线程将这个共享对象读到 CPU 缓存中。然后修改了这个对象。只要 CPU 缓存没有被刷新会主存，对象修改后的版本对跑在其它 CPU 上的线程都是不可见的。这种方式可能导致每个线程拥有这个共享对象的私有拷贝，每个拷贝停留在不同的 CPU 缓存中。</p>
+<p>上图示意了这种情形。跑在左边 CPU 的线程拷贝这个共享对象到它的 CPU 缓存中，然后将 count 变量的值修改为 2。这个修改对跑在右边 CPU 上的其它线程是不可见的，因为修改后的 count 的值还没有被刷新回主存中去。</p>
+<p>解决这个问题你可以使用 Java 中的 volatile 关键字。volatile 关键字可以保证直接从主存中读取一个变量，如果这个变量被修改后，总是会被写回到主存中去。</p>
+<h3 id="竞态条件">竞态条件</h3>
+<p>如果两个或者更多的线程共享一个对象，多个线程在这个共享对象上更新变量，就有可能发生 race conditions。</p>
+<p>想象一下，如果线程 A 读一个共享对象的变量 count 到它的 CPU 缓存中。再想象一下，线程 B 也做了同样的事情，但是往一个不同的 CPU 缓存中。现在线程 A 将 count 加 1，线程 B 也做了同样的事情。现在 count 已经被增在了两个，每个 CPU 缓存中一次。</p>
+<p>如果这些增加操作被顺序的执行，变量 count 应该被增加两次，然后原值+2 被写回到主存中去。</p>
+<p>然而，两次增加都是在没有适当的同步下并发执行的。无论是线程 A 还是线程 B 将 count 修改后的版本写回到主存中取，修改后的值仅会被原值大 1，尽管增加了两次。</p>
+<p>解决这个问题可以使用 Java 同步块。一个同步块可以保证在同一时刻仅有一个线程可以进入代码的临界区。同步块还可以保证代码块中所有被访问的变量将会从主存中读入，当线程退出同步代码块时，所有被更新的变量都会被刷新回主存中去，不管这个变量是否被声明为 volatile。</p>
+<h2 id="happens-before">Happens-Before</h2>
+<p>JMM 为程序中所有的操作定义了一个偏序关系，称之为 Happens-Before。</p>
+<ul>
+<li><strong>程序顺序规则</strong>：如果程序中操作 A 在操作 B 之前，那么在线程中操作 A 将在操作 B 之前执行。</li>
+<li><strong>监视器锁规则</strong>：在监视器锁上的解锁操作必须在同一个监视器锁上的加锁操作之前执行。</li>
+<li><strong>volatile 变量规则</strong>：对 volatile 变量的写入操作必须在对该变量的读操作之前执行。</li>
+<li><strong>线程启动规则</strong>：在线程上对 Thread.start 的调用必须在该线程中执行任何操作之前执行。</li>
+<li><strong>线程结束规则</strong>：线程中的任何操作都必须在其他线程检测到该线程已经结束之前执行，或者从 Thread.join 中成功返回，或者在调用 Thread.isAlive 时返回 false。</li>
+<li><strong>中断规则</strong>：当一个线程在另一个线程上调用 interrupt 时，必须在被中断线程检测到 interrupt 调用之前执行（通过抛出 InterruptException，或者调用 isInterrupted 和 interrupted）。</li>
+<li><strong>终结器规则</strong>：对象的构造函数必须在启动该对象的终结器之前执行完成。</li>
+<li><strong>传递性</strong>：如果操作 A 在操作 B 之前执行，并且操作 B 在操作 C 之前执行，那么操作 A 必须在操作 C 之前执行。</li>
+</ul>
+<h2 id="资料">资料</h2>
+<ul>
+<li><a href="https://item.jd.com/10922250.html" target="_blank" rel="noopener">Java 并发编程实战</a>：第 16 章 Java 内存模型</li>
+<li><a href="https://item.jd.com/11740734.html" target="_blank" rel="noopener">Java 并发编程的艺术</a>：第 3 章 Java 内存模型</li>
+<li><a href="https://item.jd.com/11252778.html" target="_blank" rel="noopener">深入理解 Java 虚拟机</a>：第 12 章 Java 内存模型与线程</li>
+<li><a href="http://tutorials.jenkov.com/java-concurrency/java-memory-model.html" target="_blank" rel="noopener">http://tutorials.jenkov.com/java-concurrency/java-memory-model.html</a></li>
+</ul>
+
+                
+
+                <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/javacore/concurrent/concurrentool/" data-toggle="tooltip" data-placement="top" title="[java多线程] 8-并发工具类">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/javacore/advanced/Reflection/" data-toggle="tooltip" data-placement="top" title="[java核心技术] Java反射和动态代理">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay_url.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/wechatpay_url.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+                <br>
+
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>   
+                
+                <!-- require APlayer -->
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                <div class="aplayer"
+                    data-id="2576984498"
+                    data-server="tecent"
+                    data-type="playlist"
+                    data-fixed="true" 
+                    >
+                </div>
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC80MTg2NC8xODQxMA=="></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#内存模型"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x5185;&#x5B58;&#x6A21;&#x578B;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#内部原理"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x5185;&#x90E8;&#x539F;&#x7406;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#内存模型结构"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x5185;&#x5B58;&#x6A21;&#x578B;&#x7ED3;&#x6784;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#线程栈"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">&#x7EBF;&#x7A0B;&#x6808;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#堆"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">&#x5806;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#硬件内存架构"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">&#x786C;&#x4EF6;&#x5185;&#x5B58;&#x67B6;&#x6784;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#jmm-和硬件内存架构之间的桥接"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">JMM &#x548C;&#x786C;&#x4EF6;&#x5185;&#x5B58;&#x67B6;&#x6784;&#x4E4B;&#x95F4;&#x7684;&#x6865;&#x63A5;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#共享对象可见性"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">&#x5171;&#x4EAB;&#x5BF9;&#x8C61;&#x53EF;&#x89C1;&#x6027;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#竞态条件"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">&#x7ADE;&#x6001;&#x6761;&#x4EF6;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#happens-before"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Happens-Before</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#资料"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">&#x8D44;&#x6599;</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#java核心" title="java核心">java核心</a>
+                        
+                          <a class="tag" href="/tags/#java多线程" title="java多线程">java多线程</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
+                    
+                        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
+                    
+                        <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
+                    
+                        <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
+                    
+                        <li><a href="http://www.ityouknow.com" target="_blank">纯洁的微笑</a></li>
+                    
+                        <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
+                    
+                        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+                    
+                        <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
+                    
+                        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
+                    
+                        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+    <!-- 来必力City版公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    <!-- 来必力City版 公共JS代码 end -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+<!-- 添加自动推送链接 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- 复制添加版权申明-->
+<script>
+    /**/
+    function setClipboardText(event){
+        event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        var node = document.createElement('div');
+        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
+        var htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />著作权归作者所有。<br />'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+            + '作者：liaocan <br />链接：'
+            + location.href
+            + '<br />来源：liaocan.top<br /><br />'
+            + '</div>';
+        var textData = window.getSelection().getRangeAt(0)
+            + '\n\n著作权归作者所有。\n'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+            + '作者：liaocan\n'
+            + '链接：'
+            + location.href
+            + '来源：liaocan.top\n\n';
+        if(event.clipboardData){
+            event.clipboardData.setData("text/html", htmlData);
+            //setData(剪贴板格式, 数据) 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+            event.clipboardData.setData("text/plain",textData);
+        }
+        else if(window.clipboardData){ //window.clipboardData的作用是在页面上将需要的东西复制到剪贴板上，提供了对于预定义的剪贴板格式的访问，以便在编辑操作中使用。
+            return window.clipboardData.setData("text", textData);
+        }
+    };
+ 
+    document.addEventListener('copy',function(e){
+        setClipboardText(e);
+    });
+</script>
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+                // console.log(a,a.currentTarget,$(a.currentTarget),$(a.currentTarget)[0])
+                // a.currentTarget.scrollBy({ top: 0, left: 0, behavior: 'smooth' });
+                // a.currentTarget.scrollIntoView({behavior: 'smooth' });
+
+        })  
+
+
+
+</script>
+
+
+
+    
+
+     
+  
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/nqmysb" title="github">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://blog.csdn.net/nqmysbd" title="CSDN">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-csdn fa-stack-1x fa-inverse">C</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://yq.aliyun.com/u/nqmysb" title="云栖社区">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-alyun fa-stack-1x fa-inverse">云</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://gitee.com/liaocwang" title="gitee">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-git fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="mailto:593013537@qq.com" title="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Liao Can 2019 
+                    <br>
+                    Theme by <a target="_blank" href="http://www.huweihuang.com">胡伟煌</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://liaocan.top">Liaocan</a> 
+                     | 
+                     <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                    <br />
+                    粤ICP备19058711号 |            
+                    <!--总访问量统计-->
+                    
+                        <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
+                            总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                        <div style="display:none" >本站访客数<span  id="busuanzi_value_site_uv"></span>人次</div>
+                    
+                    <!--总访问量统计-->
+                      
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://liaocan.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-132197826-1';
+    var _gaDomain = 'liaocan.top';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '6f0414ec28cbdc196e93beaa4472a18d';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script type="text/javascript">
+
+    if(document.getElementById("tagscloud")) {
+        //按需加载
+        document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+    }
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://liaocan.top/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

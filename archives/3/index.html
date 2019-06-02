@@ -244,22 +244,24 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/4-内存模型/">
+    <a href="/article/javacore/concurrent/thread/">
         <h2 class="post-title">
             
-            [java多线程] 4-内存模型
+            [java多线程] 2-线程基础
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            内存模型
+            线程简介
+什么是线程
+现代操作系统调度的最小单元是线程，也叫轻量级进程（Light Weight Process），在一个进程里可以创建多个线程，这些线程都拥有各自的计数器、堆栈和局部变量等属性，并且能够访问共享的内存变量。
+线程生命周期
 
-本文内容基于 JDK1.8。
+  
 
-内部原理
-JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
-JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
+java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一个时刻，线程只能处于其中的一个状态。
+以下是各状态的说明......
         </div>
     </a>
     
@@ -281,7 +283,48 @@ JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/1-并发简介/">
+    <a href="/article/javacore/concurrent/Collections/">
+        <h2 class="post-title">
+            
+            [java多线程] 5-同步容器和并发容器
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            同步容器和并发容器
+
+本文内容基于 JDK1.8。
+
+同步容器
+在 Java 中，同步容器主要包括 2 类：
+
+Vector、Stack、HashTable
+
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-06-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/concurrent/concurrency/">
         <h2 class="post-title">
             
             [java多线程] 1-并发简介
@@ -325,174 +368,7 @@ JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/8-并发工具类/">
-        <h2 class="post-title">
-            
-            [java多线程] 8-并发工具类
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            并发工具类
-
-本文内容基于 JDK1.8。
-
-JDK 的 java.util.concurrent 包（即 juc）中提供了几个非常有用的并发工具类。
-CountDownLatch
-要点
-
-作用：字面意思为递减计数锁。它允许一个或多个线程等待，直到在其他线程中执行的一组操作完成。
-原理：CountDownLatch 维护一个计数器 count，表示需要等待的事件数量。countDown 方法......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/9-线程池/">
-        <h2 class="post-title">
-            
-            [java多线程] 9-线程池
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            线程池
-概述
-什么是线程池？
-线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
-为什么要用线程池？
-
-降低资源消耗
-
-通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
-
-
-提高响应速度
-
-当任务到达时，任务可以不需要等到线程创建就能立即执行。
-
-
-提高线程的可管理性
-
-线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/2-线程基础/">
-        <h2 class="post-title">
-            
-            [java多线程] 2-线程基础
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            线程简介
-什么是线程
-现代操作系统调度的最小单元是线程，也叫轻量级进程（Light Weight Process），在一个进程里可以创建多个线程，这些线程都拥有各自的计数器、堆栈和局部变量等属性，并且能够访问共享的内存变量。
-线程生命周期
-
-  
-
-java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一个时刻，线程只能处于其中的一个状态。
-以下是各状态的说明......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/3-并发机制的底层实现/">
-        <h2 class="post-title">
-            
-            [java多线程] 3-并发机制的底层实现
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            并发机制的底层实现
-
-本文内容基于 JDK1.8。
-
-concurrent 包的实现
-由于 Java 的 CAS 同时具有 volatile 读和 volatile 写的内存语义，因此 Java 线程之间的通信现在有了下面四种方式：
-
-A 线程写 volatile 变量，随后 B 线程读这个 volatile 变量。
-A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/7-原子变量类/">
+    <a href="/article/javacore/concurrent/AtomicBoolean/">
         <h2 class="post-title">
             
             [java多线程] 7-原子变量类
@@ -533,32 +409,37 @@ A......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/encode/java-encryption/">
+    <a href="/article/javacore/concurrent/concurrentool/">
         <h2 class="post-title">
             
-            [编码算法] Base64 编码
+            [java多线程] 8-并发工具类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Base64 编码
-算法简述
-定义
-Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。
-Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。Base64 并不是加密解密算法，尽管我们有时也听到使用 Base64 来加密解密......
+            并发工具类
+
+本文内容基于 JDK1.8。
+
+JDK 的 java.util.concurrent 包（即 juc）中提供了几个非常有用的并发工具类。
+CountDownLatch
+要点
+
+作用：字面意思为递减计数锁。它允许一个或多个线程等待，直到在其他线程中执行的一组操作完成。
+原理：CountDownLatch 维护一个计数器 count，表示需要等待的事件数量。countDown 方法......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Liao Can on
-            2015-05-06
+            2015-06-06
         </p>
         <div class="tags">
             
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+              <a href="/tags/#java核心" title="java核心">java核心</a>
             
-              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
         </div>
     
@@ -568,31 +449,34 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java本地化/">
+    <a href="/article/javacore/concurrent/memory/">
         <h2 class="post-title">
             
-            [java核心技术] Java本地化
+            [java多线程] 4-内存模型
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            背景知识
-通讯的发达，使得世界各地交流越来越紧密。许多的软件产品也要面向世界上不同国家的用户。其中，语言障碍显然是产品在不同语种用户中进行推广的一个重要问题。
-本文围绕本地化这一主题，先介绍国际标准的语言编码，然后讲解在 Java 应用中如何去实现本地化。
-语言编码、国家/地区编码
-做 web 开发的朋友可能多多少少接触过类似 zh-cn, en-us 这样的编码字样。
-这些编码是用来表示指......
+            内存模型
+
+本文内容基于 JDK1.8。
+
+内部原理
+JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
+JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Liao Can on
-            2015-05-06
+            2015-06-06
         </p>
         <div class="tags">
             
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
         </div>
     
@@ -602,7 +486,48 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Java反射和动态代理/">
+    <a href="/article/javacore/concurrent/Lock/">
+        <h2 class="post-title">
+            
+            [java多线程] 6-锁
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            锁
+
+本文内容基于 JDK1.8。
+
+概述
+概念
+公平锁/非公平锁
+公平锁是指多个线程按照申请锁的顺序来获取锁。
+非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
+对于 Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。
+对于......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-06-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/Reflection/">
         <h2 class="post-title">
             
             [java核心技术] Java反射和动态代理
@@ -619,6 +544,71 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
 反射的主要用途
 
 开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/Annotation/">
+        <h2 class="post-title">
+            
+            [java核心技术] Java注解
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            什么是注解（Annotation）
+Annotation（注解）就是 Java 提供了一种元程序中的元素关联任何信息和着任何元数据（metadata）的途径和方法。
+java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获取指定程序元素的注解对象，然后通过注解对象来获取注解里面的元数据。
+注解是 Java 5 及以后版本引入的。它可以用于创建文档，跟踪......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/Fibonacci/">
+        <h2 class="post-title">
+            
+            [java核心技术] Java泛型
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            泛型简介
+一般的类和方法，只能使用具体的类型：要么是基本类型，要么是自定义的类。如果要编写可以应用于多种类型的代码，这种刻板的限制对代码的束缚就会很大。
+JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码可以应用于多种类型。泛型的意思是：适用于各种各样的类型。
+泛型是实现容器类的基石。泛型的主要作用之一就是用来指定容器要持有什么类型的对象，而且由编译器来保证类型的正确性。
+基本类型......
         </div>
     </a>
     
@@ -1068,6 +1058,7 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
                         src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
                     </iframe>
                     <br />
+                    粤ICP备19058711号 |            
                     <!--总访问量统计-->
                     
                         <span id="busuanzi_container_site_pv" style="margin-left: 3px;">

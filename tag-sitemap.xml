@@ -9,13 +9,6 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/tags/java%E5%9F%BA%E7%A1%80/</loc>
-        <lastmod>2019-04-06T15:10:22.418Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://liaocan.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
         <lastmod>2019-04-06T15:10:22.418Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -30,21 +23,7 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/tags/regex/</loc>
-        <lastmod>2019-04-06T15:10:22.418Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://liaocan.top/tags/Java%E6%97%A5%E5%BF%97/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/JDK/</loc>
         <lastmod>2019-04-06T15:10:22.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -59,62 +38,6 @@
 
     <url>
         <loc>https://liaocan.top/tags/React/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/java%E5%AE%B9%E5%99%A8/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/java%E6%A0%B8%E5%BF%83/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/IO%E6%B5%81/</loc>
-        <lastmod>2019-04-06T15:10:22.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://liaocan.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
         <lastmod>2019-04-06T15:10:22.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -149,15 +72,92 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/tags/springboot/</loc>
-        <lastmod>2019-04-20T06:55:55.298Z</lastmod>
+        <loc>https://liaocan.top/tags/Java%E6%8A%80%E6%9C%AF%E6%A0%88/</loc>
+        <lastmod>2019-04-25T10:58:15.676Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://liaocan.top/tags/Java%E6%8A%80%E6%9C%AF%E6%A0%88/</loc>
-        <lastmod>2019-04-25T10:58:15.676Z</lastmod>
+        <loc>https://liaocan.top/tags/regex/</loc>
+        <lastmod>2019-06-01T12:00:44.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/java%E5%9F%BA%E7%A1%80/</loc>
+        <lastmod>2019-06-01T12:00:44.167Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+        <lastmod>2019-06-01T12:00:44.171Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/java%E6%A0%B8%E5%BF%83/</loc>
+        <lastmod>2019-06-01T12:00:44.175Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+        <lastmod>2019-06-01T12:00:44.175Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/java%E5%AE%B9%E5%99%A8/</loc>
+        <lastmod>2019-06-01T12:00:44.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
+        <lastmod>2019-06-01T12:00:44.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/IO%E6%B5%81/</loc>
+        <lastmod>2019-06-01T12:00:44.177Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</loc>
+        <lastmod>2019-06-01T12:00:44.178Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/java%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
+        <lastmod>2019-06-01T12:00:44.183Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/JDK/</loc>
+        <lastmod>2019-06-02T06:13:34.629Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://liaocan.top/tags/springboot/</loc>
+        <lastmod>2019-06-02T06:16:17.351Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -509,67 +509,34 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/5-同步容器和并发容器/">
+    <a href="/article/javacore/concurrent/ThreadPoolExecutor/">
         <h2 class="post-title">
             
-            [java多线程] 5-同步容器和并发容器
+            [java多线程] 9-线程池
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            同步容器和并发容器
-
-本文内容基于 JDK1.8。
-
-同步容器
-在 Java 中，同步容器主要包括 2 类：
-
-Vector、Stack、HashTable
-
-Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
-Stack 也是一个同步容器，它的方法也用 s......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/6-锁/">
-        <h2 class="post-title">
-            
-            [java多线程] 6-锁
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            锁
-
-本文内容基于 JDK1.8。
-
+            线程池
 概述
-概念
-公平锁/非公平锁
-公平锁是指多个线程按照申请锁的顺序来获取锁。
-非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
-对于 Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。
-对于......
+什么是线程池？
+线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
+为什么要用线程池？
+
+降低资源消耗
+
+通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
+
+
+提高响应速度
+
+当任务到达时，任务可以不需要等到线程创建就能立即执行。
+
+
+提高线程的可管理性
+
+线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
         </div>
     </a>
     
@@ -591,7 +558,46 @@ Stack 也是一个同步容器，它的方法也用 s......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/Java并发面试题集/">
+    <a href="/article/javacore/concurrent/volatile/">
+        <h2 class="post-title">
+            
+            [java多线程] 3-并发机制的底层实现
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            并发机制的底层实现
+
+本文内容基于 JDK1.8。
+
+concurrent 包的实现
+由于 Java 的 CAS 同时具有 volatile 读和 volatile 写的内存语义，因此 Java 线程之间的通信现在有了下面四种方式：
+
+A 线程写 volatile 变量，随后 B 线程读这个 volatile 变量。
+A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-06-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/concurrent/Threadquestions/">
         <h2 class="post-title">
             
             [java多线程] Java 并发面试题总结
@@ -1070,6 +1076,7 @@ Stack 也是一个同步容器，它的方法也用 s......
                         src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
                     </iframe>
                     <br />
+                    粤ICP备19058711号 |            
                     <!--总访问量统计-->
                     
                         <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
