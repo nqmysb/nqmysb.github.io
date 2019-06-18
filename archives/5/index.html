@@ -414,6 +414,45 @@ InetAddress
 
 <div class="post-preview">
 
+    <a href="/article/javacore/io/Javaios/">
+        <h2 class="post-title">
+            
+            Java 流操作
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Java 流操作
+
+关键词：InputStream、OutputStream、Reader、Writer
+
+1. 字符流和字节流
+JAVA IO 中的流操作分为两类：
+
+字节流主要操作字节类型数据（byte）。主要类是 InputStream（输入） 和 OutputStream（输出）。
+字符流主要操作字符类型数据，一个字符占两个字节。主要类是 Reader（输入） 和 Writer（输出......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#IO流" title="IO流">IO流</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/javacore/io/Serializable/">
         <h2 class="post-title">
             
@@ -458,87 +497,6 @@ InetAddress
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/Javaios/">
-        <h2 class="post-title">
-            
-            Java 流操作
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 流操作
-
-关键词：InputStream、OutputStream、Reader、Writer
-
-1. 字符流和字节流
-JAVA IO 中的流操作分为两类：
-
-字节流主要操作字节类型数据（byte）。主要类是 InputStream（输入） 和 OutputStream（输出）。
-字符流主要操作字符类型数据，一个字符占两个字节。主要类是 Reader（输入） 和 Writer（输出......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#IO流" title="IO流">IO流</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/io/JavaIO/">
-        <h2 class="post-title">
-            
-            Java 常用IO类
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 常用 IO 类
-
-关键词：File、RandomAccessFile、System、Scanner
-
-1. File
-File 类是 java.io 包中唯一对文件本身进行操作的类。它可以对文件、目录进行增删查操作。
-常用方法
-createNewFille
-可以使用 createNewFille() 方法创建一个新文件。
-注：
-Windows 中使用反斜杠表示目录的分隔符 \。
-L......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#IO流" title="IO流">IO流</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/javacore/jvm/4-JVM/">
         <h2 class="post-title">
             
@@ -560,6 +518,39 @@ GC 优化的两个目标：
 
 将进入老年代的对象数量降到最低
 减少 Full GC 的执行时......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/jvm/GC/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 2-垃圾收集
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            程序计数器、虚拟机栈和本地方法栈这三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后也会消失，因此不需要对这三个区域进行垃圾回收。垃圾回收主要是针对 Java 堆和方法区进行。
+判断一个对象是否可回收
+1. 引用计数算法
+给对象添加一个引用计数器，当对象增加一个引用时计数器加 1，引用失效时计数器减 1。引用计数为 0 的对象可被回收。
+两个对象出现循环引用的情况下，此时引用计数......
         </div>
     </a>
     
@@ -616,25 +607,30 @@ Exception 是 Thro......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/basic/IfElse/">
+    <a href="/article/javacore/basic/Operator/">
         <h2 class="post-title">
             
-            [java基础] Java 控制语句
+            [java基础] Java 操作符
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 控制语句
+            Java 操作符
 知识点
 
-选择语句
-if 语句
-if 语句会判断括号中的条件是否成立，如果成立则执行 if 语句中的代码块，否则跳过代码块继续执行。
-语法
-123if(布尔表达式) &#123;   //如果布尔表达式为true将执行的语句&#125;
-示例
-12345678910public class IfDemo &#123;    public static void main(......
+计算机的最基本用途之一就是执行数学运算，作为一门计算机语言，Java 也提供了一套丰富的操作符来操纵变量。我们可以把操作符分成以下几组：
+
+算术操作符
+关系操作符
+位操作符
+逻辑操作符
+赋值操作符
+其他操作符
+
+算术操作符
+算术操作符用在数学表达式中，它们的作用和在数学中的作用一样。下表列出了所有的算术操作符。
+表格中的示例假设整数变量 A 的值为 10，变量 B......
         </div>
     </a>
     
@@ -919,8 +915,6 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
     
         <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
     
-        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
-    
         <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
     
         <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
@@ -929,13 +923,13 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
     
         <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
     
-        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+    
+        <li><a href="http://cmsblogs.com" target="_blank">Java技术驿站</a></li>
     
         <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
     
-        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
-    
-        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+        <li><a href="https://www.bossding.com.cn" target="_blank">微笑的丁总</a></li>
     
 </ul>
 

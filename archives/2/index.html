@@ -558,24 +558,26 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/volatile/">
+    <a href="/article/javacore/concurrent/AtomicBoolean/">
         <h2 class="post-title">
             
-            [java多线程] 3-并发机制的底层实现
+            [java多线程] 7-原子变量类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            并发机制的底层实现
+            原子变量类
 
 本文内容基于 JDK1.8。
 
-concurrent 包的实现
-由于 Java 的 CAS 同时具有 volatile 读和 volatile 写的内存语义，因此 Java 线程之间的通信现在有了下面四种方式：
+原子变量比锁的粒度更细，量级更轻，并且对于在多处理器系统上实现高性能的并发代码来说是非常关键的。
+原子变量类相当于一种泛化的volatile变量，能够支持原子的和有条件的读-改-写操作。
+原子类在内部使用现代 CPU 支持的 CAS 指令来实现同步。这些指令通常比锁更快。
+原子更新基本类型
 
-A 线程写 volatile 变量，随后 B 线程读这个 volatile 变量。
-A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
+AtomicBoolean - 原子更新布尔类型。
+A......
         </div>
     </a>
     
@@ -911,8 +913,6 @@ A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
     
         <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
     
-        <li><a href="https://www.aips.me" target="_blank">周良博客</a></li>
-    
         <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
     
         <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
@@ -921,13 +921,13 @@ A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
     
         <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
     
-        <li><a href="http://cmsblogs.com" target="_blank">Java 技术驿站</a></li>
+        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+    
+        <li><a href="http://cmsblogs.com" target="_blank">Java技术驿站</a></li>
     
         <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
     
-        <li><a href="https://www.qdtalk.com" target="_blank">陌上寒</a></li>
-    
-        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+        <li><a href="https://www.bossding.com.cn" target="_blank">微笑的丁总</a></li>
     
 </ul>
 
