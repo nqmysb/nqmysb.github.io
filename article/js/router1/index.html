@@ -170,13 +170,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -185,6 +178,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -266,8 +266,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.history.putState(data,title,url) <span class="comment">//可以是绝对路径 或者是相对路径  新增当前路径到历史栈   </span></span><br><span class="line"><span class="built_in">window</span>.history.replaceState(data,title,url) <span class="comment">//替代当前路径  不会刷新  把他替代历史栈的位置</span></span><br><span class="line">onhashchange事件</span><br><span class="line"><span class="built_in">window</span>.onpopstate= <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'h5:'</span>,e.state)&#125;  <span class="comment">//后退时触发</span></span><br><span class="line"><span class="built_in">window</span>.onpopstate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.location.href);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.location.pathname);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.location.hash);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.location.search);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.history.back()</span><br><span class="line"><span class="comment">//不能跨域  </span></span><br><span class="line">Uncaught DOMException: Failed to execute <span class="string">'replaceState'</span> on <span class="string">'History'</span>: A history state object <span class="keyword">with</span> URL <span class="string">'http://www.baidu.com/sss'</span> cannot be created <span class="keyword">in</span> a <span class="built_in">document</span> <span class="keyword">with</span> origin <span class="string">'https://www.baidu.com'</span> and URL <span class="string">'https://www.baidu.com/'</span>.at &lt;anonymous&gt;:<span class="number">1</span>:<span class="number">16</span></span><br></pre></td></tr></table></figure>
                 
 
-                <hr>
-                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span> -->
                 <!-- Pager -->
                 <ul class="pager">
                     
@@ -382,7 +382,8 @@
                 <!-- Friends Blog -->
                 
                 <hr>
-                <h5>FRIENDS</h5>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span> 
+                <!-- <h5>FRIENDS</h5>
                 <ul class="list-inline">
 
                     
@@ -406,7 +407,7 @@
                     
                         <li><a href="https://liupeicheng.top" target="_blank">刘培城</a></li>
                     
-                </ul>
+                </ul> -->
                 
             </div>
         </div>

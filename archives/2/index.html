@@ -167,13 +167,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -182,6 +175,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -557,26 +557,26 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/Collections/">
+    <a href="/article/javacore/concurrent/AtomicBoolean/">
         <h2 class="post-title">
             
-            [java多线程] 5-同步容器和并发容器
+            [java多线程] 7-原子变量类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            同步容器和并发容器
+            原子变量类
 
 本文内容基于 JDK1.8。
 
-同步容器
-在 Java 中，同步容器主要包括 2 类：
+原子变量比锁的粒度更细，量级更轻，并且对于在多处理器系统上实现高性能的并发代码来说是非常关键的。
+原子变量类相当于一种泛化的volatile变量，能够支持原子的和有条件的读-改-写操作。
+原子类在内部使用现代 CPU 支持的 CAS 指令来实现同步。这些指令通常比锁更快。
+原子更新基本类型
 
-Vector、Stack、HashTable
-
-Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
-Stack 也是一个同步容器，它的方法也用 s......
+AtomicBoolean - 原子更新布尔类型。
+A......
         </div>
     </a>
     
@@ -598,26 +598,25 @@ Stack 也是一个同步容器，它的方法也用 s......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/AtomicBoolean/">
+    <a href="/article/javacore/concurrent/concurrentool/">
         <h2 class="post-title">
             
-            [java多线程] 7-原子变量类
+            [java多线程] 8-并发工具类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            原子变量类
+            并发工具类
 
 本文内容基于 JDK1.8。
 
-原子变量比锁的粒度更细，量级更轻，并且对于在多处理器系统上实现高性能的并发代码来说是非常关键的。
-原子变量类相当于一种泛化的volatile变量，能够支持原子的和有条件的读-改-写操作。
-原子类在内部使用现代 CPU 支持的 CAS 指令来实现同步。这些指令通常比锁更快。
-原子更新基本类型
+JDK 的 java.util.concurrent 包（即 juc）中提供了几个非常有用的并发工具类。
+CountDownLatch
+要点
 
-AtomicBoolean - 原子更新布尔类型。
-A......
+作用：字面意思为递减计数锁。它允许一个或多个线程等待，直到在其他线程中执行的一组操作完成。
+原理：CountDownLatch 维护一个计数器 count，表示需要等待的事件数量。countDown 方法......
         </div>
     </a>
     
@@ -682,11 +681,11 @@ A......
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
+            <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
-            <a href="/tags/#git" title="git" rel="1">git</a>
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
@@ -718,7 +717,7 @@ A......
             
         
             
-            <a href="/tags/#Spring" title="Spring" rel="2">Spring</a>
+            <a href="/tags/#Spring" title="Spring" rel="1">Spring</a>
             
         
             
@@ -742,6 +741,10 @@ A......
             
         
             
+            <a href="/tags/#设计模式" title="设计模式" rel="2">设计模式</a>
+            
+        
+            
             <a href="/tags/#java核心" title="java核心" rel="9">java核心</a>
             
         
@@ -758,19 +761,15 @@ A......
             
         
             
-            <a href="/tags/#编码算法" title="编码算法" rel="2">编码算法</a>
-            
-        
-            
             <a href="/tags/#面试题" title="面试题" rel="1">面试题</a>
             
         
             
-            <a href="/tags/#regex" title="regex" rel="1">regex</a>
+            <a href="/tags/#编码算法" title="编码算法" rel="2">编码算法</a>
             
         
             
-            <a href="/tags/#设计模式" title="设计模式" rel="1">设计模式</a>
+            <a href="/tags/#regex" title="regex" rel="1">regex</a>
             
         
     </div>

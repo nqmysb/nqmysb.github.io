@@ -16,6 +16,13 @@
     </url>
 
     <url>
+        <loc>https://liaocan.top/tags/Spring/</loc>
+        <lastmod>2019-04-06T15:10:22.449Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://liaocan.top/tags/regex/</loc>
         <lastmod>2019-06-01T12:00:44.159Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -93,13 +100,6 @@
     </url>
 
     <url>
-        <loc>https://liaocan.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-        <lastmod>2019-07-14T06:21:04.400Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://liaocan.top/tags/%E8%AE%BE%E8%AE%A1/</loc>
         <lastmod>2019-07-14T12:35:50.630Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -150,14 +150,14 @@
 
     <url>
         <loc>https://liaocan.top/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
-        <lastmod>2019-07-14T12:53:52.111Z</lastmod>
+        <lastmod>2019-07-14T13:10:56.398Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://liaocan.top/tags/Spring/</loc>
-        <lastmod>2019-07-14T12:53:52.111Z</lastmod>
+        <loc>https://liaocan.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+        <lastmod>2019-07-14T13:10:56.398Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -167,13 +167,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -182,6 +175,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -231,9 +231,9 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#Java日志" title="Java日志" rel="2">Java日志</a>
-                
                     <a href="#git" title="git" rel="1">git</a>
+                
+                    <a href="#Java日志" title="Java日志" rel="2">Java日志</a>
                 
                     <a href="#JDK" title="JDK" rel="3">JDK</a>
                 
@@ -249,7 +249,7 @@
                 
                     <a href="#源码分析" title="源码分析" rel="2">源码分析</a>
                 
-                    <a href="#Spring" title="Spring" rel="2">Spring</a>
+                    <a href="#Spring" title="Spring" rel="1">Spring</a>
                 
                     <a href="#java核心技术" title="java核心技术" rel="17">java核心技术</a>
                 
@@ -261,6 +261,8 @@
                 
                     <a href="#java虚拟机" title="java虚拟机" rel="4">java虚拟机</a>
                 
+                    <a href="#设计模式" title="设计模式" rel="2">设计模式</a>
+                
                     <a href="#java核心" title="java核心" rel="9">java核心</a>
                 
                     <a href="#java多线程" title="java多线程" rel="10">java多线程</a>
@@ -269,18 +271,38 @@
                 
                     <a href="#大数据" title="大数据" rel="1">大数据</a>
                 
-                    <a href="#编码算法" title="编码算法" rel="2">编码算法</a>
-                
                     <a href="#面试题" title="面试题" rel="1">面试题</a>
                 
-                    <a href="#regex" title="regex" rel="1">regex</a>
+                    <a href="#编码算法" title="编码算法" rel="2">编码算法</a>
                 
-                    <a href="#设计模式" title="设计模式" rel="1">设计模式</a>
+                    <a href="#regex" title="regex" rel="1">regex</a>
                 
             </div>
 
             <!-- 标签列表 -->
 
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="git">
+                    <span class="tag-text">git</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/git/gh-pages/">
+                        <h2 class="post-title">
+                            巧用gh-pages分支发布自己的静态项目
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Java日志">
@@ -310,28 +332,6 @@
                      <a href="/article/javalog/java-log/">
                         <h2 class="post-title">
                             细说Java主流日志工具库
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="git">
-                    <span class="tag-text">git</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/git/gh-pages/">
-                        <h2 class="post-title">
-                            巧用gh-pages分支发布自己的静态项目
                         </h2>
                         
                     </a>
@@ -620,21 +620,6 @@
                 </div>
                 <hr>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/source-analysis/source-analysis2/">
-                        <h2 class="post-title">
-                            Spring源码分析-手写JDK动态代理
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
             </div>
             
             <div class="one-tag-list">
@@ -797,9 +782,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/javacore/io/Javaios/">
+                     <a href="/article/javacore/io/Serializable/">
                         <h2 class="post-title">
-                            Java 流操作
+                            Java 序列化
                         </h2>
                         
                     </a>
@@ -812,9 +797,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/javacore/io/Serializable/">
+                     <a href="/article/javacore/io/Javaios/">
                         <h2 class="post-title">
-                            Java 序列化
+                            Java 流操作
                         </h2>
                         
                     </a>
@@ -939,9 +924,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/javacore/basic/datatype/">
+                     <a href="/article/javacore/basic/array/">
                         <h2 class="post-title">
-                            [java基础] Java 基本数据类型
+                            [java基础] Java 数组
                         </h2>
                         
                     </a>
@@ -954,9 +939,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/javacore/basic/array/">
+                     <a href="/article/javacore/basic/datatype/">
                         <h2 class="post-title">
-                            [java基础] Java 数组
+                            [java基础] Java 基本数据类型
                         </h2>
                         
                     </a>
@@ -1218,6 +1203,43 @@
                      <a href="/article/javacore/jvm/4-JVM/">
                         <h2 class="post-title">
                             [java虚拟机] 4-JVM 调优
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="设计模式">
+                    <span class="tag-text">设计模式</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/source-analysis/source-analysis2/">
+                        <h2 class="post-title">
+                            Spring源码分析-手写JDK动态代理
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/pattern/23pattern/">
+                        <h2 class="post-title">
+                            23种设计模式详解以及Java代码实现
                         </h2>
                         
                     </a>
@@ -1601,6 +1623,28 @@
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="面试题">
+                    <span class="tag-text">面试题</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/javacore/concurrent/Threadquestions/">
+                        <h2 class="post-title">
+                            [java多线程] Java 并发面试题总结
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="编码算法">
                     <span class="tag-text">编码算法</span>
                 </span>
@@ -1638,28 +1682,6 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="面试题">
-                    <span class="tag-text">面试题</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/javacore/concurrent/Threadquestions/">
-                        <h2 class="post-title">
-                            [java多线程] Java 并发面试题总结
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="regex">
                     <span class="tag-text">regex</span>
                 </span>
@@ -1672,28 +1694,6 @@
                      <a href="/article/javacore/advanced/Regular/">
                         <h2 class="post-title">
                             [java核心技术] Java正则
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="设计模式">
-                    <span class="tag-text">设计模式</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/pattern/23pattern/">
-                        <h2 class="post-title">
-                            23种设计模式详解以及Java代码实现
                         </h2>
                         
                     </a>

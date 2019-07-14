@@ -167,13 +167,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -182,6 +175,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                      -->
@@ -244,25 +244,34 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/concurrentool/">
+    <a href="/article/javacore/concurrent/Threadquestions/">
         <h2 class="post-title">
             
-            [java多线程] 8-并发工具类
+            [java多线程] Java 并发面试题总结
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            并发工具类
+            Java 并发面试题总结
+1. 并发简介
+1.1. 什么是进程？什么是线程？进程和线程的区别？
 
-本文内容基于 JDK1.8。
+什么是进程
 
-JDK 的 java.util.concurrent 包（即 juc）中提供了几个非常有用的并发工具类。
-CountDownLatch
-要点
+简言之，进程可视为一个正在运行的程序。
+进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动。进程是操作系统进行资源分配的基本单位。
 
-作用：字面意思为递减计数锁。它允许一个或多个线程等待，直到在其他线程中执行的一组操作完成。
-原理：CountDownLatch 维护一个计数器 count，表示需要等待的事件数量。countDown 方法......
+
+什么是线程
+
+线程是操作系统进行调度的基本单位。
+
+
+进程 vs. 线程
+
+一个程序至少有一个进程，一个进程至少有一个线程。
+线程比进程......
         </div>
     </a>
     
@@ -272,46 +281,9 @@ CountDownLatch
         </p>
         <div class="tags">
             
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
               <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/memory/">
-        <h2 class="post-title">
-            
-            [java多线程] 4-内存模型
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            内存模型
-
-本文内容基于 JDK1.8。
-
-内部原理
-JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
-JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+              <a href="/tags/#面试题" title="面试题">面试题</a>
             
         </div>
     
@@ -378,47 +350,6 @@ A 线程写 volatile 变量，随后 B 线程用 CAS 更新这个 v......
 
 java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一个时刻，线程只能处于其中的一个状态。
 以下是各状态的说明......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-06-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心" title="java核心">java核心</a>
-            
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/concurrent/Lock/">
-        <h2 class="post-title">
-            
-            [java多线程] 6-锁
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            锁
-
-本文内容基于 JDK1.8。
-
-概述
-概念
-公平锁/非公平锁
-公平锁是指多个线程按照申请锁的顺序来获取锁。
-非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
-对于 Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。
-对于......
         </div>
     </a>
     
@@ -533,34 +464,26 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/Threadquestions/">
+    <a href="/article/javacore/concurrent/Collections/">
         <h2 class="post-title">
             
-            [java多线程] Java 并发面试题总结
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 并发面试题总结
-1. 并发简介
-1.1. 什么是进程？什么是线程？进程和线程的区别？
+            同步容器和并发容器
 
-什么是进程
+本文内容基于 JDK1.8。
 
-简言之，进程可视为一个正在运行的程序。
-进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动。进程是操作系统进行资源分配的基本单位。
+同步容器
+在 Java 中，同步容器主要包括 2 类：
 
+Vector、Stack、HashTable
 
-什么是线程
-
-线程是操作系统进行调度的基本单位。
-
-
-进程 vs. 线程
-
-一个程序至少有一个进程，一个进程至少有一个线程。
-线程比进程......
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
         </div>
     </a>
     
@@ -570,9 +493,9 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
         </p>
         <div class="tags">
             
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+              <a href="/tags/#java核心" title="java核心">java核心</a>
             
-              <a href="/tags/#面试题" title="面试题">面试题</a>
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
         </div>
     
@@ -582,33 +505,75 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Reflection/">
+    <a href="/article/javacore/concurrent/memory/">
         <h2 class="post-title">
             
-            [java核心技术] Java反射和动态代理
+            [java多线程] 4-内存模型
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            反射
-反射简介
-什么是反射
-反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
-简而言之：通过反射，我们可以在运行时获得程序或程序集中每一个类的成员和方法。
-反射的主要用途
+            内存模型
 
-开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
+本文内容基于 JDK1.8。
+
+内部原理
+JVM 中试图定义一种 JMM 来屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
+JMM 的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中取出变量这样的底层细节。此处的变量与 Java 编程中的变量有所区别，它包括了实例字段、静态字段和构成数组对象的元......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Liao Can on
-            2015-05-06
+            2015-06-06
         </p>
         <div class="tags">
             
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/concurrent/Lock/">
+        <h2 class="post-title">
+            
+            [java多线程] 6-锁
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            锁
+
+本文内容基于 JDK1.8。
+
+概述
+概念
+公平锁/非公平锁
+公平锁是指多个线程按照申请锁的顺序来获取锁。
+非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
+对于 Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。
+对于......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-06-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心" title="java核心">java核心</a>
+            
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
         </div>
     
@@ -646,6 +611,38 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
               <a href="/tags/#regex" title="regex">regex</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/Annotation/">
+        <h2 class="post-title">
+            
+            [java核心技术] Java注解
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            什么是注解（Annotation）
+Annotation（注解）就是 Java 提供了一种元程序中的元素关联任何信息和着任何元数据（metadata）的途径和方法。
+java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获取指定程序元素的注解对象，然后通过注解对象来获取注解里面的元数据。
+注解是 Java 5 及以后版本引入的。它可以用于创建文档，跟踪......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
         </div>
     
@@ -698,11 +695,11 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
+            <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
-            <a href="/tags/#git" title="git" rel="1">git</a>
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
@@ -734,7 +731,7 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
             
         
             
-            <a href="/tags/#Spring" title="Spring" rel="2">Spring</a>
+            <a href="/tags/#Spring" title="Spring" rel="1">Spring</a>
             
         
             
@@ -758,6 +755,10 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
             
         
             
+            <a href="/tags/#设计模式" title="设计模式" rel="2">设计模式</a>
+            
+        
+            
             <a href="/tags/#java核心" title="java核心" rel="9">java核心</a>
             
         
@@ -774,19 +775,15 @@ java.lang.Thread.State 中定义了 6 种不同的线程状态，在给定的一
             
         
             
-            <a href="/tags/#编码算法" title="编码算法" rel="2">编码算法</a>
-            
-        
-            
             <a href="/tags/#面试题" title="面试题" rel="1">面试题</a>
             
         
             
-            <a href="/tags/#regex" title="regex" rel="1">regex</a>
+            <a href="/tags/#编码算法" title="编码算法" rel="2">编码算法</a>
             
         
             
-            <a href="/tags/#设计模式" title="设计模式" rel="1">设计模式</a>
+            <a href="/tags/#regex" title="regex" rel="1">regex</a>
             
         
     </div>
