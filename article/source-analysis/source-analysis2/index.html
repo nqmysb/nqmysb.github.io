@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="iGDu0e88zUCIa6OhhkXgxyKDioORMrt1KC_43F_VRcg" />
+    <meta name="baidu-site-verification" content="A2ImdbykAi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/meditation.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+        Spring源码分析-手写JDK动态代理 - LiaoCan | Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://liaocan.top/article/source-analysis/source-analysis2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</head>
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/article_header/article_header2.jpg')
+                /*post*/
+                
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#源码分析" title="源码分析">
+                                源码分析</a>
+                            
+                            <a class="tag" href="/tags/#Spring" title="Spring">
+                                Spring</a>
+                            
+                        </div>
+                        <h1>
+                            Spring源码分析-手写JDK动态代理
+                        </h1>
+                        <!-- <h2 class="subheading"></h2> -->
+                        <!--文章访问量统计-->
+                        
+                        <span id="busuanzi_container_page_pv">本文已被阅读过<span id="busuanzi_value_page_pv"></span>次</span>
+                        
+                        <!--文章访问量统计--> <span class="meta">
+                            Posted by
+                            Liao Can on
+                            2019-05-20
+                        </span>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Liao Can</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                        <li>
+                            <a href="/about/" >About</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/archive/" >Archives</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/tags/" >Tags</a>
+                        </li>
+                    
+
+
+                    <!-- 
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                     -->
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="回顾jdk代理">回顾JDK代理</h2>
+<p>Spring AOP 用到了两种动态代理模式：JDK动态代理和CGLIB动态代理，两种动态代理形成互补。今天我们来尝试纯手写一个简版的JDK动态代理，来了解它的底层实现原理。我们先来回顾一下JDK动态代理</p>
+<h3 id="动态代理的条件">动态代理的条件</h3>
+<ol>
+<li>两个角色： 代理对象，被代理对象</li>
+<li>代理对象需要完成被代理对象的需要完成的业务操作</li>
+<li>代理对象持有被代理对象的引用</li>
+<li>JDK动态代理 被代理对象必须实现接口，CGLIB动态代理被代理类和方法不能用final修饰</li>
+</ol>
+<h3 id="实现代码">实现代码</h3>
+<ol>
+<li>被代理对象实现的目标接口</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.proxy.jdk;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 抽象业务方法</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">businessMethod</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>被代理的目标对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.proxy.jdk.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.nqmysb.proxy.jdk.Subject;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 具体的目标对象，实现目标接口的方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RealSubject</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">businessMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我在进行具体的业务操作。。。。。。"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>被代理的目标对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.proxy.jdk;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 代理类，必须实现JDK中的InvocationHandler  这是JDK动态代理的标志</span></span><br><span class="line"><span class="comment"> * 可以理解：需要实现JDK的代理，必须要这个证书 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Subject target; <span class="comment">//被代理对象的引用  这里是代理对象的接口  说明 该代理类是可以代理该接口下的所有子类的</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//动态生成代理对象</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getInstance</span><span class="params">(Subject target)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		<span class="comment">//获取代理对象</span></span><br><span class="line">		<span class="keyword">this</span>.target = target;</span><br><span class="line">		<span class="comment">//代理的对象必须是 suject的实现类</span></span><br><span class="line">		Class&lt;? extends Subject&gt; clazz = target.getClass();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//被代理对象的class是:class com.nqmysb.proxy.jdk.impl.RealSubject</span></span><br><span class="line">		System.out.println(<span class="string">"被代理对象的class是:"</span>+clazz);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//被代理对象的类加载器:sun.misc.Launcher$AppClassLoader@20eb607d</span></span><br><span class="line">		ClassLoader classLoader = clazz.getClassLoader();</span><br><span class="line">		System.out.println(<span class="string">"被代理对象的类加载器:"</span>+classLoader);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//被代理对象的class是:[Ljava.lang.Class;@602f892f  返回所有实现接口的数组 [interface com.nqmysb.proxy.jdk.Subject]</span></span><br><span class="line">		Class&lt;?&gt;[] classs = clazz.getInterfaces();</span><br><span class="line">		System.out.println(<span class="string">"被代理对象实现的接口:"</span>+Arrays.asList(classs));</span><br><span class="line">		<span class="comment">//proxy的静态方法 newProxyInstance</span></span><br><span class="line">		<span class="comment">// 参数说明：被代理对象的类加载器 clazz.getClassLoader  ,被代理对象实现的接口 clazz.getInterfaces() ,当前对象 this</span></span><br><span class="line">		<span class="comment">//this 参数传入 把代理类和被代理类产生关联 当要执行被代理对象的方法时 会自动调用代理对象invoke方法进行代理执行</span></span><br><span class="line">		<span class="keyword">return</span> Proxy.newProxyInstance(classLoader, classs, <span class="keyword">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"开始代理..."</span>);</span><br><span class="line">		System.out.println(<span class="string">"代理之前做的事情..."</span>);</span><br><span class="line">		System.out.println(<span class="string">"------------"</span>); </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//执行代理方法</span></span><br><span class="line">		method.invoke(<span class="keyword">this</span>.target, args);</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"------------"</span>);</span><br><span class="line">		System.out.println(<span class="string">"代理之后做的事情..."</span>);</span><br><span class="line">		System.out.println(<span class="string">"结束代理..."</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>JDK动态代理测试类</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.proxy.jdk;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.nqmysb.proxy.jdk.impl.RealSubject;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * JDK动态代理测试类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicProxyTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">					</span><br><span class="line">        Subject subject = (Subject)<span class="keyword">new</span> DynamicProxy().getInstance(<span class="keyword">new</span> RealSubject());</span><br><span class="line">        System.out.println(subject.getClass());</span><br><span class="line">        subject.businessMethod();</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>运行结果如下</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">被代理对象的class是:class com.nqmysb.proxy.jdk.impl.RealSubject</span><br><span class="line">被代理对象的类加载器:sun.misc.Launcher$AppClassLoader@<span class="number">73</span>d16e93</span><br><span class="line">被代理对象实现的接口:[interface com.nqmysb.proxy.jdk.Subject]</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">sun</span>.<span class="title">proxy</span>.$<span class="title">Proxy0</span></span></span><br><span class="line"><span class="class">开始代理...</span></span><br><span class="line"><span class="class">代理之前做的事情...</span></span><br><span class="line"><span class="class">------------</span></span><br><span class="line"><span class="class">我在进行具体的业务操作。。。。。。</span></span><br><span class="line"><span class="class">------------</span></span><br><span class="line"><span class="class">代理之后做的事情...</span></span><br><span class="line"><span class="class">结束代理...</span></span><br></pre></td></tr></table></figure>
+<h2 id="手写jdk动态代理">手写JDK动态代理</h2>
+<h3 id="jdk做了哪些事">JDK做了哪些事？</h3>
+<blockquote>
+<p>在自己手写JDK动态代理之前我们分析一下JDK动态代理帮我们做了哪些事情？</p>
+</blockquote>
+<ol>
+<li>代理类必须实现JDK中的java.lang.reflect.InvocationHandler接口，这个接口中只有一个方法,如下：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>   proxy the proxy instance that the method was invoked on</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>   method the &#123;<span class="doctag">@code</span> Method&#125; instance corresponding to</span></span><br><span class="line"><span class="comment"> * the interface method invoked on the proxy instance.  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>   args an array of objects containing the values of the</span></span><br><span class="line"><span class="comment"> * arguments passed in the method invocation on the proxy instance,</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> Throwable</span>;</span><br></pre></td></tr></table></figure>
+<p>代理类需要重写和实现该方法，在这个方法里面我们可以进行附加业务操作，再调用被代理对象的方法。从而对被代理对象的方法进行扩展。</p>
+<ol start="2">
+<li>生成代理类对象,代理类中的getInstance(Subject target)方法产生代理对象。关键代码如下：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 该方法传入三个参数：1.类加载，用于加载动态生成代理类。2.被代理类实现的所有接口 3.代理类对象本身引用，用于回调我们实现的invoke方法 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Proxy.newProxyInstance(classLoader, classs, <span class="keyword">this</span>)</span><br></pre></td></tr></table></figure>
+<p>从上面两点可以得出JDK动态代理帮我们生成了代理类，代理实现了被代理类的所有接口，并将代理类加载到JVM中，生成代理实例，并回调我们实现的invoke方法进行动态代理。<br>
+JDK给我们提供了 java.lang.reflect.InvocationHandler 接口和 java.lang.reflect.Proxy 代理类 其中JDK1.8版本中的Proxy类中有一个私有的静态内部类 private static final class ProxyClassFactory  该类用于生成代理类的class对象。源代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyClassFactory</span></span></span><br><span class="line">       implements BiFunction&lt;ClassLoader, Class&lt;?&gt;[], Class&lt;?&gt;&gt;</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="comment">//$Proxy 作为代理类的标志</span></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String proxyClassNamePrefix = <span class="string">"$Proxy"</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> AtomicLong nextUniqueNumber = <span class="keyword">new</span> AtomicLong();</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="keyword">public</span> Class&lt;?&gt; apply(ClassLoader loader, Class&lt;?&gt;[] interfaces) &#123;</span><br><span class="line"></span><br><span class="line">           Map&lt;Class&lt;?&gt;, Boolean&gt; interfaceSet = <span class="keyword">new</span> IdentityHashMap&lt;&gt;(interfaces.length);</span><br><span class="line">           <span class="keyword">for</span> (Class&lt;?&gt; intf : interfaces) &#123;</span><br><span class="line">         </span><br><span class="line">               Class&lt;?&gt; interfaceClass = <span class="keyword">null</span>;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   interfaceClass = Class.forName(intf.getName(), <span class="keyword">false</span>, loader);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (interfaceClass != intf) &#123;</span><br><span class="line">                   <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                       intf + <span class="string">" is not visible from class loader"</span>);</span><br><span class="line">               &#125;</span><br><span class="line">         </span><br><span class="line">               <span class="keyword">if</span> (!interfaceClass.isInterface()) &#123;</span><br><span class="line">                   <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                       interfaceClass.getName() + <span class="string">" is not an interface"</span>);</span><br><span class="line">               &#125;</span><br><span class="line">      </span><br><span class="line">               <span class="keyword">if</span> (interfaceSet.put(interfaceClass, Boolean.TRUE) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                       <span class="string">"repeated interface: "</span> + interfaceClass.getName());</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           String proxyPkg = <span class="keyword">null</span>;    </span><br><span class="line">           <span class="keyword">int</span> accessFlags = Modifier.PUBLIC | Modifier.FINAL;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           <span class="keyword">for</span> (Class&lt;?&gt; intf : interfaces) &#123;</span><br><span class="line">               <span class="keyword">int</span> flags = intf.getModifiers();</span><br><span class="line">               <span class="keyword">if</span> (!Modifier.isPublic(flags)) &#123;</span><br><span class="line">                   accessFlags = Modifier.FINAL;</span><br><span class="line">                   String name = intf.getName();</span><br><span class="line">                   <span class="keyword">int</span> n = name.lastIndexOf(<span class="string">'.'</span>);</span><br><span class="line">                   String pkg = ((n == -<span class="number">1</span>) ? <span class="string">""</span> : name.substring(<span class="number">0</span>, n + <span class="number">1</span>));</span><br><span class="line">                   <span class="keyword">if</span> (proxyPkg == <span class="keyword">null</span>) &#123;</span><br><span class="line">                       proxyPkg = pkg;</span><br><span class="line">                   &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!pkg.equals(proxyPkg)) &#123;</span><br><span class="line">                       <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                           <span class="string">"non-public interfaces from different packages"</span>);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">if</span> (proxyPkg == <span class="keyword">null</span>) &#123;</span><br><span class="line">               proxyPkg = ReflectUtil.PROXY_PACKAGE + <span class="string">"."</span>;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">           <span class="keyword">long</span> num = nextUniqueNumber.getAndIncrement();</span><br><span class="line">           <span class="comment">//动态生成代理类的全名</span></span><br><span class="line">           String proxyName = proxyPkg + proxyClassNamePrefix + num;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//动态生成代理类class对象</span></span><br><span class="line">           <span class="keyword">byte</span>[] proxyClassFile = ProxyGenerator.generateProxyClass(</span><br><span class="line">               proxyName, interfaces, accessFlags);</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">return</span> defineClass0(loader, proxyName,</span><br><span class="line">                                   proxyClassFile, <span class="number">0</span>, proxyClassFile.length);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (ClassFormatError e) &#123;</span><br><span class="line">          </span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(e.toString());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="手写jdk动态代理代码实现">手写JDK动态代理代码实现</h3>
+<blockquote>
+<p>前两个要素不变：目标接口和目标实现类。</p>
+</blockquote>
+<ol>
+<li>被代理对象实现的目标接口</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.proxy.jdk;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 抽象业务方法</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">businessMethod</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>被代理的目标对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.proxy.jdk.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.nqmysb.proxy.jdk.Subject;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 具体的目标对象，实现目标接口的方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RealSubject</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">businessMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我在进行具体的业务操作。。。。。。"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>自定义类加载器</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.myproxy.proxytools;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义类加载器</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 作用：将我们动态生成的class文件生成class对象加载JVM内存中</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> File baseDir;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyClassLoader</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		Class&lt;MyClassLoader&gt; clazz = MyClassLoader.class;</span><br><span class="line">		String basePath = clazz.getResource(<span class="string">""</span>).getPath();</span><br><span class="line"><span class="comment">//		String basePath = clazz.getResource("/").getPath() +"com/nqmysb/myproxy/proxytools";</span></span><br><span class="line">		<span class="keyword">this</span>.baseDir = <span class="keyword">new</span> java.io.File(basePath);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 自定义类加载方法 ，加载自定义类</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">		<span class="comment">//获取需要加载的类的全名  com.nqmysb.myproxy.proxytools.$Proxy0</span></span><br><span class="line">		String className = MyClassLoader.class.getPackage().getName() + <span class="string">"."</span> + name;</span><br><span class="line">		<span class="keyword">if</span>(baseDir != <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="comment">//获取 class文件对象 E:\workspace\spring-source-analysis\spring-source-proxy\bin\com\nqmysb\myproxy\proxytools\$Proxy0.class</span></span><br><span class="line">			File classFile = <span class="keyword">new</span> File(baseDir,name.replaceAll(<span class="string">"\\."</span>, <span class="string">"/"</span>) + <span class="string">".class"</span>);</span><br><span class="line">			<span class="keyword">if</span>(classFile.exists())&#123;</span><br><span class="line">				FileInputStream in = <span class="keyword">null</span>;</span><br><span class="line">				ByteArrayOutputStream out = <span class="keyword">null</span>;</span><br><span class="line">				<span class="keyword">try</span>&#123;</span><br><span class="line">					in = <span class="keyword">new</span> FileInputStream(classFile);</span><br><span class="line">					out = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">					<span class="keyword">byte</span> [] buff = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">					<span class="keyword">int</span> len;</span><br><span class="line">					<span class="keyword">while</span> ((len = in.read(buff)) != -<span class="number">1</span>) &#123;</span><br><span class="line">						out.write(buff, <span class="number">0</span>, len);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="comment">//根据class文件和类名生成class对象 并加载到JVM中</span></span><br><span class="line">					<span class="keyword">return</span> defineClass(className, out.toByteArray(), <span class="number">0</span>,out.size());</span><br><span class="line">					</span><br><span class="line">				&#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(<span class="keyword">null</span> != in)&#123;</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							in.close();</span><br><span class="line">						&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span>(<span class="keyword">null</span> != out)&#123;</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							out.close();</span><br><span class="line">						&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="comment">//删除Class文件</span></span><br><span class="line">					classFile.delete();</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 测试了解Java类加载机制</span></span><br><span class="line"><span class="comment">	 * 1.类加载器的作用：类加载器负责将class文件读入JVM内存，并为之生成对应的java.lang.Class对象。</span></span><br><span class="line"><span class="comment">	 * java类加载器分为三类：</span></span><br><span class="line"><span class="comment">	 * （Bootstrap ClassLoader） 启动类加载器 ： 负责加载Java的核心类（如String、System等）, rt.jar</span></span><br><span class="line"><span class="comment">	 * 							它比较特殊，因为它是由原生C++代码实现的，并不是java.lang.ClassLoader的子类</span></span><br><span class="line"><span class="comment">	 * （Extension ClassLoader ）扩展类加载器：它负责加载JRE的扩展目录（%JAVA_HOME%/jre/lib/ext）中JAR包的类，java实现</span></span><br><span class="line"><span class="comment">	 * 							我们可以通过把自己开发的类打包成JAR文件放入扩展目录来为Java扩展核心类以外的新功能。</span></span><br><span class="line"><span class="comment">	 * （ApplicationClassLoader）应用程序类加载器：它负责在JVM启动时加载来自Java命令的-classpath选项、java.class.path系统属性，java实现</span></span><br><span class="line"><span class="comment">	 * 							或CLASSPATH环境变量所指定的JAR包和类路径。程序可以通过ClassLoader的静态方法getSystemClassLoader来获取系统类加载器：</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 类加载机制之双亲委派</span></span><br><span class="line"><span class="comment">	 *        加载类时 会现递归交于父类加载器加载，如果所有父类没有加载才有自己加载，好处防止类的重复加载</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//（Bootstrap ClassLoader） 启动类加载器 ： 负责加载Java的核心类（如String、System等）rt.jar</span></span><br><span class="line">		<span class="comment">//它比较特殊，因为它是由原生C++代码实现的，并不是java.lang.ClassLoader的子类 所以输出结果为null</span></span><br><span class="line">		<span class="comment">//Returns the class loader for the class.  Some implementations may use</span></span><br><span class="line">		<span class="comment">//null to represent the bootstrap class loader. This method will return</span></span><br><span class="line">		<span class="comment">//null in such implementations if this class was loaded by the bootstrap</span></span><br><span class="line">		<span class="comment">//class loader.</span></span><br><span class="line">		System.out.println(String.class.getClassLoader());</span><br><span class="line">		System.out.println(HashMap.class.getClassLoader());</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//sun.misc.Launcher$AppClassLoader</span></span><br><span class="line">		System.out.println(MyClassLoader.class.getClassLoader().getClass().getName());</span><br><span class="line"></span><br><span class="line">		<span class="comment">//sun.misc.Launcher$AppClassLoader</span></span><br><span class="line">		System.out.println(ClassLoader.getSystemClassLoader().getClass().getName());</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>自定义 InvocationHandler 接口</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.myproxy.proxytools;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function">Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="number">5</span>. 自定义 Proxy 代理类</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="keyword">package</span> com.nqmysb.myproxy.proxytools;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.tools.JavaCompiler;</span><br><span class="line"><span class="keyword">import</span> javax.tools.JavaCompiler.CompilationTask;</span><br><span class="line"><span class="keyword">import</span> javax.tools.JavaFileObject;</span><br><span class="line"><span class="keyword">import</span> javax.tools.StandardJavaFileManager;</span><br><span class="line"><span class="keyword">import</span> javax.tools.ToolProvider;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自己实现的Proxy  对应JDK中的java.lang.reflect.Proxy类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyProxy</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//换行符</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String ln = <span class="string">"\r\n"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 生成代理类对象  </span></span><br><span class="line"><span class="comment">	 *  对应JDK中Proxy的newProxyInstance方法生成代理类对象</span></span><br><span class="line"><span class="comment">	 *  JDK1.8中的实现是：通过Proxy 中的的静态内部类ProxyClassFactory =&gt;(private static final class ProxyClassFactory)中的apply方法</span></span><br><span class="line"><span class="comment">	 *  注意：JDK1.7中是通过getProxyClass()方法实现 有点小区别 但是核心代码大致相同</span></span><br><span class="line"><span class="comment">	 *  核心代码如下：</span></span><br><span class="line"><span class="comment">	 *      //所有代理类的前缀</span></span><br><span class="line"><span class="comment">	 *  	private static final String proxyClassNamePrefix = "$Proxy";</span></span><br><span class="line"><span class="comment">	 *      //代理类的序号</span></span><br><span class="line"><span class="comment">	 *      long num = nextUniqueNumber.getAndIncrement();</span></span><br><span class="line"><span class="comment">	 *      //代理类的全名</span></span><br><span class="line"><span class="comment">     *      String proxyName = proxyPkg + proxyClassNamePrefix + num;</span></span><br><span class="line"><span class="comment">     *      //生成代理类class字节码文件 ,反编译生成的class文件可以发现代理类继承Proxy类实现了被代理类的implements的所有接口 =&gt;(public final class $Proxy0 extends Proxy  implements Subject ) </span></span><br><span class="line"><span class="comment">     *      //generateProxyClass()可以再看看具体实现</span></span><br><span class="line"><span class="comment">     *      byte[] proxyClassFile = ProxyGenerator.generateProxyClass(proxyName, interfaces, accessFlags);</span></span><br><span class="line"><span class="comment">     *      try &#123;</span></span><br><span class="line"><span class="comment">     *      //根据class字节码生成实例对象</span></span><br><span class="line"><span class="comment">     *          return defineClass0(loader, proxyName,proxyClassFile, 0, proxyClassFile.length);</span></span><br><span class="line"><span class="comment">     *         &#125; </span></span><br><span class="line"><span class="comment">     *          </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> classLoader</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> interfaces</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> myInvocationHandler</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">newProxyInstance</span><span class="params">(MyClassLoader classLoader,Class&lt;?&gt;[] interfaces,MyInvocationHandler myInvocationHandler)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="comment">//1、动态生成代理类的源代码 .java文件</span></span><br><span class="line">			String proxySrc = generateSrc(interfaces[<span class="number">0</span>]);</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//2、将生成的源代码输出到磁盘，保存为.java文件</span></span><br><span class="line">			String filePath = MyProxy.class.getResource(<span class="string">""</span>).getPath(); <span class="comment">//打jar包之后抛空指针</span></span><br><span class="line"><span class="comment">//			String filePath = MyProxy.class.getResource("/").getPath() +"com/nqmysb/myproxy/proxytools/";</span></span><br><span class="line">			File f = <span class="keyword">new</span> File(filePath + <span class="string">"$Proxy0.java"</span>);</span><br><span class="line">			FileWriter fw = <span class="keyword">new</span> FileWriter(f);</span><br><span class="line">			fw.write(proxySrc);</span><br><span class="line">			fw.flush();</span><br><span class="line">			fw.close();</span><br><span class="line">		</span><br><span class="line">			<span class="comment">//3、编译源代码，并且生成.class文件</span></span><br><span class="line">			JavaCompiler  compiler = ToolProvider.getSystemJavaCompiler();</span><br><span class="line">			StandardJavaFileManager manager = compiler.getStandardFileManager(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">			Iterable&lt;? extends JavaFileObject&gt; iterable = manager.getJavaFileObjects(f);</span><br><span class="line">			</span><br><span class="line">			CompilationTask task = compiler.getTask(<span class="keyword">null</span>, manager, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, iterable);</span><br><span class="line">			task.call();</span><br><span class="line">			manager.close();</span><br><span class="line">		</span><br><span class="line">			<span class="comment">//4.将class文件中的内容，动态加载到JVM中来</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">//5.返回被代理后的代理类class对象</span></span><br><span class="line">			Class&lt;?&gt; proxyClass = classLoader.findClass(<span class="string">"$Proxy0"</span>);</span><br><span class="line">			<span class="comment">//通过class对象和参数获取指定构造对象 </span></span><br><span class="line">			Constructor&lt;?&gt; c = proxyClass.getConstructor(MyInvocationHandler.class);</span><br><span class="line">			<span class="comment">//删除Java文件</span></span><br><span class="line">			f.delete();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">return</span> c.newInstance(myInvocationHandler);</span><br><span class="line">			</span><br><span class="line">		&#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 动态生成代理类的.java文件的代码内容</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> interfaces</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">generateSrc</span><span class="params">(Class&lt;?&gt; interfaces)</span></span>&#123;</span><br><span class="line">		StringBuffer src = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">		<span class="comment">//代理类包名</span></span><br><span class="line">		src.append(<span class="string">"package com.nqmysb.myproxy.proxytools;"</span> + ln);</span><br><span class="line">		<span class="comment">//导入反射包method类  </span></span><br><span class="line">		src.append(<span class="string">"import java.lang.reflect.Method;"</span> + ln);</span><br><span class="line">		<span class="comment">//声明类名 实现被代理类的接口这里简化处理只实现一个接口, JDK中生成的代理类会继承proxy类 实现被代理类的所有接口</span></span><br><span class="line">		src.append(<span class="string">"public class $Proxy0 implements "</span> + interfaces.getName() + <span class="string">"&#123;"</span> + ln);</span><br><span class="line">		<span class="comment">//生成代理类中持有MyInvocationHandler引用</span></span><br><span class="line">		<span class="comment">//JDK中InvocationHandler是Proxy中的成员变量=&gt;(protected InvocationHandler h;)</span></span><br><span class="line">		<span class="comment">//生成的代理类继承Proxy也继承了它的protected的成员变量,我们自己生成的代理类没有继承Proxy 所有需要自己提供</span></span><br><span class="line">		src.append(<span class="string">"MyInvocationHandler h;"</span> + ln);</span><br><span class="line">		<span class="comment">//代理类中构造方法中传入MyInvocationHandler给InvocationHandler初始化</span></span><br><span class="line">		src.append(<span class="string">"public $Proxy0(MyInvocationHandler h) &#123;"</span> + ln);</span><br><span class="line">		src.append(<span class="string">"this.h = h;"</span> + ln);</span><br><span class="line">		src.append(<span class="string">"&#125;"</span> + ln);</span><br><span class="line">		<span class="comment">//生成所有代理方法</span></span><br><span class="line">		<span class="keyword">for</span> (Method m : interfaces.getMethods()) &#123;</span><br><span class="line">			src.append(<span class="string">"public "</span> + m.getReturnType().getName() + <span class="string">" "</span> + m.getName() + <span class="string">"()&#123;"</span> + ln);</span><br><span class="line">			src.append(<span class="string">"try&#123;"</span> + ln);</span><br><span class="line">			<span class="comment">//通过代理方法对象</span></span><br><span class="line">			src.append(<span class="string">"Method m = "</span> + interfaces.getName() + <span class="string">".class.getMethod(\""</span> +m.getName()+<span class="string">"\",new Class[]&#123;&#125;);"</span> + ln);</span><br><span class="line">			<span class="comment">//调用代理方法</span></span><br><span class="line">			src.append(<span class="string">"this.h.invoke(this,m,null);"</span> + ln);</span><br><span class="line">			src.append(<span class="string">"&#125;catch(Throwable e)&#123;e.printStackTrace();&#125;"</span> + ln);</span><br><span class="line">			src.append(<span class="string">"&#125;"</span> + ln);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		src.append(<span class="string">"&#125;"</span>);</span><br><span class="line">		System.out.println(<span class="string">"动态生成的代理类$Proxy0:"</span>+ln+src);</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		生成代理类如下：</span></span><br><span class="line"><span class="comment">		package com.nqmysb.myproxy.proxytools;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		import java.lang.reflect.Method;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		public class $Proxy0 implements com.nqmysb.myproxy.Subject&#123;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		MyInvocationHandler h;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		public $Proxy0(MyInvocationHandler h) &#123;</span></span><br><span class="line"><span class="comment">			this.h = h;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		public void businessMethod()&#123;</span></span><br><span class="line"><span class="comment">		try&#123;</span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">				Method m = com.nqmysb.myproxy.Subject.class.getMethod("businessMethod",new Class[]&#123;&#125;);</span></span><br><span class="line"><span class="comment">				//此处调用的其实就是传入的com.nqmysb.myproxy.MyDynamicProxy对象的invoke方法</span></span><br><span class="line"><span class="comment">				//然后再在invoke中对代理对象的方法前后进行业务方法操作</span></span><br><span class="line"><span class="comment">				this.h.invoke(this,m,null);</span></span><br><span class="line"><span class="comment">				</span></span><br><span class="line"><span class="comment">				&#125;catch(Throwable e)&#123;</span></span><br><span class="line"><span class="comment">				e.printStackTrace();</span></span><br><span class="line"><span class="comment">				&#125;</span></span><br><span class="line"><span class="comment">			&#125;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		<span class="keyword">return</span> src.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>使用自己手写的动态代理</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.myproxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.nqmysb.myproxy.proxytools.MyClassLoader;</span><br><span class="line"><span class="keyword">import</span> com.nqmysb.myproxy.proxytools.MyInvocationHandler;</span><br><span class="line"><span class="keyword">import</span> com.nqmysb.myproxy.proxytools.MyProxy;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 代理类，必须实现JDK中的InvocationHandler  这是JDK动态代理的标志</span></span><br><span class="line"><span class="comment"> * 可以理解：需要实现JDK的代理，必须要这个证书 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDynamicProxy</span> <span class="keyword">implements</span> <span class="title">MyInvocationHandler</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Subject target; <span class="comment">//被代理对象的引用  这里是代理对象的接口  说明 该代理类是可以代理该接口下的所有子类的</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//动态生成代理对象</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getInstance</span><span class="params">(Subject target)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		<span class="comment">//获取代理对象</span></span><br><span class="line">		<span class="keyword">this</span>.target = target;</span><br><span class="line">		<span class="comment">//代理的对象必须是 suject的实现类</span></span><br><span class="line">		Class&lt;? extends Subject&gt; clazz = target.getClass();</span><br><span class="line">		<span class="comment">//获取被代理类实现的所有接口  从这里可以看出如果被代理类没有实现接口，是无法使用JDK动态代理的</span></span><br><span class="line">		Class&lt;?&gt;[] classs = clazz.getInterfaces();</span><br><span class="line">		System.out.println(<span class="string">"被代理对象实现的接口:"</span>+Arrays.asList(classs));</span><br><span class="line">		<span class="keyword">return</span> MyProxy.newProxyInstance(<span class="keyword">new</span> MyClassLoader(), classs, <span class="keyword">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"开始代理..."</span>);</span><br><span class="line">		System.out.println(<span class="string">"代理之前做的事情..."</span>);</span><br><span class="line">		System.out.println(<span class="string">"------------"</span>); </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//执行代理方法</span></span><br><span class="line">		method.invoke(<span class="keyword">this</span>.target, args);</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"------------"</span>);</span><br><span class="line">		System.out.println(<span class="string">"代理之后做的事情..."</span>);</span><br><span class="line">		System.out.println(<span class="string">"结束代理..."</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>测试动态代理</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nqmysb.myproxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.nqmysb.myproxy.impl.RealSubject;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 手写JDK动态代理测试类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liaocan</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDynamicProxyTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">			</span><br><span class="line">			Subject subject = (Subject)<span class="keyword">new</span> MyDynamicProxy().getInstance(<span class="keyword">new</span> RealSubject());</span><br><span class="line">			System.out.println(subject.getClass());</span><br><span class="line">			subject.businessMethod();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>运行结果</li>
+</ol>
+<pre><code class="language-java">被代理对象实现的接口:[interface com.nqmysb.myproxy.Subject]
+动态生成的代理类$Proxy0:
+package com.nqmysb.myproxy.proxytools;
+import java.lang.reflect.Method;
+public class $Proxy0 implements com.nqmysb.myproxy.Subject{
+MyInvocationHandler h;
+public $Proxy0(MyInvocationHandler h) {
+this.h = h;
+}
+public void businessMethod(){
+try{
+Method m = com.nqmysb.myproxy.Subject.class.getMethod(&quot;businessMethod&quot;,new Class[]{});
+this.h.invoke(this,m,null);
+}catch(Throwable e){e.printStackTrace();}
+}
+}
+class com.nqmysb.myproxy.proxytools.$Proxy0
+开始代理...
+代理之前做的事情...
+------------
+我在进行具体的业务操作。。。。。。
+------------
+代理之后做的事情...
+结束代理...
+
+</code></pre>
+<h3 id="总结">总结</h3>
+<p>动态代理的底层实现的原理：</p>
+<ol>
+<li>反射机制：获取被代理类的方法，并实现动态字节码重组生成新的代理类<br>
+值得注意：JDK动态代理和CGLIB动态代理使用的反射机制是不一样的，<br>
+分别是：java.lang.reflect.Method和net.sf.cglib.reflect.FastClass 类实现的</li>
+<li>函数回调机制：将代理类需要执行的附加方法传入新生成的代理类中，执行被代理类方法时会回调代理类的方法</li>
+</ol>
+<h3 id="代码工程">代码工程</h3>
+<p>github地址：<a href="https://github.com/nqmysb/spring-source-analysis" target="_blank" rel="noopener">https://github.com/nqmysb/spring-source-analysis</a></p>
+
+                
+
+                <hr>
+                <span style="color: #bfbfbf!important;">版权声明：本文为博主原创文章，欢迎转载，转载请注明作者、原文超链接</span>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/springboot/springboot3/" data-toggle="tooltip" data-placement="top" title="Springboot2.0从零开始搭建脚手架(三)-集成swagger2+lombok+fastjosn+MP分页">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay_url.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/wechatpay_url.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+                <br>
+
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>   
+                
+                <!-- require APlayer -->
+                
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                <div class="aplayer"
+                    data-id="2576984498"
+                    data-server="tecent"
+                    data-type="playlist"
+                    data-fixed="true" 
+                    >
+                </div>
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC80MTg2NC8xODQxMA=="></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#回顾jdk代理"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x56DE;&#x987E;JDK&#x4EE3;&#x7406;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#动态代理的条件"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x7684;&#x6761;&#x4EF6;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#实现代码"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#手写jdk动态代理"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x624B;&#x5199;JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#jdk做了哪些事"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">JDK&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x4E8B;&#xFF1F;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#手写jdk动态代理代码实现"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">&#x624B;&#x5199;JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">&#x603B;&#x7ED3;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#代码工程"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">&#x4EE3;&#x7801;&#x5DE5;&#x7A0B;</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#源码分析" title="源码分析">源码分析</a>
+                        
+                          <a class="tag" href="/tags/#Spring" title="Spring">Spring</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/nqmysbd" target="_blank">LiaoCan</a></li>
+                    
+                        <li><a href="http://blog.didispace.com/" target="_blank">程序猿DD</a></li>
+                    
+                        <li><a href="https://www.fangzhipeng.com" target="_blank">方志朋</a></li>
+                    
+                        <li><a href="http://www.ityouknow.com" target="_blank">纯洁的微笑</a></li>
+                    
+                        <li><a href="http://www.jiangxinlingdu.com" target="_blank">匠心零度</a></li>
+                    
+                        <li><a href="http://jilinwula.com/" target="_blank">吉林乌拉</a></li>
+                    
+                        <li><a href="http://cmsblogs.com" target="_blank">Java技术驿站</a></li>
+                    
+                        <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
+                    
+                        <li><a href="https://www.bossding.com.cn" target="_blank">微笑的丁总</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+    <!-- 来必力City版公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    <!-- 来必力City版 公共JS代码 end -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+<!-- 添加自动推送链接 -->
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- 复制添加版权申明-->
+<script>
+    /**/
+    function setClipboardText(event){
+        event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+        var node = document.createElement('div');
+        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+        node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+        //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
+        var htmlData = '<div>'
+            + node.innerHTML
+            + '<br /><br />著作权归作者所有。<br />'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+            + '作者：liaocan <br />链接：'
+            + location.href
+            + '<br />来源：liaocan.top<br /><br />'
+            + '</div>';
+        var textData = window.getSelection().getRangeAt(0)
+            + '\n\n著作权归作者所有。\n'
+            + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+            + '作者：liaocan\n'
+            + '链接：'
+            + location.href
+            + '来源：liaocan.top\n\n';
+        if(event.clipboardData){
+            event.clipboardData.setData("text/html", htmlData);
+            //setData(剪贴板格式, 数据) 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+            event.clipboardData.setData("text/plain",textData);
+        }
+        else if(window.clipboardData){ //window.clipboardData的作用是在页面上将需要的东西复制到剪贴板上，提供了对于预定义的剪贴板格式的访问，以便在编辑操作中使用。
+            return window.clipboardData.setData("text", textData);
+        }
+    };
+ 
+    document.addEventListener('copy',function(e){
+        setClipboardText(e);
+    });
+</script>
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+                // console.log(a,a.currentTarget,$(a.currentTarget),$(a.currentTarget)[0])
+                // a.currentTarget.scrollBy({ top: 0, left: 0, behavior: 'smooth' });
+                // a.currentTarget.scrollIntoView({behavior: 'smooth' });
+
+        })  
+
+
+
+</script>
+
+
+
+    
+
+     
+  
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/nqmysb" title="github">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://blog.csdn.net/nqmysbd" title="CSDN">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-csdn fa-stack-1x fa-inverse">C</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://yq.aliyun.com/u/nqmysb" title="云栖社区">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-alyun fa-stack-1x fa-inverse">云</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+
+                
+                    <li>
+                        <a target="_blank"  href="https://gitee.com/liaocwang" title="gitee">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-git fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="mailto:593013537@qq.com" title="email">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Liao Can 2019 
+                    <br>
+                    Theme by <a target="_blank" href="http://www.huweihuang.com">胡伟煌</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="https://liaocan.top">Liaocan</a> 
+                     | 
+                     <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=nqmysb&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                    <br />
+                    粤ICP备19058711号 |            
+                    <!--总访问量统计-->
+                    
+                        <span id="busuanzi_container_site_pv" style="margin-left: 3px;">
+                            总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                        <div style="display:none" >本站访客数<span  id="busuanzi_value_site_uv"></span>人次</div>
+                    
+                    <!--总访问量统计-->
+                      
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://liaocan.top/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-132197826-1';
+    var _gaDomain = 'liaocan.top';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '6f0414ec28cbdc196e93beaa4472a18d';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script type="text/javascript">
+
+    if(document.getElementById("tagscloud")) {
+        //按需加载
+        document.write("<scr"+"ipt src=\"/js/tagsCloud.js\" language=\"JavaScript\" charset=\"gb2312\"></sc"+"ript>")
+    }
+</script>
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+    <!--单击显示文字-->
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://liaocan.top/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

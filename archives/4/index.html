@@ -244,6 +244,43 @@
 
 <div class="post-preview">
 
+    <a href="/article/javacore/advanced/Regular/">
+        <h2 class="post-title">
+            
+            [java核心技术] Java正则
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            导读
+正则表达式是什么？有什么用？
+正则表达式(Regular Expression)是一种文本规则，可以用来校验、查找、替换与规则匹配的文本。
+又爱又恨的正则
+正则表达式是一个强大的文本匹配工具，但是它的规则实在很繁琐，而且理解起来也颇为蛋疼，容易让人望而生畏。
+如何学习正则
+刚接触正则时，我看了一堆正则的语义说明，但是仍然不明所以。后来，我多接触一些正则的应用实例，渐渐有了感觉，再结合语......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#regex" title="regex">regex</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/javacore/advanced/encode/java-message-digest/">
         <h2 class="post-title">
             
@@ -278,22 +315,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/Regular/">
+    <a href="/article/javacore/advanced/Fibonacci/">
         <h2 class="post-title">
             
-            [java核心技术] Java正则
+            [java核心技术] Java泛型
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            导读
-正则表达式是什么？有什么用？
-正则表达式(Regular Expression)是一种文本规则，可以用来校验、查找、替换与规则匹配的文本。
-又爱又恨的正则
-正则表达式是一个强大的文本匹配工具，但是它的规则实在很繁琐，而且理解起来也颇为蛋疼，容易让人望而生畏。
-如何学习正则
-刚接触正则时，我看了一堆正则的语义说明，但是仍然不明所以。后来，我多接触一些正则的应用实例，渐渐有了感觉，再结合语......
+            泛型简介
+一般的类和方法，只能使用具体的类型：要么是基本类型，要么是自定义的类。如果要编写可以应用于多种类型的代码，这种刻板的限制对代码的束缚就会很大。
+JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码可以应用于多种类型。泛型的意思是：适用于各种各样的类型。
+泛型是实现容器类的基石。泛型的主要作用之一就是用来指定容器要持有什么类型的对象，而且由编译器来保证类型的正确性。
+基本类型......
         </div>
     </a>
     
@@ -304,8 +339,6 @@
         <div class="tags">
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#regex" title="regex">regex</a>
             
         </div>
     
@@ -349,20 +382,23 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/encode/java-encryption/">
+    <a href="/article/javacore/advanced/Reflection/">
         <h2 class="post-title">
             
-            [编码算法] Base64 编码
+            [java核心技术] Java反射和动态代理
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Base64 编码
-算法简述
-定义
-Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。
-Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。Base64 并不是加密解密算法，尽管我们有时也听到使用 Base64 来加密解密......
+            反射
+反射简介
+什么是反射
+反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
+简而言之：通过反射，我们可以在运行时获得程序或程序集中每一个类的成员和方法。
+反射的主要用途
+
+开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
         </div>
     </a>
     
@@ -373,93 +409,6 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
         <div class="tags">
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/container/Queue/">
-        <h2 class="post-title">
-            
-            java容器-Queue
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Queue 架构
-
-
-
-Queue 接口
-Queue 接口定义如下：
-1public interface Queue&lt;E&gt; extends Collection&lt;E&gt; &#123;&#125;
-BlockingQueue 接口
-BlockingQueue 接口定义如下：
-1public interface BlockingQueue&lt;E&gt; extends ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-05
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#java容器" title="java容器">java容器</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/container/List/">
-        <h2 class="post-title">
-            
-            java容器-List
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            List 概述
-List 接口定义：
-1public interface List&lt;E&gt; extends Collection&lt;E&gt;
-List 主要方法：
-
-
-
-List 常见子类：
-
-ArrayList - 动态数组。
-LinkedList - 双链表。
-
-ArrayList
-ArrayList 要点
-ArrayList 是一个数组队列，相当于动态数组。与 Java......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-05
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#java容器" title="java容器">java容器</a>
             
         </div>
     
@@ -545,6 +494,91 @@ SortedMap 是继承于 Map 的接口。SortedMap 中的内容是排序的键值�
 
 <div class="post-preview">
 
+    <a href="/article/javacore/container/List/">
+        <h2 class="post-title">
+            
+            java容器-List
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            List 概述
+List 接口定义：
+1public interface List&lt;E&gt; extends Collection&lt;E&gt;
+List 主要方法：
+
+
+
+List 常见子类：
+
+ArrayList - 动态数组。
+LinkedList - 双链表。
+
+ArrayList
+ArrayList 要点
+ArrayList 是一个数组队列，相当于动态数组。与 Java......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#java容器" title="java容器">java容器</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/container/Queue/">
+        <h2 class="post-title">
+            
+            java容器-Queue
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Queue 架构
+
+
+
+Queue 接口
+Queue 接口定义如下：
+1public interface Queue&lt;E&gt; extends Collection&lt;E&gt; &#123;&#125;
+BlockingQueue 接口
+BlockingQueue 接口定义如下：
+1public interface BlockingQueue&lt;E&gt; extends ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#java容器" title="java容器">java容器</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/javacore/container/Summary/">
         <h2 class="post-title">
             
@@ -578,48 +612,6 @@ Java 容器框架主要分为 Collection 和 Map 两种。其中，Collection �
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
               <a href="/tags/#java容器" title="java容器">java容器</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/io/JavaIO/">
-        <h2 class="post-title">
-            
-            Java 常用IO类
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 常用 IO 类
-
-关键词：File、RandomAccessFile、System、Scanner
-
-1. File
-File 类是 java.io 包中唯一对文件本身进行操作的类。它可以对文件、目录进行增删查操作。
-常用方法
-createNewFille
-可以使用 createNewFille() 方法创建一个新文件。
-注：
-Windows 中使用反斜杠表示目录的分隔符 \。
-L......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#IO流" title="IO流">IO流</a>
             
         </div>
     
@@ -672,19 +664,19 @@ L......
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#git" title="git" rel="1">git</a>
-            
-        
-            
             <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
             <a href="/tags/#设计" title="设计" rel="1">设计</a>
+            
+        
+            
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
@@ -696,19 +688,19 @@ L......
             
         
             
-            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
-            
-        
-            
             <a href="/tags/#Java技术栈" title="Java技术栈" rel="1">Java技术栈</a>
             
         
             
-            <a href="/tags/#源码分析" title="源码分析" rel="1">源码分析</a>
+            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
             
         
             
-            <a href="/tags/#Spring" title="Spring" rel="1">Spring</a>
+            <a href="/tags/#源码分析" title="源码分析" rel="2">源码分析</a>
+            
+        
+            
+            <a href="/tags/#Spring" title="Spring" rel="2">Spring</a>
             
         
             
@@ -862,6 +854,10 @@ L......
     <ul>
       
         <li>
+          <a href="/article/source-analysis/source-analysis2/">Spring源码分析-手写JDK动态代理</a>
+        </li>
+      
+        <li>
           <a href="/article/springboot/springboot3/">Springboot2.0从零开始搭建脚手架(三)-集成swagger2+lombok+fastjosn+MP分页</a>
         </li>
       
@@ -875,10 +871,6 @@ L......
       
         <li>
           <a href="/article/springboot/springboot1/">Springboot2.0从零开始搭建脚手架(一)之整合MybatisPlus3.0+</a>
-        </li>
-      
-        <li>
-          <a href="/article/jdk/jdk8new3/">JDK8的新特性（三）</a>
         </li>
       
     </ul>
@@ -917,7 +909,7 @@ L......
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">10</span></li></ul>
     </div>
 
         <hr>
