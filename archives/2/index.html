@@ -557,34 +557,26 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/Threadquestions/">
+    <a href="/article/javacore/concurrent/Collections/">
         <h2 class="post-title">
             
-            [java多线程] Java 并发面试题总结
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 并发面试题总结
-1. 并发简介
-1.1. 什么是进程？什么是线程？进程和线程的区别？
+            同步容器和并发容器
 
-什么是进程
+本文内容基于 JDK1.8。
 
-简言之，进程可视为一个正在运行的程序。
-进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动。进程是操作系统进行资源分配的基本单位。
+同步容器
+在 Java 中，同步容器主要包括 2 类：
 
+Vector、Stack、HashTable
 
-什么是线程
-
-线程是操作系统进行调度的基本单位。
-
-
-进程 vs. 线程
-
-一个程序至少有一个进程，一个进程至少有一个线程。
-线程比进程......
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
         </div>
     </a>
     
@@ -594,9 +586,9 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
         </p>
         <div class="tags">
             
-              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
+              <a href="/tags/#java核心" title="java核心">java核心</a>
             
-              <a href="/tags/#面试题" title="面试题">面试题</a>
+              <a href="/tags/#java多线程" title="java多线程">java多线程</a>
             
         </div>
     
@@ -606,25 +598,26 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/concurrentool/">
+    <a href="/article/javacore/concurrent/AtomicBoolean/">
         <h2 class="post-title">
             
-            [java多线程] 8-并发工具类
+            [java多线程] 7-原子变量类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            并发工具类
+            原子变量类
 
 本文内容基于 JDK1.8。
 
-JDK 的 java.util.concurrent 包（即 juc）中提供了几个非常有用的并发工具类。
-CountDownLatch
-要点
+原子变量比锁的粒度更细，量级更轻，并且对于在多处理器系统上实现高性能的并发代码来说是非常关键的。
+原子变量类相当于一种泛化的volatile变量，能够支持原子的和有条件的读-改-写操作。
+原子类在内部使用现代 CPU 支持的 CAS 指令来实现同步。这些指令通常比锁更快。
+原子更新基本类型
 
-作用：字面意思为递减计数锁。它允许一个或多个线程等待，直到在其他线程中执行的一组操作完成。
-原理：CountDownLatch 维护一个计数器 count，表示需要等待的事件数量。countDown 方法......
+AtomicBoolean - 原子更新布尔类型。
+A......
         </div>
     </a>
     
@@ -697,11 +690,11 @@ CountDownLatch
             
         
             
-            <a href="/tags/#设计" title="设计" rel="1">设计</a>
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
             
@@ -713,11 +706,11 @@ CountDownLatch
             
         
             
-            <a href="/tags/#Java技术栈" title="Java技术栈" rel="1">Java技术栈</a>
+            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
             
         
             
-            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
+            <a href="/tags/#Java技术栈" title="Java技术栈" rel="1">Java技术栈</a>
             
         
             
@@ -926,6 +919,8 @@ CountDownLatch
         <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
     
         <li><a href="https://www.bossding.com.cn" target="_blank">微笑的丁总</a></li>
+    
+        <li><a href="https://liupeicheng.top" target="_blank">刘培城</a></li>
     
 </ul>
 

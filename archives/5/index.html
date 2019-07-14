@@ -244,6 +244,39 @@
 
 <div class="post-preview">
 
+    <a href="/article/javacore/jvm/GC/">
+        <h2 class="post-title">
+            
+            [java虚拟机] 2-垃圾收集
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            程序计数器、虚拟机栈和本地方法栈这三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后也会消失，因此不需要对这三个区域进行垃圾回收。垃圾回收主要是针对 Java 堆和方法区进行。
+判断一个对象是否可回收
+1. 引用计数算法
+给对象添加一个引用计数器，当对象增加一个引用时计数器加 1，引用失效时计数器减 1。引用计数为 0 的对象可被回收。
+两个对象出现循环引用的情况下，此时引用计数......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/javacore/io/JavaNIO/">
         <h2 class="post-title">
             
@@ -284,20 +317,27 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/GC/">
+    <a href="/article/javacore/io/JavaIO/">
         <h2 class="post-title">
             
-            [java虚拟机] 2-垃圾收集
+            Java 常用IO类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            程序计数器、虚拟机栈和本地方法栈这三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后也会消失，因此不需要对这三个区域进行垃圾回收。垃圾回收主要是针对 Java 堆和方法区进行。
-判断一个对象是否可回收
-1. 引用计数算法
-给对象添加一个引用计数器，当对象增加一个引用时计数器加 1，引用失效时计数器减 1。引用计数为 0 的对象可被回收。
-两个对象出现循环引用的情况下，此时引用计数......
+            Java 常用 IO 类
+
+关键词：File、RandomAccessFile、System、Scanner
+
+1. File
+File 类是 java.io 包中唯一对文件本身进行操作的类。它可以对文件、目录进行增删查操作。
+常用方法
+createNewFille
+可以使用 createNewFille() 方法创建一个新文件。
+注：
+Windows 中使用反斜杠表示目录的分隔符 \。
+L......
         </div>
     </a>
     
@@ -307,7 +347,9 @@ I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的�
         </p>
         <div class="tags">
             
-              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#IO流" title="IO流">IO流</a>
             
         </div>
     
@@ -570,67 +612,26 @@ InetAddress
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/JavaIO/">
+    <a href="/article/javacore/basic/dev/">
         <h2 class="post-title">
             
-            Java 常用IO类
+            [java基础] Java 开发环境
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 常用 IO 类
-
-关键词：File、RandomAccessFile、System、Scanner
-
-1. File
-File 类是 java.io 包中唯一对文件本身进行操作的类。它可以对文件、目录进行增删查操作。
-常用方法
-createNewFille
-可以使用 createNewFille() 方法创建一个新文件。
-注：
-Windows 中使用反斜杠表示目录的分隔符 \。
-L......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
             
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#IO流" title="IO流">IO流</a>
-            
-        </div>
-    
+:pushpin: 关键词： JAVA_HOME、CLASSPATH、Path、环境变量、IDE
 
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/basic/IfElse/">
-        <h2 class="post-title">
-            
-            [java基础] Java 控制语句
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 控制语句
-知识点
-
-选择语句
-if 语句
-if 语句会判断括号中的条件是否成立，如果成立则执行 if 语句中的代码块，否则跳过代码块继续执行。
-语法
-123if(布尔表达式) &#123;   //如果布尔表达式为true将执行的语句&#125;
-示例
-12345678910public class IfDemo &#123;    public static void main(......
+下载
+进入 JDK 官方下载地址 ，根据自己的环境选择下载所需版本。
+安装
+windows 环境的 jdk 包是 exe 安装文件，启动后根据安装向导安装即可。
+Linux 环境的 jdk 包，解压到本地即可。
+环境变量
+Windows
+计算机 &gt; 属性 &gt; 高级系统设置 &gt......
         </div>
     </a>
     
@@ -701,11 +702,11 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
             
         
             
-            <a href="/tags/#设计" title="设计" rel="1">设计</a>
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
             
@@ -717,11 +718,11 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
             
         
             
-            <a href="/tags/#Java技术栈" title="Java技术栈" rel="1">Java技术栈</a>
+            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
             
         
             
-            <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
+            <a href="/tags/#Java技术栈" title="Java技术栈" rel="1">Java技术栈</a>
             
         
             
@@ -930,6 +931,8 @@ if 语句会判断括号中的条件是否成立，如果成立则执行 if 语�
         <li><a href="https://www.bysocket.com/" target="_blank">泥瓦匠BYSocket</a></li>
     
         <li><a href="https://www.bossding.com.cn" target="_blank">微笑的丁总</a></li>
+    
+        <li><a href="https://liupeicheng.top" target="_blank">刘培城</a></li>
     
 </ul>
 
