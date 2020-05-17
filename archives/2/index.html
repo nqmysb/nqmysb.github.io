@@ -557,34 +557,26 @@ JDK1.4 开始，通过 java.util.logging 提供日志功能。
 
 <div class="post-preview">
 
-    <a href="/article/javacore/concurrent/ThreadPoolExecutor/">
+    <a href="/article/javacore/concurrent/Collections/">
         <h2 class="post-title">
             
-            [java多线程] 9-线程池
+            [java多线程] 5-同步容器和并发容器
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            线程池
-概述
-什么是线程池？
-线程池是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。
-为什么要用线程池？
+            同步容器和并发容器
 
-降低资源消耗
+本文内容基于 JDK1.8。
 
-通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
+同步容器
+在 Java 中，同步容器主要包括 2 类：
 
+Vector、Stack、HashTable
 
-提高响应速度
-
-当任务到达时，任务可以不需要等到线程创建就能立即执行。
-
-
-提高线程的可管理性
-
-线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，......
+Vector 实现了 List 接口，Vector 实际上就是一个数组，和 ArrayList 类似，但是 Vector 中的方法都是 synchronized 方法，即进行了同步措施。
+Stack 也是一个同步容器，它的方法也用 s......
         </div>
     </a>
     
@@ -698,11 +690,11 @@ A......
             
         
             
-            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
+            <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
             
-            <a href="/tags/#设计" title="设计" rel="1">设计</a>
+            <a href="/tags/#JDK" title="JDK" rel="3">JDK</a>
             
         
             
