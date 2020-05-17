@@ -174,14 +174,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                      -->
@@ -244,20 +244,19 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/encode/java-encryption/">
+    <a href="/article/javacore/advanced/Annotation/">
         <h2 class="post-title">
             
-            [编码算法] Base64 编码
+            [java核心技术] Java注解
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Base64 编码
-算法简述
-定义
-Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。
-Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。Base64 并不是加密解密算法，尽管我们有时也听到使用 Base64 来加密解密......
+            什么是注解（Annotation）
+Annotation（注解）就是 Java 提供了一种元程序中的元素关联任何信息和着任何元数据（metadata）的途径和方法。
+java.lang.annotation.Annotation 是一个接口，程序可以通过反射来获取指定程序元素的注解对象，然后通过注解对象来获取注解里面的元数据。
+注解是 Java 5 及以后版本引入的。它可以用于创建文档，跟踪......
         </div>
     </a>
     
@@ -268,8 +267,6 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
         <div class="tags">
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
             
         </div>
     
@@ -279,19 +276,22 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
 
 <div class="post-preview">
 
-    <a href="/article/javacore/advanced/encode/java-message-digest/">
+    <a href="/article/javacore/advanced/Regular/">
         <h2 class="post-title">
             
-            [编码算法] 消息摘要算法
+            [java核心技术] Java正则
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            消息摘要
-算法简述
-定义
-它是一个唯一对应一个消息或文本的固定长度的值，它由一个单向 Hash 加密函数对消息进行作用而产生。如果消息在途中改变了，则接收者通过对收到消息的新产生的摘要与原摘要比较，就可知道消息是否被改变了。因此消息摘要保证了消息的完整性。消息摘要采用单向 Hash  函数将需加密的明文&quot;摘要&quot;成一串密文，这一串密文亦称为数字指纹(Finger Print......
+            导读
+正则表达式是什么？有什么用？
+正则表达式(Regular Expression)是一种文本规则，可以用来校验、查找、替换与规则匹配的文本。
+又爱又恨的正则
+正则表达式是一个强大的文本匹配工具，但是它的规则实在很繁琐，而且理解起来也颇为蛋疼，容易让人望而生畏。
+如何学习正则
+刚接触正则时，我看了一堆正则的语义说明，但是仍然不明所以。后来，我多接触一些正则的应用实例，渐渐有了感觉，再结合语......
         </div>
     </a>
     
@@ -303,7 +303,7 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
             
-              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
+              <a href="/tags/#regex" title="regex">regex</a>
             
         </div>
     
@@ -327,42 +327,6 @@ Base64 是一种很常见的编码规范，其作用是将二进制序列转换�
 JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码可以应用于多种类型。泛型的意思是：适用于各种各样的类型。
 泛型是实现容器类的基石。泛型的主要作用之一就是用来指定容器要持有什么类型的对象，而且由编译器来保证类型的正确性。
 基本类型......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/advanced/Reflection/">
-        <h2 class="post-title">
-            
-            [java核心技术] Java反射和动态代理
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            反射
-反射简介
-什么是反射
-反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
-简而言之：通过反射，我们可以在运行时获得程序或程序集中每一个类的成员和方法。
-反射的主要用途
-
-开发通用框架 - 反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配......
         </div>
     </a>
     
@@ -407,6 +371,119 @@ JDK5 引入了泛型机制。泛型实现了参数化类型的概念，使代码
         <div class="tags">
             
               <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/advanced/encode/java-encryption/">
+        <h2 class="post-title">
+            
+            [编码算法] Base64 编码
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Base64 编码
+算法简述
+定义
+Base64 内容传送编码是一种以任意 8 位字节序列组合的描述形式，这种形式不易被人直接识别。
+Base64 是一种很常见的编码规范，其作用是将二进制序列转换为人类可读的 ASCII 字符序列，常用在需用通过文本协议（比如 HTTP 和 SMTP）来传输二进制数据的情况下。Base64 并不是加密解密算法，尽管我们有时也听到使用 Base64 来加密解密......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#编码算法" title="编码算法">编码算法</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/container/Map/">
+        <h2 class="post-title">
+            
+            java容器-Map
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Map 架构
+
+
+
+
+Map 是映射接口，Map 中存储的内容是键值对(key-value)。
+AbstractMap 是继承于 Map 的抽象类，它实现了 Map 中的大部分 API。其它 Map 的实现类可以通过继承 AbstractMap 来减少重复编码。
+SortedMap 是继承于 Map 的接口。SortedMap 中的内容是排序的键值对，排序的方法是通过比较器(Comparat......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#java容器" title="java容器">java容器</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/container/Queue/">
+        <h2 class="post-title">
+            
+            java容器-Queue
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Queue 架构
+
+
+
+Queue 接口
+Queue 接口定义如下：
+1public interface Queue&lt;E&gt; extends Collection&lt;E&gt; &#123;&#125;
+BlockingQueue 接口
+BlockingQueue 接口定义如下：
+1public interface BlockingQueue&lt;E&gt; extends ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-05-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#java容器" title="java容器">java容器</a>
             
         </div>
     
@@ -461,44 +538,6 @@ ArrayList 是一个数组队列，相当于动态数组。与 Java......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/container/Map/">
-        <h2 class="post-title">
-            
-            java容器-Map
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Map 架构
-
-
-
-
-Map 是映射接口，Map 中存储的内容是键值对(key-value)。
-AbstractMap 是继承于 Map 的抽象类，它实现了 Map 中的大部分 API。其它 Map 的实现类可以通过继承 AbstractMap 来减少重复编码。
-SortedMap 是继承于 Map 的接口。SortedMap 中的内容是排序的键值对，排序的方法是通过比较器(Comparat......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-05
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#java容器" title="java容器">java容器</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/javacore/container/Set/">
         <h2 class="post-title">
             
@@ -516,46 +555,6 @@ SortedMap 是继承于 Map 的接口。SortedMap 中的内容是排序的键值�
 Set 继承了 Collection 的接口。实际上 Set 就是 Collection，只是行为略有不同：Set 集合不允许有重复元素。
 SortedSet 继承了 Set 的接口。SortedSet 中的内容是排序的唯一值，排序的方法是通过比较器(Comparator)。
 NavigableSet 继承了 SortedSet 的接口。相比于 NavigableSet......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-05-05
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#java容器" title="java容器">java容器</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/container/Queue/">
-        <h2 class="post-title">
-            
-            java容器-Queue
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Queue 架构
-
-
-
-Queue 接口
-Queue 接口定义如下：
-1public interface Queue&lt;E&gt; extends Collection&lt;E&gt; &#123;&#125;
-BlockingQueue 接口
-BlockingQueue 接口定义如下：
-1public interface BlockingQueue&lt;E&gt; extends ......
         </div>
     </a>
     
@@ -662,11 +661,11 @@ Java 容器框架主要分为 Collection 和 Map 两种。其中，Collection �
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#git" title="git" rel="1">git</a>
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
             
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
+            <a href="/tags/#git" title="git" rel="1">git</a>
             
         
             
@@ -674,11 +673,11 @@ Java 容器框架主要分为 Collection 和 Map 两种。其中，Collection �
             
         
             
-            <a href="/tags/#前端" title="前端" rel="3">前端</a>
+            <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
             
-            <a href="/tags/#设计" title="设计" rel="1">设计</a>
+            <a href="/tags/#前端" title="前端" rel="3">前端</a>
             
         
             
