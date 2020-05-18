@@ -244,20 +244,27 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/GC/">
+    <a href="/article/javacore/jvm/jmm/">
         <h2 class="post-title">
             
-            [java虚拟机] 2-垃圾收集
+            [java虚拟机] 1-运行时数据区域
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            程序计数器、虚拟机栈和本地方法栈这三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后也会消失，因此不需要对这三个区域进行垃圾回收。垃圾回收主要是针对 Java 堆和方法区进行。
-判断一个对象是否可回收
-1. 引用计数算法
-给对象添加一个引用计数器，当对象增加一个引用时计数器加 1，引用失效时计数器减 1。引用计数为 0 的对象可被回收。
-两个对象出现循环引用的情况下，此时引用计数......
+            
+
+
+程序计数器
+记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空）。
+虚拟机栈
+每个 Java 方法在执行的同时会创建一个栈帧用于存储局部变量表、操作数栈、常量池引用等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在 Java 虚拟机栈中入栈和出栈的过程。
+
+
+
+可以通过 -Xss 这个虚拟机参数来指定一个程序的 Java 虚拟机栈内存大小：
+1java -......
         </div>
     </a>
     
@@ -277,67 +284,24 @@
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/JavaNIO/">
+    <a href="/article/javacore/io/Javaios/">
         <h2 class="post-title">
             
-            Java NIO
+            Java 流操作
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java NIO
+            Java 流操作
 
-Java NIO Tutorial
-Java NIO 浅析
-IBM: NIO 入门
+关键词：InputStream、OutputStream、Reader、Writer
 
-新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的，弥补了原来的 I/O 的不足，提供了高速的、面向块的 I/O。
-流与块
-I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的方式处理数据，而 NIO 以块的方式处理数据。
-面向流的 I/O 一次处理一个字节数......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Liao Can on
-            2015-03-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
-            
-              <a href="/tags/#IO流" title="IO流">IO流</a>
-            
-        </div>
-    
+1. 字符流和字节流
+JAVA IO 中的流操作分为两类：
 
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/javacore/io/JavaIO/">
-        <h2 class="post-title">
-            
-            Java 常用IO类
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            Java 常用 IO 类
-
-关键词：File、RandomAccessFile、System、Scanner
-
-1. File
-File 类是 java.io 包中唯一对文件本身进行操作的类。它可以对文件、目录进行增删查操作。
-常用方法
-createNewFille
-可以使用 createNewFille() 方法创建一个新文件。
-注：
-Windows 中使用反斜杠表示目录的分隔符 \。
-L......
+字节流主要操作字节类型数据（byte）。主要类是 InputStream（输入） 和 OutputStream（输出）。
+字符流主要操作字符类型数据，一个字符占两个字节。主要类是 Reader（输入） 和 Writer（输出......
         </div>
     </a>
     
@@ -403,24 +367,71 @@ L......
 
 <div class="post-preview">
 
-    <a href="/article/javacore/io/Javaios/">
+    <a href="/article/javacore/jvm/ClassLoader/">
         <h2 class="post-title">
             
-            Java 流操作
+            [java虚拟机] 3-类加载机制
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            Java 流操作
+            类是在运行期间动态加载的。
+类的生命周期
 
-关键词：InputStream、OutputStream、Reader、Writer
 
-1. 字符流和字节流
-JAVA IO 中的流操作分为两类：
 
-字节流主要操作字节类型数据（byte）。主要类是 InputStream（输入） 和 OutputStream（输出）。
-字符流主要操作字符类型数据，一个字符占两个字节。主要类是 Reader（输入） 和 Writer（输出......
+包括以下 7 个阶段：
+
+加载（Loading）
+验证（Verification）
+准备（Preparation）
+解析（Resolution）
+初始化（Initialization）
+使用（Using）
+卸载（Unloading）
+
+其中解析过程在某些情况下可以在初始化阶段之后再开始，这是为了支持 Java 的动态绑定。
+类初始化时机
+虚拟机......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Liao Can on
+            2015-03-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/javacore/io/JavaNIO/">
+        <h2 class="post-title">
+            
+            Java NIO
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Java NIO
+
+Java NIO Tutorial
+Java NIO 浅析
+IBM: NIO 入门
+
+新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的，弥补了原来的 I/O 的不足，提供了高速的、面向块的 I/O。
+流与块
+I/O 与 NIO 最重要的区别是数据打包和传输的方式，I/O 以流的方式处理数据，而 NIO 以块的方式处理数据。
+面向流的 I/O 一次处理一个字节数......
         </div>
     </a>
     
@@ -482,27 +493,20 @@ GC 优化的两个目标：
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/jmm/">
+    <a href="/article/javacore/jvm/GC/">
         <h2 class="post-title">
             
-            [java虚拟机] 1-运行时数据区域
+            [java虚拟机] 2-垃圾收集
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            
-
-
-程序计数器
-记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法则为空）。
-虚拟机栈
-每个 Java 方法在执行的同时会创建一个栈帧用于存储局部变量表、操作数栈、常量池引用等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在 Java 虚拟机栈中入栈和出栈的过程。
-
-
-
-可以通过 -Xss 这个虚拟机参数来指定一个程序的 Java 虚拟机栈内存大小：
-1java -......
+            程序计数器、虚拟机栈和本地方法栈这三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后也会消失，因此不需要对这三个区域进行垃圾回收。垃圾回收主要是针对 Java 堆和方法区进行。
+判断一个对象是否可回收
+1. 引用计数算法
+给对象添加一个引用计数器，当对象增加一个引用时计数器加 1，引用失效时计数器减 1。引用计数为 0 的对象可被回收。
+两个对象出现循环引用的情况下，此时引用计数......
         </div>
     </a>
     
@@ -566,33 +570,27 @@ InetAddress
 
 <div class="post-preview">
 
-    <a href="/article/javacore/jvm/ClassLoader/">
+    <a href="/article/javacore/io/JavaIO/">
         <h2 class="post-title">
             
-            [java虚拟机] 3-类加载机制
+            Java 常用IO类
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            类是在运行期间动态加载的。
-类的生命周期
+            Java 常用 IO 类
 
+关键词：File、RandomAccessFile、System、Scanner
 
-
-包括以下 7 个阶段：
-
-加载（Loading）
-验证（Verification）
-准备（Preparation）
-解析（Resolution）
-初始化（Initialization）
-使用（Using）
-卸载（Unloading）
-
-其中解析过程在某些情况下可以在初始化阶段之后再开始，这是为了支持 Java 的动态绑定。
-类初始化时机
-虚拟机......
+1. File
+File 类是 java.io 包中唯一对文件本身进行操作的类。它可以对文件、目录进行增删查操作。
+常用方法
+createNewFille
+可以使用 createNewFille() 方法创建一个新文件。
+注：
+Windows 中使用反斜杠表示目录的分隔符 \。
+L......
         </div>
     </a>
     
@@ -602,7 +600,9 @@ InetAddress
         </p>
         <div class="tags">
             
-              <a href="/tags/#java虚拟机" title="java虚拟机">java虚拟机</a>
+              <a href="/tags/#java核心技术" title="java核心技术">java核心技术</a>
+            
+              <a href="/tags/#IO流" title="IO流">IO流</a>
             
         </div>
     
@@ -694,15 +694,7 @@ Windows
     <div class="tags" id="tagscloud" style="width:219px;height:180px;">
         
             
-            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
-            
-        
-            
             <a href="/tags/#git" title="git" rel="1">git</a>
-            
-        
-            
-            <a href="/tags/#设计" title="设计" rel="1">设计</a>
             
         
             
@@ -718,19 +710,19 @@ Windows
             
         
             
+            <a href="/tags/#Java日志" title="Java日志" rel="2">Java日志</a>
+            
+        
+            
+            <a href="/tags/#设计" title="设计" rel="1">设计</a>
+            
+        
+            
             <a href="/tags/#springboot" title="springboot" rel="3">springboot</a>
             
         
             
             <a href="/tags/#Java技术栈" title="Java技术栈" rel="1">Java技术栈</a>
-            
-        
-            
-            <a href="/tags/#源码分析" title="源码分析" rel="2">源码分析</a>
-            
-        
-            
-            <a href="/tags/#Spring" title="Spring" rel="1">Spring</a>
             
         
             
@@ -746,15 +738,11 @@ Windows
             
         
             
-            <a href="/tags/#网络编程" title="网络编程" rel="1">网络编程</a>
+            <a href="/tags/#源码分析" title="源码分析" rel="2">源码分析</a>
             
         
             
-            <a href="/tags/#java虚拟机" title="java虚拟机" rel="4">java虚拟机</a>
-            
-        
-            
-            <a href="/tags/#设计模式" title="设计模式" rel="2">设计模式</a>
+            <a href="/tags/#Spring" title="Spring" rel="1">Spring</a>
             
         
             
@@ -766,7 +754,7 @@ Windows
             
         
             
-            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
+            <a href="/tags/#网络编程" title="网络编程" rel="1">网络编程</a>
             
         
             
@@ -774,11 +762,23 @@ Windows
             
         
             
-            <a href="/tags/#面试题" title="面试题" rel="1">面试题</a>
+            <a href="/tags/#设计模式" title="设计模式" rel="2">设计模式</a>
+            
+        
+            
+            <a href="/tags/#IO流" title="IO流" rel="3">IO流</a>
+            
+        
+            
+            <a href="/tags/#java虚拟机" title="java虚拟机" rel="4">java虚拟机</a>
             
         
             
             <a href="/tags/#编码算法" title="编码算法" rel="2">编码算法</a>
+            
+        
+            
+            <a href="/tags/#面试题" title="面试题" rel="1">面试题</a>
             
         
             
